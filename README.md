@@ -1,3 +1,3 @@
 # Pixelgram
 
-<img width="1080" alt="image" src="https://user-images.githubusercontent.com/99565823/214951626-49883beb-6156-4ea2-a5fb-60ea3a15ab1b.png">
+<img width="1071" alt="image" src="https://user-images.githubusercontent.com/99565823/214959004-71a68a46-6dd0-400d-941c-6bde433dc86a.png">
