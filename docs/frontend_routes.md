@@ -56,6 +56,9 @@ This page displays comments with associated photos, as well as a navigation bar 
 
 
 ## Bonus
+
+## `/followers/:id`
+
 ### - Followers
 
       - A logged in user 'follow' another users.
