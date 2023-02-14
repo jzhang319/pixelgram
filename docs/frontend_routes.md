@@ -40,6 +40,10 @@ This page displays individual photo with associated comments and reactions, as w
   - `PUT /photos/:id`
   - `DELETE /photos/:id`
 
+## `/comments/:id`
+
+This page displays comments with associated photos, as well as a navigation bar with login/signup or logout buttons. If the logged in user owns the comment, this page also displays an update and delete button.
+
 --Comments--
   - `GET /comments/photos/:id`
   - `POST /comments/photos/:id`
