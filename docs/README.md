@@ -50,14 +50,14 @@ A logged in user can:
  - Remove their own reaction
  - Update their reaction
 
-## Followers
-A logged in user can:
- - Follow a specific user
- - Remove a specific user that he/she is following
-
 # Future Features
 
 ## This clone is a work in progress, these features will be available in the future...
+
+- ## Followers
+   A logged in user can:
+   - Follow a specific user
+   - Remove a specific user that he/she is following
 
 - ## AWS
    - Store pictures with AWS
