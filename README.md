@@ -18,7 +18,7 @@
 
 # CRUD Features
 
-## User
+## Users
 Allows you to:
    - Log in
    - Sign up
