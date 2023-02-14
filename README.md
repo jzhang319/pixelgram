@@ -1,7 +1,6 @@
 # Pixelgram
 
-<img width="1071" alt="image" src="https://user-images.githubusercontent.com/99565823/214959004-71a68a46-6dd0-400d-941c-6bde433dc86a.png">
-![image](https://user-images.githubusercontent.com/99565823/218787211-7bcb5c04-ae82-4960-a199-74da0bb3797d.png)
+<img width="1071" alt="image" src="https://user-images.githubusercontent.com/99565823/218787211-7bcb5c04-ae82-4960-a199-74da0bb3797d.png">
 
 
 ### This project uses the following technologies
