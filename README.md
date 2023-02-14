@@ -1,7 +1,6 @@
 # Pixelgram
 
-<img width="1071" alt="image" src="https://user-images.githubusercontent.com/99565823/218787211-7bcb5c04-ae82-4960-a199-74da0bb3797d.png">
-
+<img width="1071" alt="image" src="https://user-images.githubusercontent.com/99565823/218789502-6db8b744-a07a-4172-bd79-72898cd73b27.png">
 
 ### This project uses the following technologies
 ### Frontend
@@ -51,7 +50,7 @@ A logged in user can:
  - Remove their own reaction
  - Update their reaction
 
-## Following
+## Followers
 A logged in user can:
  - Follow a specific user
  - Remove a specific user that he/she is following
