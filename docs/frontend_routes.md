@@ -46,9 +46,9 @@ This page displays individual photo with associated comments and reactions, as w
   - `PUT /comments/:id`
   - `DELETE /comments/:id`
 
-  --Reactions--
-    - `GET /reactions/:id`
-    - `POST /reactions/:id`
+--Reactions--
+  - `GET /reactions/:id`
+  - `POST /reactions/:id`
 
 
 ## Bonus
