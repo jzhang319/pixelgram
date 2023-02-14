@@ -122,7 +122,7 @@ router.post(
     await setTokenCookie(res, user);
 
     return res.json({
-      user: user
+      user
     });
   }
 );
@@ -383,7 +383,7 @@ router.post(
     await setTokenCookie(res, user);
 
     return res.json({
-      user: user
+      user
     });
   }
 );
@@ -515,7 +515,7 @@ router.get(
       return res.json({
         user: user.toSafeObject()
       });
-    } else return res.json({ user: null });
+    } else return res.json({});
   }
 );
 

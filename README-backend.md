@@ -10,4 +10,4 @@ Express application with authentication.
   * Phase 3 - User Authentication
   * Phase 4 - User Auth Routes
   * Phase 5 - Validating the Request Body
-* Deployment to Render
+* Deployment to Heroku

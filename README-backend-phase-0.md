@@ -36,13 +36,6 @@ build
 
 ## Git
 
-Make sure your local machine's Git configuration initializes new Git repositories
-with a default branch of `main` by running:
-
-```bash
-git config --global init.defaultBranch main
-```
-
 Initiate Git in the project folder by running the following command in the
 `authenticate-me` folder:
 
@@ -109,7 +102,6 @@ running `npm init -y`.
 - `per-env` - use environment variables for starting app differently
 - `sequelize@6` - Sequelize
 - `sequelize-cli@6` - use `sequelize` in the command line
-- `pg` - use Postgres as the production environment database
 
 `npm install -D` the following packages as dev-dependencies:
 
@@ -129,10 +121,9 @@ PORT=8000
 DB_FILE=db/dev.db
 JWT_SECRET=«generate_strong_secret_here»
 JWT_EXPIRES_IN=604800
-SCHEMA=«custom_schema_name_here»
 ```
 
-Assign `PORT` to `8000`, choose a custom schema name in snake case, and generate a strong JWT secret.
+Assign `PORT` to `8000`, and a strong JWT secret.
 
 > Recommendation to generate a strong secret: create a random string using
 > `openssl` (a library that should already be installed in your Ubuntu/MacOS
@@ -187,7 +178,7 @@ npx sequelize init
 ```
 
 Replace the contents of the newly created `backend/config/database.js` file with
-the following.
+the following:
 
 ```js
 // backend/config/database.js
@@ -210,16 +201,13 @@ module.exports = {
         require: true,
         rejectUnauthorized: false
       }
-    },
-    define: {
-      schema: process.env.SCHEMA
     }
   }
 };
 ```
 
 This will allow you to load the database configuration environment variables
-from the `.env` file into the `config/index.js`, as well as define the global schema for the project.
+from the `.env` file into the `config/index.js`.
 
 Notice how the `production` database configuration has different keys than the
 `development` configuration? When you deploy your application to production,
@@ -228,18 +216,6 @@ will also be using PostgresQL in production rather than SQLite3 as a SQL
 database management system. Recall that SQLite3 is supposed to be used
 **ONLY in development**. PostgresQL is a production-level database management
 system.
-
-Create a new file at the root of the __backend__ directory called __psql-setup-script.js__, and add the following contents.
-
-```js
-const { sequelize } = require('./db/models');
-
-sequelize.showAllSchemas({ logging: false }).then(async (data) => {
-  if (!data.includes(process.env.SCHEMA)) {
-    await sequelize.createSchema(process.env.SCHEMA);
-  }
-});
-```
 
 Finally, migrate the database using `sequelize-cli` to make sure you set
 everything up correctly.
@@ -328,8 +304,8 @@ if (!isProduction) {
 
 // helmet helps set a variety of headers to better secure your app
 app.use(
-  helmet.crossOriginResourcePolicy({
-    policy: "cross-origin"
+  helmet.crossOriginResourcePolicy({ 
+    policy: "cross-origin" 
   })
 );
 
@@ -466,8 +442,7 @@ In your `package.json`, add the following scripts:
     "sequelize-cli": "sequelize-cli",
     "start": "per-env",
     "start:development": "nodemon ./bin/www",
-    "start:production": "node ./bin/www",
-    "build": "node psql-setup-script.js"
+    "start:production": "node ./bin/www"
   }
 ```
 

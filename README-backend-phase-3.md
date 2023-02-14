@@ -96,21 +96,10 @@ This will create a file in your `backend/db/migrations` folder and a file called
 In the migration file, apply the constraints in the schema. Remember to define
 the default constraints for the `createdAt` and `updatedAt` columns.
 
-You should
-also define the schema name for the Postgres production database in the options object at the top of the file, and include
-the options object in both the up and down functions.  All `queryInterface` method calls except `createTable` will require 
-the options object as the first argument, with the appropriate `tableName` property.
-
 If completed correctly, your migration file should look something like this:
 
 ```js
 "use strict";
-
-let options = {};
-if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
-}
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable("Users", {
@@ -144,11 +133,10 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    }, options);
+    });
   },
   down: async (queryInterface, Sequelize) => {
-    options.tableName = "Users";
-    return queryInterface.dropTable(options);
+    return queryInterface.dropTable("Users");
   }
 };
 ```
@@ -176,8 +164,6 @@ by running the following command in the terminal:
 ```bash
 sqlite3 db/dev.db ".schema Users"
 ```
-
-> _Note: In this migration, you specified a schema name for the production environment only. When you look at your data in sqlite in the development environment, the tables will not be prefixed by the schema name. They will only be prefixed in the production environment.
 
 ## User Model
 
@@ -210,7 +196,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-
+  
   User.init(
     {
       username: {
@@ -240,9 +226,6 @@ module.exports = (sequelize, DataTypes) => {
           len: [60, 60]
         }
       }
-    }, {
-      sequelize,
-      modelName: 'User'
     }
   );
   return User;
@@ -259,14 +242,9 @@ npx sequelize seed:generate --name demo-user
 
 In the seeder file, create a demo user with `email`, `username`, and
 `hashedPassword` fields. For the `down` function, delete the user with the
-`username` or `email` of the demo user.
-
-You should also define the schema name for the Postgres production database in the options object at the top of the file,
-and include the options object in both the up and down functions.
-
-If you'd like, you can also add other users and populate the fields with random
-fake data. To generate the `hashedPassword` you should use the `bcryptjs`
-package's `hashSync` method.
+`username` or `email` of the demo user. If you'd like, you can also add other
+users and populate the fields with random fake data. To generate the
+`hashedPassword` you should use the `bcryptjs` package's `hashSync` method.
 
 Your seeder file should look something like this:
 
@@ -274,15 +252,9 @@ Your seeder file should look something like this:
 'use strict';
 const bcrypt = require("bcryptjs");
 
-let options = {};
-if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
-}
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    options.tableName = 'Users';
-    return queryInterface.bulkInsert(options, [
+    return queryInterface.bulkInsert('Users', [
       {
         email: 'demo@user.io',
         username: 'Demo-lition',
@@ -302,9 +274,8 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    options.tableName = 'Users';
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete(options, {
+    return queryInterface.bulkDelete('Users', {
       username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
     }, {});
   }
@@ -389,7 +360,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-
+  
   User.init(
     {
       username: {
@@ -501,7 +472,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-
+  
   User.init(
     {
       username: {
@@ -756,9 +727,9 @@ and passed along to the error-handling middlewares.
 const requireAuth = function (req, _res, next) {
   if (req.user) return next();
 
-  const err = new Error('Authentication required');
-  err.title = 'Authentication required';
-  err.errors = ['Authentication required'];
+  const err = new Error('Unauthorized');
+  err.title = 'Unauthorized';
+  err.errors = ['Unauthorized'];
   err.status = 401;
   return next(err);
 }
@@ -799,7 +770,7 @@ router.get('/set-token-cookie', async (_req, res) => {
       }
     });
   setTokenCookie(res, user);
-  return res.json({ user: user });
+  return res.json({ user });
 });
 
 // ...
