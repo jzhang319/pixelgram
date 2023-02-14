@@ -1,7 +1,7 @@
 # User Stories
 
 
-## Users
+## - Users
 
 ### Sign Up
 
@@ -39,7 +39,7 @@
       - So that I can easily log out to keep my information secure.
   
   
-## Photos
+## - Photos
 
 ### Post Photos
 
@@ -68,7 +68,7 @@
     - I can click "Delete" to permanently delete a Photo that I have posted and all comments associated with this photo.
       - So that when I realize I shouldn't have publicly post a photo, I can easily remove it.
       
-## Comments
+## - Comments
 
 ### Post Comments
 
@@ -85,7 +85,7 @@
 - As a logged in user and the author of the comment, I am able to delete the comment by clicking on the "Delete" button associated with the Comment.
 
 
-## Reactions
+## - Reactions
 
 ### Post Reactions
 
