@@ -23,32 +23,27 @@
 Allows you to:
    - Log in
    - Sign up
-   - Explore restaurants
+   - Explore other users' photos
    - Use the DEMO USER login
 
-## Questions
-   - All users can view a sampling of the most recent questions.
+## Photos
+   - All users can view a sampling of the most recent photos.
 
 As a non-logged in user you can:
-   - Explore Question Threads
-   - View Replies and Reactions
+   - Explore photos threads
+   - View Comments and Reactions
 
 As a logged in user you can:
-   - Post questions
-   - Edit and Delete your own questions
+   - Post photos with detail
+   - Edit and Delete your own photos
+   - Post Comments on other photos
 
-## Answers
-   - All users can view a sampling of the most recent answers to questions.
+## Comments
+   - All users (logged in or no) can view a sampling of the most recent comments to photos.
 
 A logged in user can:
- - Post answers to questions
- - Edit and delete their own answers
- - Change upcoming Reservations
- - Cancel a Reservation
-
- ## 3. Search for Questions
-
-- All users can search for questions
+ - Post comments to photos
+ - Edit and delete their own comments
 
 ## Reactions
 A logged in user can:
@@ -56,18 +51,15 @@ A logged in user can:
  - Remove their own reaction
  - Update their reaction
 
+## Following
+A logged in user can:
+ - Follow a specific user
+ - Remove a specific user that he/she is following
 
 # Future Features
 
 ## This clone is a work in progress, these features will be available in the future...
 
-- ## Popular Questions Page
-   -Dedicated to the Questions with the most replies
-- ## Newest Questions Page
-   -See the latest posted Questions
-- ## Most Hated Page
-   -Take a trip back to Middle School and explore the most disliked Answers
+- ## AWS
+   - Store pictures with AWS
 
-   -80s cliche bad egg graffitii wall included
-- ## Explore Category Page
-   -Questions will be organized by tags which all users can use to explore categories
