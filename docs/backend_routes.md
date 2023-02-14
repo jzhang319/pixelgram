@@ -6,8 +6,8 @@ This web app uses the following API routes to dynamically update the page to cre
 
 - A logged in user may delete, edit or create their own Question, however every user can view all questions or a specific question, logged in or not.
 
-  - `GET /api/photos/:id`
   - `GET /api/photos`
+  - `GET /api/photos/:id`
   - `POST /api/photos`
   - `PUT /api/photos/:id`
   - `DELETE /api/photos/:id`
@@ -16,7 +16,7 @@ This web app uses the following API routes to dynamically update the page to cre
 
 - A logged in user may delete, edit or create their own Comment to a Photo, however every user can view all comments of a specific photo, logged in or not.
 
-  - `GET /api/comments`
+  - `GET /api/comments/:id`
   - `GET /api/comments/photos/:id`
   - `POST /api/comments/:id`
   - `PUT /api/comments/:id`
