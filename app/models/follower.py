@@ -9,17 +9,21 @@ class Follower(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    following_id = db.Column(db.Integer, nullable=False)
-    followed_id = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod("users.id")), nullable=False)
+    follower_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod("users.id")), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=func.now())
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=func.now(), onupdate=func.now())
 
+    user = db.relationship("User", back_populates="followers")
+
     def to_dict(self):
         return {
             'id': self.id,
-            'following_id': self.following_id,
-            'followed_id': self.follower_id,
+            'user_id': self.user_id,
+            'follower_id': self.follower_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
