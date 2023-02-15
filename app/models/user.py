@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     photos = db.relationship('Photo', back_populates='user')
+    reactions = db.relationship("Reaction", back_populates="user")
 
     @property
     def password(self):
