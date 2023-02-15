@@ -18,11 +18,16 @@ class Comment(db.Model):
         add_prefix_for_prod("photos.id")), nullable=False)
     photo = db.relationship("Photo", back_populates="comments")
 
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod("users.id")), nullable=False)
+    user = db.relationship("User", back_populates="photos")
+
     def to_dict(self):
         return {
             'id': self.id,
             'photo_id': self.photo_id,
             'comment': self.comment,
+            'user_id': self.user_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
