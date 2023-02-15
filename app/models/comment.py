@@ -20,7 +20,7 @@ class Comment(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
-    user = db.relationship("User", back_populates="photos")
+    user = db.relationship("User", back_populates="comments")
 
     def to_dict(self):
         return {

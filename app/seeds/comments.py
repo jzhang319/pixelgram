@@ -30,6 +30,48 @@ def seed_comments():
     demo8 = Comment(
         photo_id=5, comment='inspired', user_id=7
     )
+    demo9 = Comment(
+        photo_id=6, comment='i dreamed of having one', user_id=8
+    )
+    demo10 = Comment(
+        photo_id=7, comment='back to the future again', user_id=9
+    )
+    demo11 = Comment(
+        photo_id=8, comment='buuuuuugati', user_id=10
+    )
+    demo12 = Comment(
+        photo_id=9, comment='last thing we need is a flying car', user_id=11
+    )
+    demo13 = Comment(
+        photo_id=10, comment='that is a nice purchase', user_id=11
+    )
+    demo14 = Comment(
+        photo_id=11, comment='nice comparison of size', user_id=3
+    )
+    demo15 = Comment(
+        photo_id=12, comment='i will be there one there', user_id=5
+    )
+    demo16 = Comment(
+        photo_id=13, comment='is this real ?!', user_id=10
+    )
+    demo17 = Comment(
+        photo_id=14, comment='nice pic', user_id=2
+    )
+    demo18 = Comment(
+        photo_id=15, comment='i can draw better than that', user_id=9
+    )
+    demo19 = Comment(
+        photo_id=16, comment='i took a picture like that with a drone before', user_id=8
+    )
+    demo20 = Comment(
+        photo_id=17, comment='that is a small ship', user_id=6
+    )
+    demo21 = Comment(
+        photo_id=18, comment='biiiiig family of boats', user_id=1
+    )
+    demo22 = Comment(
+        photo_id=19, comment='i can spend months on this cruise', user_id=4
+    )
 
     db.session.add(demo)
     db.session.add(demo1)
@@ -40,6 +82,20 @@ def seed_comments():
     db.session.add(demo6)
     db.session.add(demo7)
     db.session.add(demo8)
+    db.session.add(demo9)
+    db.session.add(demo10)
+    db.session.add(demo11)
+    db.session.add(demo12)
+    db.session.add(demo13)
+    db.session.add(demo14)
+    db.session.add(demo15)
+    db.session.add(demo16)
+    db.session.add(demo17)
+    db.session.add(demo18)
+    db.session.add(demo19)
+    db.session.add(demo20)
+    db.session.add(demo21)
+    db.session.add(demo22)
     db.session.commit()
 
 
