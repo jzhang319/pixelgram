@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.sql import func
 
 
 class User(db.Model, UserMixin):
@@ -13,6 +14,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    profile_url = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+    updated_at = db.Column(db.DateTime, nullable=False,
+                           default=func.now(), onupdate=func.now())
 
     photos = db.relationship('Photo', back_populates='user')
     reactions = db.relationship("Reaction", back_populates="user")
@@ -32,5 +37,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'profile_url': self.profile_url,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'photos': {photo.id: photo.to_dict() for photo in self.photos},
+            'reactions': {reaction.id: reaction.to_dict() for reaction in self.reactions},
         }
