@@ -12,7 +12,7 @@ class Comment(db.Model):
     comment = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=func.now())
     updated_at = db.Column(db.DateTime, nullable=False,
-                           default=func.now(), onupdate=func.now())
+                           default=func.now())
 
     photo_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("photos.id")), nullable=False)

@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     profile_url = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, nullable=False, default=func.now())
     updated_at = db.Column(db.DateTime, nullable=False,
-                           default=func.now(), onupdate=func.now())
+                           default=func.now())
 
     photos = db.relationship('Photo', back_populates='user')
     reactions = db.relationship("Reaction", back_populates="user")

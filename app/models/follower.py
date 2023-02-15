@@ -13,7 +13,7 @@ class Follower(db.Model):
     follower_id = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=func.now())
     updated_at = db.Column(db.DateTime, nullable=False,
-                           default=func.now(), onupdate=func.now())
+                           default=func.now())
 
     def to_dict(self):
         return {

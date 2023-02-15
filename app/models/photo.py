@@ -13,7 +13,7 @@ class Photo(db.Model):
     caption = db.Column(db.String(2000), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=func.now())
     updated_at = db.Column(db.DateTime, nullable=False,
-                           default=func.now(), onupdate=func.now())
+                           default=func.now())
 
     user_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
