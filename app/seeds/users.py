@@ -30,7 +30,7 @@ def seed_users():
         username='liugi', email='liugi@aa.io', password='password', profile_url='https://cdn.discordapp.com/attachments/885032629299212308/1075449514896412682/Z.png'
     )
     bowser = User(
-        username='bowser', email='bowser@aa.io', password='password', profile_url='https://cdn.discordapp.com/attachments/885032629299212308/1075450365522235503/images.png'
+        username='bowser', email='bowser@aa.io', password='password', profile_url='https://cdn.discordapp.com/attachments/885032629299212308/1075555631139913898/BowserProfile.png'
     )
 
     db.session.add(demo)
