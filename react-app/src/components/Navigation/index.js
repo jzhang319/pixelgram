@@ -11,13 +11,10 @@ function Navigation({ isLoaded }) {
     <div className="navigation-side-panel">
       <NavLink className="nav-home-button" to="/">
         <h1>Pixelgram</h1>
-
       </NavLink>
-      <div>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-      </div>
+      <NavLink exact to="/">
+        <div>Home</div>
+      </NavLink>
       {isLoaded && (
         <div>
           <ProfileButton user={sessionUser} />

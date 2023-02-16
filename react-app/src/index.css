@@ -7,4 +7,6 @@ button {
   background-color: rgb(48, 167, 207);
   text-transform: capitalize;
   color: white;
+  padding: 10px;
+  border-radius: 5px;
 }

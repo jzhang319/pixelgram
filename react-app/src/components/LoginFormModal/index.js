@@ -36,6 +36,7 @@ function LoginFormModal() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='john@doe.com'
             required
           />
         </label>
@@ -45,6 +46,7 @@ function LoginFormModal() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='password'
             required
           />
         </label>
