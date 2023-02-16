@@ -23,3 +23,4 @@ def validation_errors_to_error_messages(validation_errors):
 def get_photos():
     all_photos = Photo.query.all()
     return {'photos': [photo.to_dict() for photo in all_photos]}
+
