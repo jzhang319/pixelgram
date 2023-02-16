@@ -15,9 +15,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_url = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
-    updated_at = db.Column(db.DateTime, nullable=False,
-                           default=func.now())
+    created_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
 
     photos = db.relationship('Photo', back_populates='user')
     reactions = db.relationship("Reaction", back_populates="user")
