@@ -19,3 +19,9 @@
   justify-content: center;
   align-items: center;;
 }
+
+.photo-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,8 @@
+.message-side-container{
+  padding-left: 70%;
+  width: 30%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
