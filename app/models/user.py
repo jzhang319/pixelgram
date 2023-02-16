@@ -45,4 +45,5 @@ class User(db.Model, UserMixin):
             'updated_at': self.updated_at,
             'photos': {photo.id: photo.to_dict() for photo in self.photos},
             'reactions': {reaction.id: reaction.to_dict() for reaction in self.reactions},
+            'comments': {comment.id: comment.to_dict() for comment in self.comments}
         }
