@@ -1,0 +1,21 @@
+.homepage-container{
+  padding-left: 30%;
+  width: 45%;
+  height: auto;
+  color: white;
+}
+
+.post-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-profile-container{
+  padding-top: 1%;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;;
+}
