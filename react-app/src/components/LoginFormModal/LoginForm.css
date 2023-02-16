@@ -1,0 +1,21 @@
+div#modal-content{
+  border-radius: 25px;
+  background-color: lightblue;
+  height: 50%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+label{
+  padding: 10px;
+}

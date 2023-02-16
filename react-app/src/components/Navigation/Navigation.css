@@ -5,3 +5,34 @@
 .hidden {
   display: none;
 }
+
+.navigation-side-panel h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.navigation-side-panel{
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-top: 5%;
+  width: 25%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-right: 1px solid lightgray;
+}
+
+.navigation-side-panel div{
+  width: 90%;
+  height: 40px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.navigation-side-panel div:hover{
+  background-color: rgb(67, 64, 64);
+  border-radius: 25px;
+}
