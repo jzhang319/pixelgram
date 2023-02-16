@@ -41,6 +41,8 @@ config.set_main_option(
     'sqlalchemy.url', str(get_engine().url).replace('%', '%%'))
 target_db = current_app.extensions['migrate'].db
 
+target_metadata = current_app.extensions['migrate'].db.metadata
+
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
