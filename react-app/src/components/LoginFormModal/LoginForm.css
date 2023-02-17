@@ -13,7 +13,7 @@ div#modal-content{
     color: var(--text2);
     background: linear-gradient(to bottom,
         white,
-        rgba(18, 128, 192, 0.7),
+        rgba( 48, 167, 207, 0.7),
         rgba(0, 0, 0, 0.8));
 }
 
