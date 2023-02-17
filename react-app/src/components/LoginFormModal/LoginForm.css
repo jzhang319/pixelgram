@@ -1,12 +1,20 @@
 div#modal-content{
-  border-radius: 25px;
+  /* border-radius: 25px; */
   background-color: lightblue;
   height: 50%;
   width: 50%;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   flex-direction: column;
+  display: grid;
+    place-items: center;
+    height: 100vh;
+    color: var(--text2);
+    background: linear-gradient(to bottom,
+        white,
+        rgba(18, 128, 192, 0.7),
+        rgba(0, 0, 0, 0.8));
 }
 
 form{
