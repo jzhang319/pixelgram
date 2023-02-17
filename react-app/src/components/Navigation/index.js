@@ -12,8 +12,10 @@ function Navigation({ isLoaded }) {
       <NavLink className="nav-home-button" to="/">
         <h1>Pixelgram</h1>
       </NavLink>
-      <NavLink  to="/">
-        <div>Home</div>
+      <NavLink to="/">
+        <div>
+          Home
+        </div>
       </NavLink>
       {isLoaded && (
         <div className="user-profile-button">

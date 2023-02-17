@@ -35,9 +35,16 @@
   border-radius: 5px;
 }
 
+a.photo-link{
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+  border: 1px white solid;
+}
+
 .each-photo{
   width: 300px;
-  height: 450px;
+  height: 400px;
   display: flex;
   justify-content: center;
   padding: 20px;

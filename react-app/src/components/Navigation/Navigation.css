@@ -9,7 +9,7 @@
 .navigation-side-panel h1 {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   color: white;
 }
 
@@ -19,7 +19,7 @@
   margin-right: 0px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 5%;
+  padding-top: 3%;
   width: 25%;
   height: 100%;
   position: fixed;
@@ -30,11 +30,14 @@
 
 .navigation-side-panel div{
   /* position: absolute; */
-  width: 100%;
+  width: 85%;
   height: 40px;
   display:flex;
   align-items: center;
   justify-content: flex-start;
+  padding-left: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .navigation-side-panel div:hover{
   background-color: rgb(29, 28, 28);
