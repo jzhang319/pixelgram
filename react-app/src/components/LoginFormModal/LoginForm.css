@@ -2,26 +2,49 @@ div#modal-content{
   /* border-radius: 25px; */
   background-color: lightblue;
   height: 50%;
-  width: 50%;
+  width: 55%;
   /* display: flex;
   justify-content: center;
   align-items: center; */
   flex-direction: column;
   display: grid;
-    place-items: center;
-    height: 100vh;
-    color: var(--text2);
-    background: linear-gradient(to bottom,
-        white,
-        rgba( 48, 167, 207, 0.7),
-        rgba(0, 0, 0, 0.8));
+  place-items: center;
+  height: 70vh;
+  color: var(--text2);
+  background: linear-gradient(to bottom,
+        purple,
+        rgba(253, 117, 71, 0.85),
+        rgba(0, 0, 0, 0.99));
+  border-radius: 25px;
+  padding-bottom: 5%;
+}
+
+div.login_logo{
+  display: flex;
+  flex-direction: row;
+}
+
+.login_pixel{
+  font-size: 5.5em;
+  font-weight: bold;
+}
+.login_gram {
+  font-size: 5.5em;
+  font-weight: bold;
 }
 
 form{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: space-between;
+  align-items: flex-end;
   flex-direction: column;
+}
+
+.modal-button-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 label{

@@ -23,13 +23,3 @@ button:hover {
   display: flex;
   flex-direction: column
 }
-
-a{
-  text-decoration: none;
-  /* display: flex;
-  flex-direction: column; */
-}
-
-div.home-message-both{
-  background-color: white;
-}

@@ -10,7 +10,7 @@ function Navigation({ isLoaded }) {
   return (
     <div className="navigation-side-panel">
       <NavLink className="nav-home-button" to="/">
-        <h1>Pixelgram</h1>
+        <h1 className="pixel">Pixel<em>gram</em></h1>
       </NavLink>
       <NavLink to="/">
         <div>Home</div>

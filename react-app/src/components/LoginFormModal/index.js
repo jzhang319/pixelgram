@@ -17,13 +17,19 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal();
     }
   };
 
   return (
     <>
-      <h1>Log In</h1>
+      <div className="login_logo">
+        <h1 className="login_pixel">Pixel</h1>
+        <h1 className="login_gram">
+          <em>gram</em>
+        </h1>
+      </div>
+      <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -36,7 +42,7 @@ function LoginFormModal() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder='john@doe.com'
+            placeholder="john@doe.com"
             required
           />
         </label>
@@ -46,11 +52,15 @@ function LoginFormModal() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder='password'
+            placeholder="password"
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <div className="modal-button-container">
+          <button className="signup-button" type="submit">
+            Log In
+          </button>
+        </div>
       </form>
     </>
   );
