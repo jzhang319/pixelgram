@@ -13,14 +13,24 @@ function Navigation({ isLoaded }) {
         <h1>Pixelgram</h1>
       </NavLink>
       <NavLink to="/">
-        <div>
-          Home
-        </div>
+        <div>Home</div>
+      </NavLink>
+      <NavLink to="/following">
+        <div>Following</div>
+      </NavLink>
+      <NavLink to="/newest">
+        <div>Newest</div>
+      </NavLink>
+      <NavLink to="/most-liked">
+        <div>Most Liked</div>
+      </NavLink>
+      <NavLink to="/most-hated">
+        <div>Most Hated</div>
       </NavLink>
       {isLoaded && (
-        <div className="user-profile-button">
+        <span className="profile-section-button">
           <ProfileButton user={sessionUser} />
-        </div>
+        </span>
       )}
     </div>
   );

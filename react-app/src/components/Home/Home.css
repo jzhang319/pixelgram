@@ -68,3 +68,12 @@ div.photo-caption{
   display: flex;
   justify-content: flex-start;
 }
+
+.photodetail-container{
+  position: absolute;
+  margin-left: 30%;
+  width: 45%;
+  height: auto;
+  color: white;
+  margin-right: 0px;
+}

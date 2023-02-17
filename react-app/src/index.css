@@ -29,3 +29,7 @@ a{
   /* display: flex;
   flex-direction: column; */
 }
+
+div.home-message-both{
+  background-color: white;
+}

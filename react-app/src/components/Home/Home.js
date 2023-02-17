@@ -34,7 +34,7 @@ function Home() {
                   <img src={photo.url} alt={photo.caption} />
                 </div>
                 <div className="photo-like-comment-section">
-                  like, comment icons here
+                  like icon , comment icon here
                 </div>
                 <div className="photo-caption">
                   {photo.username}

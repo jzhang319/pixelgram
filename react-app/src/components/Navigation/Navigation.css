@@ -1,5 +1,6 @@
 .profile-dropdown {
   position: absolute;
+  
 }
 
 .hidden {
@@ -7,7 +8,7 @@
 }
 
 .navigation-side-panel h1 {
-  display: flex;
+  display: block;
   align-items: center;
   /* justify-content: center; */
   color: white;
@@ -42,4 +43,14 @@
 .navigation-side-panel div:hover{
   background-color: rgb(29, 28, 28);
   border-radius: 25px;
+}
+
+span.profile-section-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.profile-section-clicked{
+  width: 80px;
 }

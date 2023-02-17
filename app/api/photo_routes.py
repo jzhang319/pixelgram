@@ -24,3 +24,9 @@ def get_photos():
     all_photos = Photo.query.all()
     return {'photos': [photo.to_dict() for photo in all_photos]}
 
+
+@photo_routes.route('/<int:photo_id>', methods=['GET'])
+@login_required
+def get_photo(photo_id):
+    my_photo = Photo.query.get(photo_id)
+    return {'photo': my_photo.to_dict()}

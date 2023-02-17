@@ -7,6 +7,15 @@ const getPhotos = (photos) => {
   };
 };
 
+const GET_PHOTO = "GET_PHOTO";
+
+const getPhoto = (photo) => {
+  return {
+    type: GET_PHOTO,
+    photo,
+  };
+};
+
 export const getThePhotos = () => async (dispatch) => {
   const response = await fetch("/api/photos/");
 
@@ -14,6 +23,17 @@ export const getThePhotos = () => async (dispatch) => {
     const data = await response.json();
     // console.log(data, " <--- from thunk");
     dispatch(getPhotos(data));
+    return data;
+  }
+};
+
+export const getThePhoto = (id) => async (dispatch) => {
+  const response = await fetch(`/api/photos/${id}/`);
+
+  if (response.ok) {
+    const data = await response.json();
+    // console.log(data, " <--- from thunk");
+    dispatch(getPhoto(data));
     return data;
   }
 };
@@ -30,6 +50,11 @@ const photoReducer = (state = initialState, action) => {
         allPhotos[photo.id] = photo;
       });
       return { ...allPhotos };
+    }
+    case GET_PHOTO: {
+      const newState = { ...state };
+      newState.photo = action.photo;
+      return newState;
     }
     default:
       return state;
