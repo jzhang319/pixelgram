@@ -1,4 +1,5 @@
 .message-side-container{
+  position: relative;
   padding-left: 70%;
   width: 30%;
   color: white;

@@ -16,7 +16,7 @@ function Navigation({ isLoaded }) {
         <div>Home</div>
       </NavLink>
       {isLoaded && (
-        <div>
+        <div className="user-profile-button">
           <ProfileButton user={sessionUser} />
         </div>
       )}

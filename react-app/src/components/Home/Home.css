@@ -1,8 +1,10 @@
 .homepage-container{
+  position: relative;
   padding-left: 30%;
   width: 45%;
   height: auto;
   color: white;
+  margin-right: 0px;
 }
 
 .post-button{
@@ -22,6 +24,21 @@
 
 .photo-container{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+}
+
+.photo-container img{
+  width: 400px;
+  border-radius: 5px;
+}
+
+.each-photo{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  border: 1px white solid;
+  border-radius: 5px;
 }
