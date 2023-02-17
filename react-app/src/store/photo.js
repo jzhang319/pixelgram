@@ -52,7 +52,7 @@ const photoReducer = (state = initialState, action) => {
       return { ...allPhotos };
     }
     case GET_PHOTO: {
-      const newState = { ...state };
+      const newState = {};
       newState.photo = action.photo;
       return newState;
     }

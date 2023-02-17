@@ -33,7 +33,7 @@ class Photo(db.Model):
             'caption': self.caption,
             'date_created': self.created_at,
             'updated_at': self.updated_at,
-            
             'comments': {comment.id: comment.to_dict() for comment in self.comments},
-            'reactions': {reaction.id: reaction.to_dict() for reaction in self.reactions}
+            'reactions': {reaction.id: reaction.to_dict() for reaction in self.reactions},
+            # 'user': self.user.to_dict()
         }

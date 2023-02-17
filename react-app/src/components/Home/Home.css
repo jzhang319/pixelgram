@@ -7,10 +7,14 @@
   margin-right: 0px;
 }
 
-.post-button{
+.post-button-section{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.post-button{
+  position: sticky;
 }
 
 .user-profile-container{
@@ -36,18 +40,20 @@
 }
 
 a.photo-link{
+  height: 500px;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 5px;
-  border: 1px white solid;
+  border: 1px rgb(36, 36, 36) solid;
 }
 
 .each-photo{
-  width: 300px;
-  height: 400px;
+  /* width: 300px;
+  height: 400px; */
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
   border-radius: 5px;

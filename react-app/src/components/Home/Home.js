@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
+import OpenModalButton from "../OpenModalButton";
 
 function Home() {
   const dispatch = useDispatch();
@@ -16,8 +17,8 @@ function Home() {
 
   return (
     <div className="homepage-container">
-      <div className="post-button">
-        <button>Create New Post button</button>
+      <div className="post-button-section">
+        <button className="post-button">Create New Post button</button>
       </div>
       <div className="user-profile-container">
         ================ user-profiles container ================
@@ -27,7 +28,7 @@ function Home() {
         {allPhotos.map((photo) => {
           // console.log(photo, " <--- photo");
           return (
-            <dir key={photo.id} className="each-photo">
+            <div key={photo.id} className="each-photo">
               <NavLink className="photo-link" to={`/photos/${photo.id}`}>
                 <div className="photo-user-profile">author-info-here</div>
                 <div className="photo-img-box">
@@ -41,7 +42,7 @@ function Home() {
                   {photo.caption}
                 </div>
               </NavLink>
-            </dir>
+            </div>
           );
         })}
       </div>

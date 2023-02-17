@@ -29,4 +29,5 @@ def get_photos():
 @login_required
 def get_photo(photo_id):
     my_photo = Photo.query.get(photo_id)
-    return {'photo': my_photo.to_dict()}
+    # return {'photo': my_photo.to_dict()}
+    return my_photo.to_dict()
