@@ -19,22 +19,27 @@ function Home() {
       <div className="post-button">
         <button>Create New Post button</button>
       </div>
-      <div className="user-profile-container">user-profile container</div>
+      <div className="user-profile-container">
+        ================ user-profiles container ================
+      </div>
       <div className="photo-container">
-        <h1>Posts</h1>
+        {/* <h1>Posts</h1> */}
         {allPhotos.map((photo) => {
           // console.log(photo, " <--- photo");
           return (
             <dir key={photo.id} className="each-photo">
               <NavLink className="photo-link" to={`/photos/${photo.id}`}>
-              <div className="photo-user-profile">author-info-here</div>
+                <div className="photo-user-profile">author-info-here</div>
                 <div className="photo-img-box">
                   <img src={photo.url} alt={photo.caption} />
                 </div>
                 <div className="photo-like-comment-section">
                   like, comment icons here
                 </div>
-                <div className="photo-caption">{photo.username}{photo.caption}</div>
+                <div className="photo-caption">
+                  {photo.username}
+                  {photo.caption}
+                </div>
               </NavLink>
             </dir>
           );

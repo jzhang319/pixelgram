@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
       <NavLink className="nav-home-button" to="/">
         <h1>Pixelgram</h1>
       </NavLink>
-      <NavLink exact to="/">
+      <NavLink  to="/">
         <div>Home</div>
       </NavLink>
       {isLoaded && (

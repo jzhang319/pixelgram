@@ -1,6 +1,6 @@
 .homepage-container{
-  position: relative;
-  padding-left: 30%;
+  position: absolute;
+  margin-left: 30%;
   width: 45%;
   height: auto;
   color: white;
@@ -14,8 +14,8 @@
 }
 
 .user-profile-container{
-  padding-top: 1%;
-  height: 100px;
+  /* padding-top: 1%; */
+  height: 80px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -36,9 +36,28 @@
 }
 
 .each-photo{
+  width: 300px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
   padding: 20px;
   display: flex;
   justify-content: center;
-  border: 1px white solid;
   border-radius: 5px;
+  /* border: 1px white solid; */
+}
+
+div.photo-user-profile{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+div.photo-like-comment-section{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+div.photo-caption{
+  display: flex;
+  justify-content: flex-start;
 }

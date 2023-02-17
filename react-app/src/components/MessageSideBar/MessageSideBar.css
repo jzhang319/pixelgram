@@ -1,9 +1,10 @@
 .message-side-container{
-  position: relative;
-  padding-left: 70%;
-  width: 30%;
+  position: absolute;
+  margin-left: 75%;
+  width: 25%;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-left: 1px solid white;
 }

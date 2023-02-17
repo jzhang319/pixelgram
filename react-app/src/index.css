@@ -13,3 +13,13 @@ button {
   padding: 10px;
   border-radius: 5px;
 }
+
+button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.whole-page-container{
+  display: flex;
+  flex-direction: column
+}

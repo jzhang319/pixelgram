@@ -16,7 +16,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="whole-page-container">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -29,8 +29,8 @@ function App() {
         </Switch>
       )}
       <Home />
-      <MessageSideBar />
-    </>
+      <MessageSideBar isLoaded={isLoaded} />
+    </div>
   );
 }
 
