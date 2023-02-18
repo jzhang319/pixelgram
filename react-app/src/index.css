@@ -4,6 +4,7 @@ div{
 }
 body{
   background-color: black;
+  /* background-color: gray; */
 }
 
 button {
@@ -22,4 +23,13 @@ button:hover {
 .whole-page-container{
   display: flex;
   flex-direction: column
+}
+
+a{
+  /* color:white; */
+  text-decoration: none;
+}
+
+i{
+  padding-right: 8px
 }

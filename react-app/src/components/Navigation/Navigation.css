@@ -14,7 +14,11 @@
   /* justify-content: center; */
   align-items: center;
   color: white;
-  /* text-decoration: none; */
+
+}
+
+.profile-section-button{
+  height: 30vh;
 }
 
 .navigation-side-panel{
@@ -30,6 +34,7 @@
   top: 0;
   left: 0;
   border-right: 1px solid lightgray;
+
 }
 
 .navigation-side-panel div{
@@ -39,7 +44,7 @@
   display:flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 30px;
+  padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
 }

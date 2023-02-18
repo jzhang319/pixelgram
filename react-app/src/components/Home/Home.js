@@ -17,7 +17,6 @@ function Home() {
 
   return (
     <div className="homepage-container">
-     
       <div className="user-profile-container">
         ================ user-profiles container ================
       </div>
@@ -39,6 +38,7 @@ function Home() {
                   {photo.username}
                   {photo.caption}
                 </div>
+                <OpenModalButton />
               </NavLink>
             </div>
           );

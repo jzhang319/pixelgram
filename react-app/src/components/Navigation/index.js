@@ -15,22 +15,34 @@ function Navigation({ isLoaded }) {
         </h1>
       </NavLink>
       <NavLink to="/">
-        <div>Home</div>
+        <div>
+          <i className="fa-solid fa-house"></i>
+          Home
+        </div>
       </NavLink>
       <NavLink to="/following">
-        <div>Following</div>
-      </NavLink>
-      <NavLink to="/newest">
-        <div>Newest</div>
+        <div>
+          <i className="fa-solid fa-heart"></i>
+          Following
+        </div>
       </NavLink>
       <NavLink to="/most-liked">
-        <div>Most Liked</div>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          Most Liked
+        </div>
       </NavLink>
       <NavLink to="/most-hated">
-        <div>Most Hated</div>
+        <div>
+          <i class="fa-solid fa-heart-crack"></i>
+          Most Hated
+        </div>
       </NavLink>
       <NavLink to="/photos">
-        <div>Create Post</div>
+        <div>
+          <i class="fa-solid fa-plus"></i>
+          Create Post
+        </div>
       </NavLink>
       {isLoaded && (
         <span className="profile-section-button">
