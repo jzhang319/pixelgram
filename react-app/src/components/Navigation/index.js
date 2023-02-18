@@ -47,6 +47,7 @@ function Navigation({ isLoaded }) {
       {isLoaded && (
         <div className="profile-section-button">
           <ProfileButton user={sessionUser} />
+          Profile
         </div>
       )}
     </div>

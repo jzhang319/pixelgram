@@ -26,11 +26,15 @@ function Home() {
           // console.log(photo, " <--- photo");
           return (
             <div key={photo.id} className="each-photo">
-              <NavLink className="photo-link" to={`/photos/${photo.id}`}>
+              <div className="profile-pic-username-container">
+                <div className="profile-picture">profile pic</div>
                 <div className="photo-user-profile">{photo.username}</div>
+              </div>
+              <NavLink className="photo-link" to={`/photos/${photo.id}`}>
                 <div className="photo-img-box">
                   <img src={photo.url} alt={photo.caption} />
                 </div>
+              </NavLink>
                 <div className="photo-like-comment-section">
                   <i className="fa-solid fa-heart"></i>{" "}
                   <i className="fa-solid fa-comment"></i>
@@ -40,7 +44,6 @@ function Home() {
                   {photo.caption}
                 </div>
                 <OpenModalButton />
-              </NavLink>
             </div>
           );
         })}

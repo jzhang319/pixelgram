@@ -40,26 +40,39 @@
 }
 
 a.photo-link{
-  height: 500px;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* height: 500px; */
+  /* padding-left: 20px;
+  padding-right: 20px; */
   border-radius: 5px;
-  border: 1px rgb(36, 36, 36) solid;
+  /* border: 1px rgb(36, 36, 36) solid; */
 }
 
 .each-photo{
-  /* width: 300px;
-  height: 400px; */
+  /* width: 300px; */
+  height: 500px;
   display: flex;
-  justify-content: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   border-radius: 5px;
-  /* border: 1px white solid; */
+  border: 1px rgb(36, 36, 36) solid;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-
+.profile-pic-username-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.profile-picture{
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.photo-user-profile{
+  padding-left: 5px;
+}
 div.photo-user-profile{
   padding-top: 10px;
   padding-bottom: 10px;
@@ -68,11 +81,13 @@ div.photo-user-profile{
 div.photo-like-comment-section{
   padding-top: 10px;
   padding-bottom: 10px;
+  margin: 10px;
 }
 
 div.photo-caption{
   display: flex;
   justify-content: flex-start;
+  margin: 10px;
 }
 
 .photodetail-container{
