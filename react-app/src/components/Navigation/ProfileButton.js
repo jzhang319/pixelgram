@@ -55,6 +55,7 @@ function ProfileButton({ user }) {
           type="image"
           src={currUser.profile_url}
           onClick={openMenu}
+          alt={currUser.username}
         />
       )) || (
         <button className="profile-section-clicked" onClick={openMenu}>

@@ -19,6 +19,15 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+
+@photo_routes.route("/<int:id>", methods=['GET'])
+def get_photo(id):
+    print(id, '<--backend')
+    my_photo = Photo.query.get(id)
+    # return {'photo': my_photo.to_dict()}
+    return my_photo.to_dict()
+
+
 @photo_routes.route('/<int:photo_id>', methods=['PUT'])
 @login_required
 def edit_photo(photo_id):
@@ -32,15 +41,8 @@ def edit_photo(photo_id):
     print('Unable to validate', form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
+
 @photo_routes.route('/', methods=['GET'])
 def get_photos():
     all_photos = Photo.query.all()
     return {'photos': [photo.to_dict() for photo in all_photos]}
-
-
-@photo_routes.route('/<int:photo_id>', methods=['GET'])
-@login_required
-def get_photo(photo_id):
-    my_photo = Photo.query.get(photo_id)
-    # return {'photo': my_photo.to_dict()}
-    return my_photo.to_dict()

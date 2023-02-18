@@ -92,9 +92,21 @@ div.photo-caption{
 
 .photodetail-container{
   position: absolute;
+  margin-top: 5%;
   margin-left: 30%;
-  width: 45%;
+  min-width: 45%;
   height: auto;
   color: white;
   margin-right: 0px;
+  border: 1px rgb(36, 36, 36) solid;
+  border-radius: 5px;
+}
+
+.detailphoto-img-box{
+  width: 500px;
+  height: auto;
+}
+.img-itself{
+  width: 100%;
+  height: auto;
 }

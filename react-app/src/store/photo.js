@@ -27,14 +27,17 @@ export const getThePhotos = () => async (dispatch) => {
   }
 };
 
-export const getThePhoto = (id) => async (dispatch) => {
-  const response = await fetch(`/api/photos/${id}/`);
-
+export const getThePhoto = (photoId) => async (dispatch) => {
+  const response = await fetch(`/api/photos/${photoId}/`);
+  // console.log(photoId, " <---- id from thunk");
+  console.log(response, " <---- from thunk");
   if (response.ok) {
     const data = await response.json();
     // console.log(data, " <--- from thunk");
     dispatch(getPhoto(data));
-    return data;
+    return response;
+  } else {
+    return { message: "Photo not found" };
   }
 };
 
@@ -52,8 +55,13 @@ const photoReducer = (state = initialState, action) => {
       return { ...allPhotos };
     }
     case GET_PHOTO: {
-      const newState = {};
-      newState.photo = action.photo;
+      // return {
+      //   ...state,
+      //   [action.photo.id]: action.photo,
+      // };
+      const newState = {
+        ...action.photo,
+      };
       return newState;
     }
     default:
