@@ -27,12 +27,13 @@ function Home() {
           return (
             <div key={photo.id} className="each-photo">
               <NavLink className="photo-link" to={`/photos/${photo.id}`}>
-                <div className="photo-user-profile">author-info-here</div>
+                <div className="photo-user-profile">{photo.username}</div>
                 <div className="photo-img-box">
                   <img src={photo.url} alt={photo.caption} />
                 </div>
                 <div className="photo-like-comment-section">
-                  like icon , comment icon here
+                  <i className="fa-solid fa-heart"></i>{" "}
+                  <i className="fa-solid fa-comment"></i>
                 </div>
                 <div className="photo-caption">
                   {photo.username}
