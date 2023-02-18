@@ -1,18 +1,14 @@
 div#modal-content{
-  /* border-radius: 25px; */
   background-color: lightblue;
   height: 50%;
-  width: 55%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  width: 50%;
   flex-direction: column;
   display: grid;
   place-items: center;
   height: 70vh;
   color: var(--text2);
   background: linear-gradient(to bottom,
-        purple,
+        rgb(148, 23, 197),
         rgba(253, 117, 71, 0.85),
         rgba(0, 0, 0, 0.99));
   border-radius: 25px;

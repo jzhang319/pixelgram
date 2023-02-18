@@ -10,7 +10,9 @@ function Navigation({ isLoaded }) {
   return (
     <div className="navigation-side-panel">
       <NavLink className="nav-home-button" to="/">
-        <h1 className="pixel">Pixel<em>gram</em></h1>
+        <h1 className="pixel">
+          Pixel<em>gram</em>
+        </h1>
       </NavLink>
       <NavLink to="/">
         <div>Home</div>
@@ -26,6 +28,9 @@ function Navigation({ isLoaded }) {
       </NavLink>
       <NavLink to="/most-hated">
         <div>Most Hated</div>
+      </NavLink>
+      <NavLink to="/photos">
+        <div>Create Post</div>
       </NavLink>
       {isLoaded && (
         <span className="profile-section-button">

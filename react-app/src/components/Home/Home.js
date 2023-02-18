@@ -17,9 +17,7 @@ function Home() {
 
   return (
     <div className="homepage-container">
-      <div className="post-button-section">
-        <button className="post-button">Create New Post button</button>
-      </div>
+     
       <div className="user-profile-container">
         ================ user-profiles container ================
       </div>
