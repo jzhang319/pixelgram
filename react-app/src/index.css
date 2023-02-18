@@ -31,5 +31,17 @@ a{
 }
 
 i{
-  padding-right: 8px
+  padding-right: 8px;
+  /* padding-left: 8px */
+}
+
+img.profile-pic{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+button.profile-button-container{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }

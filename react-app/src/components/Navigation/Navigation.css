@@ -2,7 +2,7 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  left: 80px;
+  top: 46%;
 }
 
 .hidden {
@@ -15,10 +15,6 @@
   align-items: center;
   color: white;
 
-}
-
-.profile-section-button{
-  height: 30vh;
 }
 
 .navigation-side-panel{
@@ -55,10 +51,18 @@
 
 span.profile-section-button{
   display: flex;
-  align-items: center;
+  align-items: stretch;
   /* justify-content: center; */
 }
 
-button.profile-section-clicked{
-  width: 80px;
+i.fa-user-circle{
+  padding-left: 1px;
+}
+.profile-section-clicked{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.profile-section-button{
+  /* left: 10px; */
 }

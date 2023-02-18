@@ -22,13 +22,13 @@ function Navigation({ isLoaded }) {
       </NavLink>
       <NavLink to="/following">
         <div>
-          <i className="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-star"></i>
           Following
         </div>
       </NavLink>
       <NavLink to="/most-liked">
         <div>
-          <i class="fa-solid fa-star"></i>
+          <i className="fa-solid fa-heart"></i>
           Most Liked
         </div>
       </NavLink>
@@ -45,9 +45,9 @@ function Navigation({ isLoaded }) {
         </div>
       </NavLink>
       {isLoaded && (
-        <span className="profile-section-button">
+        <div className="profile-section-button">
           <ProfileButton user={sessionUser} />
-        </span>
+        </div>
       )}
     </div>
   );

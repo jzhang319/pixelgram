@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
@@ -9,6 +9,9 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+
+  const currUser = useSelector((state) => state.session.user);
+  // console.log(currUser.profile_url, " <-----");
 
   const openMenu = () => {
     if (showMenu) return;
@@ -39,9 +42,26 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button className="profile-section-clicked" onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+      {(currUser && (
+        // <button className="profile-button-container" style='background: url()' onClick={openMenu}>
+        //   <img
+        //     className="profile-pic"
+        //     src={currUser.profile_url}
+        //     alt={currUser.username}
+        //   />
+        // </button>
+        <input
+          className="profile-section-clicked"
+          type="image"
+          src={currUser.profile_url}
+          onClick={openMenu}
+        />
+      )) || (
+        <button className="profile-section-clicked" onClick={openMenu}>
+          <i className="fas fa-user-circle" />
+        </button>
+      )}
+
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
