@@ -28,9 +28,15 @@ function Home() {
             <div key={photo.id} className="each-photo">
               <div className="profile-pic-username-container">
                 {/* <div className="profile-picture"> */}
-                  <img className="profile-img" src={photo?.user?.profile_url} alt="" />
+                <img
+                  className="profile-img"
+                  src={photo?.user?.profile_url}
+                  alt=""
+                />
                 {/* </div> */}
-                <div className="photo-user-profile">{photo.username}</div>
+                <div className="photo-user-profile">
+                  {photo?.user?.username}
+                </div>
               </div>
               <NavLink className="photo-link" to={`/photos/${photo.id}`}>
                 <div className="photo-img-box">

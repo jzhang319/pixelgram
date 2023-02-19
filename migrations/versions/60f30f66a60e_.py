@@ -60,8 +60,6 @@ def upgrade():
                     sa.Column('url', sa.String(length=255), nullable=False),
                     sa.Column('caption', sa.String(
                         length=2000), nullable=False),
-                    sa.Column('username', sa.String(
-                        length=40), nullable=False),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),
