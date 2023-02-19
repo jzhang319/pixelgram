@@ -5,6 +5,9 @@
   height: auto;
   color: white;
   margin-right: 0px;
+  /* display: flex;
+  justify-content: center; */
+
 }
 
 .post-button-section{
@@ -27,6 +30,7 @@
 }
 
 .photo-container{
+  /* padding-left: 17%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +38,7 @@
 
 }
 
-.photo-container img{
+.photo-container, img{
   width: 400px;
   border-radius: 5px;
 }
@@ -103,10 +107,22 @@ div.photo-caption{
 }
 
 .detailphoto-img-box{
+  /* margin-right: 0px; */
   width: 500px;
   height: auto;
 }
 .img-itself{
   width: 100%;
   height: auto;
+}
+
+.profile-picture{
+  width: 30px;
+  height: 30px;
+  border-radius: 55%;
+}
+.profile-img{
+  width: 30px;
+  height: 30px;
+  border-radius: 55%;
 }

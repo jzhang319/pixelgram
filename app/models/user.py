@@ -49,3 +49,10 @@ class User(db.Model, UserMixin):
             'comments': {comment.id: comment.to_dict() for comment in self.comments},
             'followers': {follower.id: follower.to_dict() for follower in self.followers}
         }
+
+    def to_post_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'profile_url': self.profile_url,
+        }

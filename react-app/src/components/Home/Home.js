@@ -23,11 +23,13 @@ function Home() {
       <div className="photo-container">
         {/* <h1>Posts</h1> */}
         {allPhotos.map((photo) => {
-          // console.log(photo, " <--- photo");
+          console.log(photo?.user?.profile_url, " <--- photo");
           return (
             <div key={photo.id} className="each-photo">
               <div className="profile-pic-username-container">
-                <div className="profile-picture">profile pic</div>
+                {/* <div className="profile-picture"> */}
+                  <img className="profile-img" src={photo?.user?.profile_url} alt="" />
+                {/* </div> */}
                 <div className="photo-user-profile">{photo.username}</div>
               </div>
               <NavLink className="photo-link" to={`/photos/${photo.id}`}>
@@ -35,15 +37,15 @@ function Home() {
                   <img src={photo.url} alt={photo.caption} />
                 </div>
               </NavLink>
-                <div className="photo-like-comment-section">
-                  <i className="fa-solid fa-heart"></i>{" "}
-                  <i className="fa-solid fa-comment"></i>
-                </div>
-                <div className="photo-caption">
-                  {photo.username}
-                  {photo.caption}
-                </div>
-                <OpenModalButton />
+              <div className="photo-like-comment-section">
+                <i className="fa-solid fa-heart"></i>{" "}
+                <i className="fa-solid fa-comment"></i>
+              </div>
+              <div className="photo-caption">
+                {photo.username}
+                {photo.caption}
+              </div>
+              <OpenModalButton />
             </div>
           );
         })}

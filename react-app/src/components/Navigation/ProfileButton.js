@@ -43,13 +43,6 @@ function ProfileButton({ user }) {
   return (
     <>
       {(currUser && (
-        // <button className="profile-button-container" style='background: url()' onClick={openMenu}>
-        //   <img
-        //     className="profile-pic"
-        //     src={currUser.profile_url}
-        //     alt={currUser.username}
-        //   />
-        // </button>
         <input
           className="profile-section-clicked"
           type="image"
