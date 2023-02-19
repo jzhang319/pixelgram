@@ -11,7 +11,7 @@ class Photo(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     url = db.Column(db.String(255), nullable=False)
     caption = db.Column(db.String(2000), nullable=False)
-    username = db.Column(db.String(40), nullable=False)
+
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True),
@@ -32,7 +32,7 @@ class Photo(db.Model):
             'user_id': self.user_id,
             'url': self.url,
             'caption': self.caption,
-            'username': self.username,
+            
             'date_created': self.created_at,
             'updated_at': self.updated_at,
             'comments': {comment.id: comment.to_dict() for comment in self.comments},
