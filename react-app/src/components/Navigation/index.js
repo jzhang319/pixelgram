@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
       </NavLink>
       <NavLink to="/following">
         <div>
-          <i class="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
           Following
         </div>
       </NavLink>
@@ -34,13 +34,13 @@ function Navigation({ isLoaded }) {
       </NavLink>
       <NavLink to="/most-hated">
         <div>
-          <i class="fa-solid fa-heart-crack"></i>
+          <i className="fa-solid fa-heart-crack"></i>
           Most Hated
         </div>
       </NavLink>
       <NavLink to="/photos">
         <div>
-          <i class="fa-solid fa-plus"></i>
+          <i className="fa-solid fa-plus"></i>
           Create Post
         </div>
       </NavLink>

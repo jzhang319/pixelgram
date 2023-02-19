@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
-import OpenModalButton from "../OpenModalButton";
+// import OpenModalButton from "../OpenModalButton";
 
 function Home() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function Home() {
       <div className="photo-container">
         {/* <h1>Posts</h1> */}
         {allPhotos.map((photo) => {
-          console.log(photo?.user?.profile_url, " <--- photo");
+          // console.log(photo?.user?.profile_url, " <--- photo");
           return (
             <div key={photo.id} className="each-photo">
               <div className="profile-pic-username-container">
@@ -51,7 +51,7 @@ function Home() {
                 {photo.username}
                 {photo.caption}
               </div>
-              <OpenModalButton />
+              {/* <OpenModalButton /> */}
             </div>
           );
         })}

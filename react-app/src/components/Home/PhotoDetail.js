@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
 import * as photoActions from "../../store/photo";
+import EditPhotoFormModal from "../EditPhotoFormModal";
 
 function PhotoDetail() {
   const { photoId } = useParams();
@@ -53,6 +54,7 @@ function PhotoDetail() {
             {currPhoto.username}
             {currPhoto.caption}
           </div>
+          <EditPhotoFormModal />
           {/* <OpenModalButton buttonText="Edit Caption" onItemClick={closeMenu} /> */}
         </div>
       </div>
