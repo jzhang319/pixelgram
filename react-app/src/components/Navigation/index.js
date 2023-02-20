@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-import * as photoActions from "../../store/photo";
+// import * as photoActions from "../../store/photo";
 import OpenModalButton from "../OpenModalButton";
 import PostPhotoForm from "../PostPhotoModal/PostPhotoForm";
 
@@ -15,10 +15,10 @@ function Navigation({ isLoaded }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+  // const openMenu = () => {
+  //   if (showMenu) return;
+  //   setShowMenu(true);
+  // };
 
   useEffect(() => {
     // dispatch(photoActions.addThePhoto(photo));
@@ -32,9 +32,9 @@ function Navigation({ isLoaded }) {
 
     document.addEventListener("click", closeMenu);
     return () => document.removeEventListener("click", closeMenu);
-  }, [dispatch]);
+  }, [dispatch, showMenu]);
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   return (
@@ -69,11 +69,14 @@ function Navigation({ isLoaded }) {
         </div>
       </NavLink>
       {sessionUser && (
-        <OpenModalButton
-          buttonText="Create Post"
-          onItemClick={closeMenu}
-          modalComponent={<PostPhotoForm />}
-        />
+        <div>
+          <i className="fa-solid fa-plus"></i>
+          <OpenModalButton
+            buttonText="Create Post"
+            onItemClick={closeMenu}
+            modalComponent={<PostPhotoForm />}
+          />
+        </div>
       )}
       {/* <NavLink to="/photos">
         <div>

@@ -63,6 +63,11 @@ a.photo-link{
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.photo-detail{
+  width: 500px;
+  /* margin-right:0px */
+}
 .profile-pic-username-container{
   width: 100%;
   display: flex;
@@ -95,13 +100,14 @@ div.photo-caption{
 }
 
 .photodetail-container{
+  /* box-sizing: border-box; */
   position: absolute;
   margin-top: 5%;
   margin-left: 30%;
   min-width: 45%;
   height: auto;
   color: white;
-  margin-right: 0px;
+  /* margin-right: 0px; */
   border: 1px rgb(36, 36, 36) solid;
   border-radius: 5px;
 }

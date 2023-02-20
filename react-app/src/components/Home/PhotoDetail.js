@@ -18,10 +18,10 @@ function PhotoDetail() {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+  // const openMenu = () => {
+  //   if (showMenu) return;
+  //   setShowMenu(true);
+  // };
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ function PhotoDetail() {
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [dispatch, photoId]);
+  }, [dispatch, photoId, showMenu]);
 
   // console.log(photoId, " <--- id");
   // console.log(currPhoto?.user?.profile_url, " <--- current photo useSelector");
@@ -51,7 +51,7 @@ function PhotoDetail() {
   // console.log(user.id, ' <------ ')
   // console.log(currPhoto.user_id, ' <------ ')
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   let content = null;

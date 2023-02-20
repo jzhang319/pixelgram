@@ -1,0 +1,16 @@
+.post-form-elements{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post-form-h2{
+  display:flex;
+  justify-content: center;
+}
+
+.post-form-label{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}

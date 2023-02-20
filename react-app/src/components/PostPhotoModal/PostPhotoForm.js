@@ -45,8 +45,9 @@ function PostPhotoForm({ setShowModal }) {
           ))}
         </ul>
       </div>
-      <div>
-        <label>
+      <div className="post-form-elements">
+        <h2 className="post-form-h2">Post a Photo</h2>
+        <label className="post-form-label">
           URL
           <input
             type="text"
@@ -55,7 +56,7 @@ function PostPhotoForm({ setShowModal }) {
             required
           />
         </label>
-        <label>
+        <label className="post-form-label">
           Caption
           <input
             type="text"
