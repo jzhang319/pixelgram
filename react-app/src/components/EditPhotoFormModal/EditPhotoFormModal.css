@@ -1,5 +1,12 @@
 .edit-photo-form{
-  width: 50%;
-  height: 50%;
-  background-color: blue;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* background-color: blue; */
+}
+.update-button-container{
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
 }

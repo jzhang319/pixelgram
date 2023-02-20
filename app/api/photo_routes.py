@@ -29,16 +29,19 @@ def get_photo(id):
     return my_photo.to_dict()
 
 
-@photo_routes.route('/<int:photo_id>', methods=['PUT'])
+@photo_routes.route('/<int:photoId>', methods=['PUT'])
 @login_required
-def edit_photo(photo_id):
+def edit_photo(photoId):
     form = EditPhotoForm()
-    form['csrf_token'] = request.cookies['csrf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        edit_photo = Photo.query.get(photo_id)
-        form.populate_obj(edit_photo)
-        db.session.commit()
-        return edit_photo.to_dict()
+        edit_photo = Photo.query.get(photoId)
+        if edit_photo.user_id == current_user.id:
+          edit_photo.caption = form.data['caption']
+          db.session.commit()
+          return edit_photo.to_dict()
+        else:
+          return {'message': 'You are not allowed to edit this photo'}
     print('Unable to validate', form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}
 

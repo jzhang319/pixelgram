@@ -77,18 +77,18 @@ export const deleteThePhoto = (photoId) => async (dispatch) => {
   }
 };
 
-export const editThePhoto = (photoData, photoId) => async (dispatch) => {
-  const response = await fetch(`/api/photos/${photoId}`, {
+export const editThePhoto = (photo) => async (dispatch) => {
+  const response = await fetch(`/api/photos/${photo.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(photoData),
+    body: JSON.stringify(photo),
   });
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(editPhoto(data, photoId));
+    dispatch(editPhoto(data));
     return data;
   }
 };

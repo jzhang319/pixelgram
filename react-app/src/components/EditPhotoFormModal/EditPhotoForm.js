@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { useHistory, useParams } from "react-router-dom";
 import "./EditPhotoFormModal.css";
 import * as photoActions from "../../store/photo";
+import { useModal } from "../../context/Modal";
 // import { useModal } from "../../context/Modal";
 
 function EditPhotoForm() {
@@ -10,11 +11,11 @@ function EditPhotoForm() {
   const dispatch = useDispatch();
 
   const photo = useSelector((state) => state.photo);
-  console.log(photo, " <---- inside edit form");
+  // console.log(photo, " <---- inside edit form");
 
   const [caption, setCaption] = useState(photo.caption);
   const [errors, setErrors] = useState([]);
-  // const { closeModal } = useModal();
+  const { closeModal } = useModal();
 
   const err = [];
 
@@ -29,13 +30,13 @@ function EditPhotoForm() {
     dispatch(
       photoActions.editThePhoto({
         id: photo.id,
-        caption: photo.caption,
+        caption: caption,
       })
     ).catch(async (res) => {
       const data = await res.json();
       if (data && data.error) setErrors(data.error);
     });
-    // closeModal();
+    closeModal();
     // setShowModal(false);
   };
 
@@ -59,10 +60,10 @@ function EditPhotoForm() {
         <input
           type="text"
           value={caption}
+          size="47"
           onChange={(e) => setCaption(e.target.value)}
-          required
         />
-        <div>
+        <div className="update-button-container">
           <button className="update-btn" type="submit">
             Update Caption
           </button>

@@ -5,6 +5,5 @@ from app.models import Photo
 
 
 class EditPhotoForm(FlaskForm):
-    user_id = HiddenField('User_Id')
-    photo_id = HiddenField('Photo_Id')
+    
     caption = TextAreaField('Caption', validators=[DataRequired()])

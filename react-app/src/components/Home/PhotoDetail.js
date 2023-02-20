@@ -24,17 +24,17 @@ function PhotoDetail() {
 
   useEffect(() => {
     dispatch(photoActions.getThePhoto(photoId));
-    // if (!showMenu) return;
+    if (!showMenu) return;
 
-    // const closeMenu = (e) => {
-    //   if (!ulRef.current.contains(e.target)) {
-    //     setShowMenu(false);
-    //   }
-    // };
+    const closeMenu = (e) => {
+      if (!ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
 
-    // document.addEventListener("click", closeMenu);
+    document.addEventListener("click", closeMenu);
 
-    // return () => document.removeEventListener("click", closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
   }, [dispatch, photoId]);
 
   // console.log(photoId, " <--- id");
@@ -43,6 +43,7 @@ function PhotoDetail() {
   // console.log(user.id, ' <------ ')
   // console.log(currPhoto.user_id, ' <------ ')
 
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   let content = null;
@@ -50,7 +51,7 @@ function PhotoDetail() {
   if (user?.id === currPhoto.user_id) {
     content = currPhoto ? (
       <div className="photodetail-container">
-        PhotoDetail
+        
         <div className="photo-detail">
           <div className="profile-pic-username-container">
             <div className="profile-picture">
@@ -81,7 +82,7 @@ function PhotoDetail() {
           <OpenModalButton
             buttonText="Edit Caption"
             onItemClick={closeMenu}
-            modalComponent={EditPhotoForm}
+            modalComponent={<EditPhotoForm />}
           />
         </div>
       </div>
