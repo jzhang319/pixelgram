@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import PostPhotoModal from "../PostPhotoModal";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -38,12 +39,14 @@ function Navigation({ isLoaded }) {
           Most Hated
         </div>
       </NavLink>
-      <NavLink to="/photos">
+      {sessionUser && <PostPhotoModal />}
+      {/* <NavLink to="/photos">
         <div>
           <i className="fa-solid fa-plus"></i>
           Create Post
+          <PostPhotoModal />
         </div>
-      </NavLink>
+      </NavLink> */}
       {isLoaded && (
         <div className="profile-section-button">
           <ProfileButton user={sessionUser} />

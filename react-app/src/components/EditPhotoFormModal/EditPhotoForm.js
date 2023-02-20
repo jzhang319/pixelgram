@@ -5,17 +5,16 @@ import "./EditPhotoFormModal.css";
 import * as photoActions from "../../store/photo";
 // import { useModal } from "../../context/Modal";
 
-function EditPhotoForm({setShowModal}) {
+function EditPhotoForm() {
   // const { photoId } = useParams();
   const dispatch = useDispatch();
 
   const photo = useSelector((state) => state.photo);
-  console.log(photo, ' <---- inside edit form');
+  console.log(photo, " <---- inside edit form");
 
   const [caption, setCaption] = useState(photo.caption);
   const [errors, setErrors] = useState([]);
   // const { closeModal } = useModal();
-
 
   const err = [];
 
@@ -32,17 +31,17 @@ function EditPhotoForm({setShowModal}) {
         id: photo.id,
         caption: photo.caption,
       })
-    )
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.error) setErrors(data.error);
-      });
-      // closeModal();
+    ).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.error) setErrors(data.error);
+    });
+    // closeModal();
+    // setShowModal(false);
   };
 
   return (
     <form className="edit-photo-form" onSubmit={handleSubmit}>
-      { errors.length > 0 && (
+      {errors.length > 0 && (
         <div>
           The following errors were found:
           <ul>
@@ -53,6 +52,9 @@ function EditPhotoForm({setShowModal}) {
         </div>
       )}
       <div className="update-form-elements">
+        <div className="detailphoto-img-box">
+          <img className="img-itself" src={photo.url} alt={photo.caption} />
+        </div>
         <label>Update Caption</label>
         <input
           type="text"
@@ -61,7 +63,9 @@ function EditPhotoForm({setShowModal}) {
           required
         />
         <div>
-          <button className="update-btn" type='submit'>Update Caption</button>
+          <button className="update-btn" type="submit">
+            Update Caption
+          </button>
         </div>
       </div>
     </form>

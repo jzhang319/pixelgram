@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 from app.models import Photo
 
 
-class EditPhotoForm(FlaskForm):
+class AddPhotoForm(FlaskForm):
     user_id = HiddenField('User_Id')
-    photo_id = HiddenField('Photo_Id')
+    url = StringField('url', validators=[DataRequired()])
     caption = TextAreaField('Caption', validators=[DataRequired()])

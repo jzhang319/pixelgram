@@ -44,7 +44,7 @@ const addPhoto = (photo) => {
 };
 
 export const addThePhoto = (photo) => async (dispatch) => {
-  const { url, caption, username, created_at, updated_at, user_id } = photo;
+  const { url, caption, created_at, updated_at, user_id } = photo;
 
   const response = await fetch("/api/photos/", {
     method: "POST",
@@ -54,7 +54,6 @@ export const addThePhoto = (photo) => async (dispatch) => {
     body: JSON.stringify({
       url,
       caption,
-      username,
       created_at,
       updated_at,
       user_id,
@@ -63,8 +62,6 @@ export const addThePhoto = (photo) => async (dispatch) => {
   const data = await response.json();
   if (response.ok) {
     dispatch(addPhoto(data));
-    return data;
-  } else {
     return data;
   }
 };
@@ -150,6 +147,13 @@ const photoReducer = (state = initialState, action) => {
     case DELETE_PHOTO: {
       const newState = { ...state };
       delete newState[action.id];
+      return newState;
+    }
+    case ADD_PHOTO: {
+      const newState = {
+        ...state,
+        [action.photo.id]: { ...action.photo },
+      };
       return newState;
     }
     default:

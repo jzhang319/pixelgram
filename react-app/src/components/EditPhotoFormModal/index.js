@@ -17,7 +17,7 @@ function EditPhotoFormModal() {
   const handleDelete = async (e) => {
     e.preventDefault();
     dispatch(photoActions.deleteThePhoto(photoId))
-      .then(() => setShowModal(false))
+      // .then(() => setShowModal(false))
       .then(() => history.push("/"));
   };
 
@@ -27,7 +27,7 @@ function EditPhotoFormModal() {
         Edit Caption
       </button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal modalContent={EditPhotoForm} onClose={() => setShowModal(false)}>
           <EditPhotoForm setShowModal={setShowModal} />
         </Modal>
       )}

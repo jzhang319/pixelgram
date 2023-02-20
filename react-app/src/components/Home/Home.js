@@ -47,8 +47,8 @@ function Home() {
                 <i className="fa-solid fa-heart"></i>{" "}
                 <i className="fa-solid fa-comment"></i>
               </div>
+                {photo?.user?.username}
               <div className="photo-caption">
-                {photo.username}
                 {photo.caption}
               </div>
               {/* <OpenModalButton /> */}

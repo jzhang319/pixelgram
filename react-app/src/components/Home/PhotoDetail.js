@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
 import * as photoActions from "../../store/photo";
 import EditPhotoFormModal from "../EditPhotoFormModal";
-// import OpenModalButton from "../OpenModalButton";
-
+import OpenModalButton from "../OpenModalButton";
+import EditPhotoForm from "../EditPhotoFormModal/EditPhotoForm";
 
 function PhotoDetail() {
   const { photoId } = useParams();
@@ -14,13 +14,13 @@ function PhotoDetail() {
   const currPhoto = useSelector((state) => state.photo);
   const user = useSelector((state) => state.session.user);
 
-  // const [showMenu, setShowMenu] = useState(false);
-  // const ulRef = useRef();
+  const [showMenu, setShowMenu] = useState(false);
+  const ulRef = useRef();
 
-  // const openMenu = () => {
-  //   if (showMenu) return;
-  //   setShowMenu(true);
-  // };
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
 
   useEffect(() => {
     dispatch(photoActions.getThePhoto(photoId));
@@ -43,8 +43,7 @@ function PhotoDetail() {
   // console.log(user.id, ' <------ ')
   // console.log(currPhoto.user_id, ' <------ ')
 
-  // const closeMenu = () => setShowMenu(false);
-
+  const closeMenu = () => setShowMenu(false);
 
   let content = null;
 
@@ -57,11 +56,13 @@ function PhotoDetail() {
             <div className="profile-picture">
               <img
                 className="profile-picture"
-                src={currPhoto.user.profile_url}
+                src={currPhoto?.user?.profile_url}
                 alt=""
               />
             </div>
-            <div className="photo-user-profile">{currPhoto.username}</div>
+            <div className="photo-user-profile">
+              {currPhoto?.user?.username}
+            </div>
           </div>
           <div className="detailphoto-img-box">
             <img
@@ -74,16 +75,14 @@ function PhotoDetail() {
             <i className="fa-solid fa-heart"></i>{" "}
             <i className="fa-solid fa-comment"></i>
           </div>
-          <div className="photo-caption">
-            {currPhoto.username}
-            {currPhoto.caption}
-          </div>
-          <EditPhotoFormModal />
-          {/* <OpenModalButton
+          {currPhoto?.user?.username}
+          <div className="photo-caption">{currPhoto.caption}</div>
+          {/* <EditPhotoFormModal /> */}
+          <OpenModalButton
             buttonText="Edit Caption"
             onItemClick={closeMenu}
             modalComponent={EditPhotoForm}
-          /> */}
+          />
         </div>
       </div>
     ) : (
@@ -115,10 +114,8 @@ function PhotoDetail() {
             <i className="fa-solid fa-heart"></i>{" "}
             <i className="fa-solid fa-comment"></i>
           </div>
-          <div className="photo-caption">
-            {currPhoto.username}
-            {currPhoto.caption}
-          </div>
+          {currPhoto?.user?.username}
+          <div className="photo-caption">{currPhoto.caption}</div>
         </div>
       </div>
     ) : (
