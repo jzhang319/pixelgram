@@ -37,11 +37,11 @@ def edit_photo(photoId):
     if form.validate_on_submit():
         edit_photo = Photo.query.get(photoId)
         if edit_photo.user_id == current_user.id:
-          edit_photo.caption = form.data['caption']
-          db.session.commit()
-          return edit_photo.to_dict()
+            edit_photo.caption = form.data['caption']
+            db.session.commit()
+            return edit_photo.to_dict()
         else:
-          return {'message': 'You are not allowed to edit this photo'}
+            return {'message': 'You are not allowed to edit this photo'}
     print('Unable to validate', form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
@@ -64,3 +64,15 @@ def post_photo():
         db.session.commit()
         return new_photo.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@photo_routes.route('/<int:photoId>', methods=['DELETE'])
+@login_required
+def delete_photo(photoId):
+    del_photo = Photo.query.get(photoId)
+    if del_photo.user_id == current_user.id:
+        db.session.delete(del_photo)
+        db.session.commit()
+        return {'message': 'Photo deleted'}
+    else:
+        return {'message': 'You are not the author of this photo'}

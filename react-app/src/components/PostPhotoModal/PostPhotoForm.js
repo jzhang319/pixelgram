@@ -3,13 +3,15 @@ import "./PostPhotoModal.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as photoActions from "../../store/photo";
+import { useModal } from "../../context/Modal";
 
 function PostPhotoForm({ setShowModal }) {
   const user = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
-  
+  const { closeModal } = useModal();
+
   const [url, setUrl] = useState("");
   const [caption, setCaption] = useState("");
 
@@ -25,13 +27,13 @@ function PostPhotoForm({ setShowModal }) {
         caption: caption,
         user_id: user.id,
       })
-    )
-      .then(() => history.push("/"))
-      .then(() => setShowModal(false));
+    ).then(() => history.push("/"));
+    // .then(() => setShowModal(false));
     // .catch(async (res) => {
     //   const data = await res.json();
     //   if (data && data.errors) setErrors(data.errors);
     // });
+    closeModal();
   };
 
   return (

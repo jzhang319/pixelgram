@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
 import * as photoActions from "../../store/photo";
@@ -10,6 +10,7 @@ import EditPhotoForm from "../EditPhotoFormModal/EditPhotoForm";
 function PhotoDetail() {
   const { photoId } = useParams();
 
+  const history = useHistory();
   const dispatch = useDispatch();
   const currPhoto = useSelector((state) => state.photo);
   const user = useSelector((state) => state.session.user);
@@ -20,6 +21,13 @@ function PhotoDetail() {
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    dispatch(photoActions.deleteThePhoto(photoId))
+      // .then(() => setShowModal(false))
+      .then(() => history.push("/"));
   };
 
   useEffect(() => {
@@ -84,6 +92,7 @@ function PhotoDetail() {
             onItemClick={closeMenu}
             modalComponent={<EditPhotoForm />}
           />
+          <button onClick={handleDelete}>DELETE PHOTO</button>
         </div>
       </div>
     ) : (
