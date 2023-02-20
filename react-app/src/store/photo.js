@@ -44,7 +44,13 @@ const addPhoto = (photo) => {
 };
 
 export const addThePhoto = (photo) => async (dispatch) => {
-  const { url, caption, created_at, updated_at, user_id } = photo;
+  // const { url, caption, created_at, updated_at, user_id } = photo;
+  // const { url, caption, user_id } = photo;
+
+  // console.log(photo, " <-- thunk photo");
+  // console.log(photo.url, " <-- thunk url");
+  // console.log(photo.caption, " <-- thunk caption");
+  // console.log(photo.user_id, " <-- thunk user_id");
 
   const response = await fetch("/api/photos/", {
     method: "POST",
@@ -52,17 +58,19 @@ export const addThePhoto = (photo) => async (dispatch) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      url,
-      caption,
-      created_at,
-      updated_at,
-      user_id,
+      user_id: photo.user_id,
+      url: photo.url,
+      caption: photo.caption,
+      // created_at,
+      // updated_at,
     }),
   });
   const data = await response.json();
   if (response.ok) {
     dispatch(addPhoto(data));
     return data;
+  } else {
+    return response;
   }
 };
 

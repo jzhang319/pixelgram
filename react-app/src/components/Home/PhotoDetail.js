@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
 import * as photoActions from "../../store/photo";
-import EditPhotoFormModal from "../EditPhotoFormModal";
+// import EditPhotoFormModal from "../EditPhotoFormModal";
 import OpenModalButton from "../OpenModalButton";
 import EditPhotoForm from "../EditPhotoFormModal/EditPhotoForm";
 
@@ -51,7 +51,7 @@ function PhotoDetail() {
   if (user?.id === currPhoto.user_id) {
     content = currPhoto ? (
       <div className="photodetail-container">
-        
+
         <div className="photo-detail">
           <div className="profile-pic-username-container">
             <div className="profile-picture">

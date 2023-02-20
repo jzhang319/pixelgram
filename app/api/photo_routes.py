@@ -56,7 +56,7 @@ def get_photos():
 @login_required
 def post_photo():
     form = AddPhotoForm()
-    form['csrf_token'] = request.cookies['csrf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_photo = Photo(
             url=form.data['url'], caption=form.data['caption'], user_id=current_user.id)
