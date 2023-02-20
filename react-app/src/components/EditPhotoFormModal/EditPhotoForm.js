@@ -1,46 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+// import { useHistory, useParams } from "react-router-dom";
 import "./EditPhotoFormModal.css";
 import * as photoActions from "../../store/photo";
+// import { useModal } from "../../context/Modal";
 
-function EditPhotoForm({ setShowModal }) {
-  const { photoId } = useParams();
+function EditPhotoForm({setShowModal}) {
+  // const { photoId } = useParams();
   const dispatch = useDispatch();
 
   const photo = useSelector((state) => state.photo);
+  console.log(photo, ' <---- inside edit form');
 
   const [caption, setCaption] = useState(photo.caption);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
+  // const { closeModal } = useModal();
+
 
   const err = [];
 
   useEffect(() => {
-    if (caption.length < 1)
+    if (photo.caption.length < 1)
       err.push("Caption must be at least 1 character long");
-  }, [caption]);
+  }, [caption, err, photo.caption.length]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setHasSubmitted(true);
-
     dispatch(
       photoActions.editThePhoto({
+        id: photo.id,
         caption: photo.caption,
       })
     )
-      .then(() => setShowModal(false))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.error) setErrors(data.error);
       });
+      // closeModal();
   };
 
   return (
     <form className="edit-photo-form" onSubmit={handleSubmit}>
-      {hasSubmitted && errors.length > 0 && (
+      { errors.length > 0 && (
         <div>
           The following errors were found:
           <ul>
@@ -58,6 +60,9 @@ function EditPhotoForm({ setShowModal }) {
           onChange={(e) => setCaption(e.target.value)}
           required
         />
+        <div>
+          <button className="update-btn" type='submit'>Update Caption</button>
+        </div>
       </div>
     </form>
   );

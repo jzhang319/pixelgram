@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Modal, useModal } from "../../context/Modal";
+import { Modal } from "../../context/Modal";
 import * as photoActions from "../../store/photo";
 import { useHistory, useParams } from "react-router-dom";
 import EditPhotoForm from "./EditPhotoForm";
@@ -24,7 +24,7 @@ function EditPhotoFormModal() {
   return (
     <>
       <button className="edit-form-button" onClick={() => setShowModal(true)}>
-        Edit Photo
+        Edit Caption
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

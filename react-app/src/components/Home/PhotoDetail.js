@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
 import * as photoActions from "../../store/photo";
 import EditPhotoFormModal from "../EditPhotoFormModal";
+// import OpenModalButton from "../OpenModalButton";
+
 
 function PhotoDetail() {
   const { photoId } = useParams();
@@ -12,8 +14,27 @@ function PhotoDetail() {
   const currPhoto = useSelector((state) => state.photo);
   const user = useSelector((state) => state.session.user);
 
+  // const [showMenu, setShowMenu] = useState(false);
+  // const ulRef = useRef();
+
+  // const openMenu = () => {
+  //   if (showMenu) return;
+  //   setShowMenu(true);
+  // };
+
   useEffect(() => {
     dispatch(photoActions.getThePhoto(photoId));
+    // if (!showMenu) return;
+
+    // const closeMenu = (e) => {
+    //   if (!ulRef.current.contains(e.target)) {
+    //     setShowMenu(false);
+    //   }
+    // };
+
+    // document.addEventListener("click", closeMenu);
+
+    // return () => document.removeEventListener("click", closeMenu);
   }, [dispatch, photoId]);
 
   // console.log(photoId, " <--- id");
@@ -21,6 +42,9 @@ function PhotoDetail() {
   // console.log(currPhoto[id - 1], " <--- current photo useEffect");
   // console.log(user.id, ' <------ ')
   // console.log(currPhoto.user_id, ' <------ ')
+
+  // const closeMenu = () => setShowMenu(false);
+
 
   let content = null;
 
@@ -55,7 +79,11 @@ function PhotoDetail() {
             {currPhoto.caption}
           </div>
           <EditPhotoFormModal />
-          {/* <OpenModalButton buttonText="Edit Caption" onItemClick={closeMenu} /> */}
+          {/* <OpenModalButton
+            buttonText="Edit Caption"
+            onItemClick={closeMenu}
+            modalComponent={EditPhotoForm}
+          /> */}
         </div>
       </div>
     ) : (
