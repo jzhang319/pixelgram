@@ -30,11 +30,13 @@
   top: 0;
   left: 0;
   border-right: 1px solid lightgray;
-
+  min-width: 15%;
+  max-width: 15%;
 }
 
 .navigation-side-panel div{
   /* position: absolute; */
+  /* min-width: 50%; */
   width: 85%;
   height: 40px;
   display:flex;

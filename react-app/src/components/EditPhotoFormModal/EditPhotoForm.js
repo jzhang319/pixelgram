@@ -65,7 +65,7 @@ function EditPhotoForm() {
         />
         <div className="update-button-container">
           <button className="update-btn" type="submit">
-            Update Caption
+            Apply
           </button>
         </div>
       </div>

@@ -29,4 +29,18 @@ def get_all_comments(photoId):
     return {'comments': [comment.to_dict() for comment in comments]}
 
 
+# @comment_routes.route('/', methods=['POST'])
+# @login_required
+# def add_comment():
+#     new_comment = Comment({})
 
+@comment_routes.route('/', methods=['DELETE'])
+@login_required
+def delete_comment(commentId):
+    del_comment = Comment.query.get(commentId)
+    if del_comment.user_id == current_user.id:
+        db.session.delete(del_comment)
+        db.session.commit()
+        return {'message': 'Comment deleted'}
+    else:
+        return {'message': 'You are not the author of this comment'}

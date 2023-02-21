@@ -69,7 +69,15 @@ function Navigation({ isLoaded }) {
         </div>
       </NavLink>
       {sessionUser && (
-        <div>
+        <div
+          // onClick={
+          //   <OpenModalButton
+          //     buttonText="Create Post"
+          //     onItemClick={closeMenu}
+          //     modalComponent={<PostPhotoForm />}
+          //   />
+          // }
+        >
           <i className="fa-solid fa-plus"></i>
           <OpenModalButton
             buttonText="Create Post"

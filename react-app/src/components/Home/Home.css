@@ -104,10 +104,9 @@ div.photo-caption{
   position: absolute;
   margin-top: 5%;
   margin-left: 30%;
-  min-width: 45%;
+  max-width: 500px;
   height: auto;
   color: white;
-  /* margin-right: 0px; */
   border: 1px rgb(36, 36, 36) solid;
   border-radius: 5px;
 }
