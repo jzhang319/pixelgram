@@ -22,6 +22,29 @@ const deleteComment = (id) => {
   };
 };
 
+const PUT_COMMENT = "PUT_COMMENT";
+const putComment = (comment) => {
+  return {
+    type: PUT_COMMENT,
+    comment,
+  };
+};
+
+export const putTheComment = (comment) => async (dispatch) => {
+  const response = await fetch(`/api/comments/${comment.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(comment),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(putComment(data));
+    return data;
+  }
+};
+
 export const deleteTheComment = (id) => async (dispatch) => {
   const response = await fetch(`/api/comments/${id}`, {
     method: "DELETE",
@@ -35,7 +58,7 @@ export const deleteTheComment = (id) => async (dispatch) => {
 };
 
 export const addTheComment = (comment) => async (dispatch) => {
-  const response = await fetch("/api/comments", {
+  const response = await fetch(`/api/comments/${comment.photo_id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -76,6 +99,18 @@ const commentReducer = (state = initialState, action) => {
         ...state,
         [action.comment.id]: action.comment,
       };
+    }
+    case DELETE_COMMENT: {
+      const newState = { ...state };
+      delete newState[action.id];
+      return newState;
+    }
+    case PUT_COMMENT: {
+      const newState = {
+        ...state,
+        ...action.comment,
+      };
+      return newState;
     }
     default:
       return state;

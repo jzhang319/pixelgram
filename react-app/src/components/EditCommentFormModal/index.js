@@ -1,42 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import * as photoActions from "../../store/photo";
-import "./EditPhotoFormModal.css";
+import * as commentActions from "../../store/comment";
+import "./EditCommentFormModal.css";
 
-
-function EditPhotoForm() {
-  // const { photoId } = useParams();
+function EditCommentForm({ id }) {
   const dispatch = useDispatch();
+  const comments = useSelector((state) => state.comment);
 
-  const photo = useSelector((state) => state.photo);
-  // console.log(photo, " <---- inside edit form");
+  // console.log(id, " <-- from props");
+  // console.log(typeof id);
+  // console.log(comments[id], " <---- comment modal");
 
-  const [caption, setCaption] = useState(photo.caption);
+  const [comment, setComment] = useState(comments[id].comment);
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
-  const err = [];
-
-  useEffect(() => {
-    if (photo.caption.length < 1)
-      err.push("Caption must be at least 1 character long");
-  }, [caption, err, photo.caption.length]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     dispatch(
-      photoActions.editThePhoto({
-        id: photo.id,
-        caption: caption,
+      commentActions.putTheComment({
+        id,
+        comment,
       })
     ).catch(async (res) => {
       const data = await res.json();
       if (data && data.error) setErrors(data.error);
     });
     closeModal();
-    // setShowModal(false);
   };
 
   return (
@@ -52,15 +43,12 @@ function EditPhotoForm() {
         </div>
       )}
       <div className="update-form-elements">
-        <div className="detailphoto-img-box">
-          <img className="img-itself" src={photo.url} alt={photo.caption} />
-        </div>
-        <label>Update Caption</label>
+        <label>Update Comment</label>
         <input
           type="text"
-          value={caption}
-          size="47"
-          onChange={(e) => setCaption(e.target.value)}
+          value={comment}
+          size="40"
+          onChange={(e) => setComment(e.target.value)}
         />
         <div className="update-button-container">
           <button className="update-btn" type="submit">
@@ -72,4 +60,4 @@ function EditPhotoForm() {
   );
 }
 
-export default EditPhotoForm;
+export default EditCommentForm;

@@ -45,7 +45,19 @@ function PostPhotoForm({ setShowModal }) {
           ))}
         </ul>
       </div>
+      {/* <div className="login_logo">
+          <h1 className="login_pixel">Pixel</h1>
+          <h1 className="login_gram">
+            <em>gram</em>
+          </h1>
+        </div> */}
       <div className="post-form-elements">
+        {/* <div className="login_logo">
+          <h1 className="login_pixel">Pixel</h1>
+          <h1 className="login_gram">
+            <em>gram</em>
+          </h1>
+        </div> */}
         <h2 className="post-form-h2">Post a Photo</h2>
         <label className="post-form-label">
           URL

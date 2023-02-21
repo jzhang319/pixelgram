@@ -18,7 +18,7 @@ function Home() {
   return (
     <div className="homepage-container">
       <div className="user-profile-container">
-        ================ user-profiles container ================
+        ============= user-profiles container =============
       </div>
       <div className="photo-container">
         {/* <h1>Posts</h1> */}
@@ -47,10 +47,8 @@ function Home() {
                 <i className="fa-solid fa-heart"></i>{" "}
                 <i className="fa-solid fa-comment"></i>
               </div>
-                {photo?.user?.username}
-              <div className="photo-caption">
-                {photo.caption}
-              </div>
+              {photo?.user?.username}
+              <div className="photo-caption">{photo.caption}</div>
               <div>Latest comment</div>
               {/* <OpenModalButton /> */}
             </div>

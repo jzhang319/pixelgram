@@ -42,7 +42,7 @@ def edit_photo(photoId):
             return edit_photo.to_dict()
         else:
             return {'message': 'You are not allowed to edit this photo'}
-    print('Unable to validate', form.errors)
+    # print('Unable to validate', form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
