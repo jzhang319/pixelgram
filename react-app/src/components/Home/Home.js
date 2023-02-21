@@ -51,6 +51,7 @@ function Home() {
               <div className="photo-caption">
                 {photo.caption}
               </div>
+              <div>Latest comment</div>
               {/* <OpenModalButton /> */}
             </div>
           );

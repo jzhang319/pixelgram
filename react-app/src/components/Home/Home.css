@@ -132,3 +132,19 @@ div.photo-caption{
   height: 30px;
   border-radius: 55%;
 }
+
+.each-comment {
+  display: flex;
+  align-items: center;
+  padding-top:5px;
+  padding-bottom:5px;
+}
+.each-comment-profile-pic{
+  width: 30px;
+  height: 30px;
+  border-radius: 55%;
+}
+.each-comment-username{
+  padding-left: 5px;
+  padding-right: 5px;
+}
