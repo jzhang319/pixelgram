@@ -84,6 +84,8 @@ a.photo-link{
   display: flex;
   align-items: center;
   flex-direction: row;
+  margin-top: 25px;
+  margin-bottom: 10px;
 }
 .profile-picture{
   padding-right: 5px;
@@ -107,7 +109,8 @@ div.photo-like-comment-section{
 div.photo-caption{
   display: flex;
   justify-content: flex-start;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .photodetail-container{
@@ -193,7 +196,9 @@ input.input-comment-bar{
 }
 div.photo-caption-container{
   width: 100%;
+  margin-bottom: 25px;
 }
+
 img.photo-itself{
   border-radius: 5px;
 }
