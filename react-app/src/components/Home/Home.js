@@ -23,11 +23,10 @@ function Home() {
 
   return (
     <div className="homepage-container">
-      <div className="user-profile-container">
+      {/* <div className="user-profile-container">
         ============= user-profiles container =============
-      </div>
+      </div> */}
       <div className="photo-container">
-        {/* <h1>Posts</h1> */}
         {allPhotos.map((photo) => {
           // console.log(photo?.user?.profile_url, " <--- photo");
           return (

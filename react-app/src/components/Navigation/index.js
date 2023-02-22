@@ -7,7 +7,6 @@ import * as sessionActions from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import PostPhotoForm from "../PostPhotoModal/PostPhotoForm";
 
-
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -80,13 +79,13 @@ function Navigation({ isLoaded }) {
       </NavLink> */}
       {sessionUser && (
         <div
-          // onClick={
-          //   <OpenModalButton
-          //     buttonText="Create Post"
-          //     onItemClick={closeMenu}
-          //     modalComponent={<PostPhotoForm />}
-          //   />
-          // }
+        // onClick={
+        //   <OpenModalButton
+        //     buttonText="Create Post"
+        //     onItemClick={closeMenu}
+        //     modalComponent={<PostPhotoForm />}
+        //   />
+        // }
         >
           <i className="fa-solid fa-plus"></i>
           <OpenModalButton
@@ -97,12 +96,14 @@ function Navigation({ isLoaded }) {
         </div>
       )}
       {!sessionUser && (
-        <button onClick={handleDemoLogin}>Demo Login</button>
+        <button onClick={handleDemoLogin} className="demo-login-button">
+          <i class="fa-solid fa-user"></i>
+          Demo Login
+        </button>
       )}
       {isLoaded && (
         <div className="profile-section-button">
           <ProfileButton user={sessionUser} />
-          Profile
         </div>
       )}
     </div>

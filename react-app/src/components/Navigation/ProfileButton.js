@@ -52,7 +52,7 @@ function ProfileButton({ user }) {
         />
       )) || (
         <button className="profile-section-clicked" onClick={openMenu}>
-          <i className="fas fa-user-circle" />
+          <i className="fas fa-user-circle" />Profile
         </button>
       )}
 
