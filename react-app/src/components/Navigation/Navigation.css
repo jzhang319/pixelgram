@@ -63,13 +63,15 @@ span.profile-section-button{
 i.fa-user-circle{
   padding-left: 1px;
 }
+input.profile-section-clicked{
+  width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
 .profile-section-clicked{
   background-color: transparent;
   display: flex;
   width: 100%;
-  /* width: 40px;
-  height: 40px;
-  border-radius: 50%; */
 }
 .profile-section-button{
   /* left: 10px; */
