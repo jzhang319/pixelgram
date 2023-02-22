@@ -102,8 +102,9 @@ function PhotoDetail() {
             />
           </div>
           <div className="photo-like-comment-section">
-            <i className="fa-solid fa-heart"></i>{" "}
-            <i className="fa-solid fa-comment"></i>
+            {/* <i className="fa-solid fa-heart"></i>{" "}
+            <i className="fa-solid fa-comment"></i> */}
+
             {user?.id === currPhoto.user_id && (
               <>
                 <OpenModalButton
@@ -116,7 +117,7 @@ function PhotoDetail() {
             )}
           </div>
           {/* {currPhoto?.user?.username} */}
-          <div className="photo-caption">{currPhoto.caption}</div>
+          <div className="photo-caption">Caption: {currPhoto.caption}</div>
           <div className="comments-section">
             {comments.map((comment) => {
               return (
@@ -130,7 +131,9 @@ function PhotoDetail() {
                     {comment.user?.username}
                   </div>
                   <div className="each-comment-button-container">
-                    <div className="each-comment-comment">{comment.comment}</div>
+                    <div className="each-comment-comment">
+                      {comment.comment}
+                    </div>
                     <div className="each-comment-buttons">
                       {comment.user_id === user.id && (
                         <OpenModalButton

@@ -194,3 +194,6 @@ input.input-comment-bar{
 div.photo-caption-container{
   width: 100%;
 }
+img.photo-itself{
+  border-radius: 5px;
+}

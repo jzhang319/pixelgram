@@ -60,7 +60,7 @@ function Home() {
               {/* {photo?.user?.username} */}
               <div className="photo-caption-container">
                 <div className="photo-caption">{photo.caption}</div>
-                <div>Latest comment:</div>
+                <div>Comment(s):</div>
                 {allComments.map((comment) => {
                   if (comment.photo_id === photo.id) {
                     return (
