@@ -1,16 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-// import * as photoActions from "../../store/photo";
+import * as sessionActions from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import PostPhotoForm from "../PostPhotoModal/PostPhotoForm";
 
-function Navigation({ isLoaded }) {
-  const sessionUser = useSelector((state) => state.session.user);
 
+function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const sessionUser = useSelector((state) => state.session.user);
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -19,6 +21,14 @@ function Navigation({ isLoaded }) {
   //   if (showMenu) return;
   //   setShowMenu(true);
   // };
+
+  const handleDemoLogin = (e) => {
+    let email = "demo@aa.io";
+    let password = "password";
+    e.preventDefault();
+    dispatch(sessionActions.login(email, password));
+    history.push("/");
+  };
 
   useEffect(() => {
     // dispatch(photoActions.addThePhoto(photo));
@@ -50,7 +60,7 @@ function Navigation({ isLoaded }) {
           Home
         </div>
       </NavLink>
-      <NavLink to="/following">
+      {/* <NavLink to="/following">
         <div>
           <i className="fa-solid fa-star"></i>
           Following
@@ -67,7 +77,7 @@ function Navigation({ isLoaded }) {
           <i className="fa-solid fa-heart-crack"></i>
           Most Hated
         </div>
-      </NavLink>
+      </NavLink> */}
       {sessionUser && (
         <div
           // onClick={
@@ -86,13 +96,9 @@ function Navigation({ isLoaded }) {
           />
         </div>
       )}
-      {/* <NavLink to="/photos">
-        <div>
-          <i className="fa-solid fa-plus"></i>
-          Create Post
-          <PostPhotoModal />
-        </div>
-      </NavLink> */}
+      {!sessionUser && (
+        <button onClick={handleDemoLogin}>Demo Login</button>
+      )}
       {isLoaded && (
         <div className="profile-section-button">
           <ProfileButton user={sessionUser} />

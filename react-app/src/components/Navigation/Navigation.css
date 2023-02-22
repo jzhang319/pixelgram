@@ -1,8 +1,8 @@
 .profile-dropdown {
   position: absolute;
-  display: flex;
+  display: block;
   flex-direction: column;
-  top: 46%;
+  top: 30%;
 }
 
 .hidden {
