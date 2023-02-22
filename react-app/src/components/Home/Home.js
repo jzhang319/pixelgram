@@ -45,7 +45,7 @@ function Home() {
               </div>
               <NavLink className="photo-link" to={`/photos/${photo.id}`}>
                 <div className="photo-img-box">
-                  <img src={photo.url} alt={photo.caption} />
+                  <img className="photo-itself" src={photo.url} alt={photo.caption} />
                 </div>
               </NavLink>
               {/* <div className="photo-like-comment-section">
@@ -53,8 +53,10 @@ function Home() {
                 <i className="fa-solid fa-comment"></i>
               </div> */}
               {/* {photo?.user?.username} */}
-              <div className="photo-caption">{photo.caption}</div>
-              <div>Latest comment:</div>
+              <div className="photo-caption-container">
+                <div className="photo-caption">{photo.caption}</div>
+                <div>Latest comment:</div>
+              </div>
               {/* {photo.comment.map((comment) => {
                 return (
                   <div key={comment.id} className="another-each">
