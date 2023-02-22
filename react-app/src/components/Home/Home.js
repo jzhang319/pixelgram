@@ -48,10 +48,10 @@ function Home() {
                   <img src={photo.url} alt={photo.caption} />
                 </div>
               </NavLink>
-              <div className="photo-like-comment-section">
+              {/* <div className="photo-like-comment-section">
                 <i className="fa-solid fa-heart"></i>{" "}
                 <i className="fa-solid fa-comment"></i>
-              </div>
+              </div> */}
               {/* {photo?.user?.username} */}
               <div className="photo-caption">{photo.caption}</div>
               <div>Latest comment:</div>

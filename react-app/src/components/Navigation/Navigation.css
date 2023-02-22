@@ -9,12 +9,16 @@
   display: none;
 }
 
-.navigation-side-panel h1 {
+.navigation-side-panel>h1 {
   display: block;
   /* justify-content: center; */
   align-items: center;
   color: white;
-
+  text-decoration: none;
+}
+.pixel{
+  color: white;
+  min-width: min-content;
 }
 
 .navigation-side-panel{
@@ -47,6 +51,7 @@
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+  min-width: 100%;
 }
 .navigation-side-panel div:hover{
   /* background-color: rgb(29, 28, 28); */

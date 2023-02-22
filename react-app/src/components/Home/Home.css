@@ -60,9 +60,9 @@ a.photo-link{
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 5px;
-  border: 1px rgb(36, 36, 36) solid;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  border-bottom: 2px rgb(36, 36, 36) solid;
+  /* margin-top: 10px;
+  margin-bottom: 10px; */
 }
 
 .photo-detail{

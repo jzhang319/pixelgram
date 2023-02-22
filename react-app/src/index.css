@@ -20,10 +20,10 @@ button:hover {
   cursor: pointer;
 }
 
-.whole-page-container{
+/* .whole-page-container{
   display: flex;
   flex-direction: column
-}
+} */
 
 a{
   /* color:white; */

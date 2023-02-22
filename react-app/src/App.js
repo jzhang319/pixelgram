@@ -35,9 +35,9 @@ function App() {
           </Route>
         </Switch>
       )}
-      <div className="home-message-both">
+      {/* <div className="home-message-both">
         <MessageSideBar />
-      </div>
+      </div> */}
     </div>
   );
 }
