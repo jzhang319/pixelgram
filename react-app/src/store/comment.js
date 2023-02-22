@@ -38,8 +38,11 @@ export const putTheComment = (comment) => async (dispatch) => {
     },
     body: JSON.stringify(comment),
   });
+  // console.log(comment, " <---------- from the thunk");
   if (response.ok) {
+    // console.log(response, ' <------ response');
     const data = await response.json();
+    // console.log(data, " <------ data");
     dispatch(putComment(data));
     return data;
   }
@@ -108,7 +111,7 @@ const commentReducer = (state = initialState, action) => {
     case PUT_COMMENT: {
       const newState = {
         ...state,
-        ...action.comment,
+        [action.comment.id]: action.comment,
       };
       return newState;
     }

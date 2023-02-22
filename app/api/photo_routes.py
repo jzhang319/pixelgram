@@ -48,7 +48,8 @@ def edit_photo(photoId):
 
 @photo_routes.route('/', methods=['GET'])
 def get_photos():
-    all_photos = Photo.query.all()
+    all_photos = Photo.query.order_by(Photo.id.desc()).all()
+    # print(list(all_photos), ' <---- backend')
     return {'photos': [photo.to_dict() for photo in all_photos]}
 
 

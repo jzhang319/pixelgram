@@ -32,7 +32,7 @@ function PhotoDetail() {
   //   setShowMenu(true);
   // };
 
-  const addComment = (e) => {
+  const handleAddComment = (e) => {
     e.preventDefault();
 
     const data = {
@@ -47,6 +47,7 @@ function PhotoDetail() {
       }
       // setErrors2()
     });
+    setNewComment("");
   };
 
   const handleDeletePhoto = async (e) => {
@@ -71,7 +72,7 @@ function PhotoDetail() {
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [dispatch, photoId, showMenu]);
+  }, [dispatch, photoId, showMenu, comments.id]);
 
   const closeMenu = () => setShowMenu(false);
 
@@ -123,6 +124,7 @@ function PhotoDetail() {
                   <img
                     className="each-comment-profile-pic"
                     src={comment?.user?.profile_url}
+                    alt={comment?.id}
                   ></img>
                   <div className="each-comment-username">
                     {comment.user?.username}
@@ -150,7 +152,7 @@ function PhotoDetail() {
               );
             })}
           </div>
-          <form onSubmit={addComment} className="add-comment-form">
+          <form onSubmit={handleAddComment} className="add-comment-form">
             {/* add comment form here */}
             <div>
               <input
@@ -208,6 +210,7 @@ function PhotoDetail() {
                   <img
                     className="each-comment-profile-pic"
                     src={comment.user.profile_url}
+                    alt={comment.id}
                   ></img>
                   <div className="each-comment-username">
                     {comment.user.username}

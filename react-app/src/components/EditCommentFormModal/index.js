@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import * as commentActions from "../../store/comment";
 import "./EditCommentFormModal.css";
 
 function EditCommentForm({ id }) {
   const dispatch = useDispatch();
+  // const history = useHistory();
   const comments = useSelector((state) => state.comment);
 
   // console.log(id, " <-- from props");
@@ -27,6 +29,7 @@ function EditCommentForm({ id }) {
       const data = await res.json();
       if (data && data.error) setErrors(data.error);
     });
+    // history.push(`/photos/${id}`);
     closeModal();
   };
 

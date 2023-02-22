@@ -4,15 +4,21 @@ import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
-// import OpenModalButton from "../OpenModalButton";
+// import * as commentActions from "../../store/comment";
 
 function Home() {
   const dispatch = useDispatch();
 
-  const allPhotos = useSelector((state) => Object.values(state.photo));
+  const allPhotos = useSelector((state) =>
+    Object.values(state.photo).sort((a, b) => b.id - a.id)
+  );
   // console.log(allPhotos, " <--- allPhotos");
+
+  // const comments =
+
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
+    // dispatch(commentActions.getTheComments());
   }, [dispatch]);
 
   return (
@@ -47,10 +53,16 @@ function Home() {
                 <i className="fa-solid fa-heart"></i>{" "}
                 <i className="fa-solid fa-comment"></i>
               </div>
-              {photo?.user?.username}
+              {/* {photo?.user?.username} */}
               <div className="photo-caption">{photo.caption}</div>
-              <div>Latest comment</div>
-              {/* <OpenModalButton /> */}
+              <div>Latest comment:</div>
+              {/* {photo.comment.map((comment) => {
+                return (
+                  <div key={comment.id} className="another-each">
+                    {comment.comment}
+                  </div>
+                );
+              })} */}
             </div>
           );
         })}
