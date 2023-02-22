@@ -115,7 +115,7 @@ function PhotoDetail() {
               </>
             )}
           </div>
-          {currPhoto?.user?.username}
+          {/* {currPhoto?.user?.username} */}
           <div className="photo-caption">{currPhoto.caption}</div>
           <div className="comments-section">
             {comments.map((comment) => {
@@ -129,24 +129,28 @@ function PhotoDetail() {
                   <div className="each-comment-username">
                     {comment.user?.username}
                   </div>
-                  <div className="each-comment-comment">
-                    {comment.comment}
-                    {comment.user_id === user.id && (
-                      <OpenModalButton
-                        buttonText="edit comment"
-                        onItemClick={closeMenu}
-                        modalComponent={<EditCommentForm id={comment.id} />}
-                      />
-                    )}
-                    {comment.user_id === user.id && (
-                      <button
-                        onClick={() => {
-                          dispatch(commentActions.deleteTheComment(comment.id));
-                        }}
-                      >
-                        DELETE COMMENT
-                      </button>
-                    )}
+                  <div className="each-comment-button-container">
+                    <div className="each-comment-comment">{comment.comment}</div>
+                    <div className="each-comment-buttons">
+                      {comment.user_id === user.id && (
+                        <OpenModalButton
+                          buttonText="edit comment"
+                          onItemClick={closeMenu}
+                          modalComponent={<EditCommentForm id={comment.id} />}
+                        />
+                      )}
+                      {comment.user_id === user.id && (
+                        <button
+                          onClick={() => {
+                            dispatch(
+                              commentActions.deleteTheComment(comment.id)
+                            );
+                          }}
+                        >
+                          DELETE COMMENT
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
@@ -154,15 +158,15 @@ function PhotoDetail() {
           </div>
           <form onSubmit={handleAddComment} className="add-comment-form">
             {/* add comment form here */}
-            <div>
+            <div className="input-comment-bar-container">
               <input
+                className="input-comment-bar"
                 type="text"
-                placeholder="Comment here"
+                placeholder="Enter comment here"
                 value={newComment}
                 onChange={(e) => {
                   setNewComment(e.target.value);
                 }}
-                cols={60}
               />
             </div>
             <div>
