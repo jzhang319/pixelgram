@@ -23,7 +23,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @comment_routes.route('/<int:photoId>', methods=['GET'])
 # @login_required
-def get_all_comments(photoId):
+def get_all_comments_with_id(photoId):
     comments = Comment.query.filter_by(photo_id=photoId).all()
     # print(comments, ' <----- comments from backend')
     return {'comments': [comment.to_dict() for comment in comments]}
@@ -44,10 +44,10 @@ def add_comment(photoId):
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-@ comment_routes.route('/<int:commentId>', methods = ['DELETE'])
+@ comment_routes.route('/<int:commentId>', methods=['DELETE'])
 @ login_required
 def delete_comment(commentId):
-    del_comment=Comment.query.get(commentId)
+    del_comment = Comment.query.get(commentId)
     if del_comment.user_id == current_user.id:
         db.session.delete(del_comment)
         db.session.commit()
@@ -56,17 +56,23 @@ def delete_comment(commentId):
         return {'message': 'You are not the author of this comment'}
 
 
-@ comment_routes.route('/<int:commentId>', methods = ['PUT'])
+@ comment_routes.route('/<int:commentId>', methods=['PUT'])
 @ login_required
 def update_comment(commentId):
-    form=EditCommentForm()
-    form['csrf_token'].data=request.cookies['csrf_token']
+    form = EditCommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        comment=Comment.query.get(commentId)
+        comment = Comment.query.get(commentId)
         if comment.user_id == current_user.id:
-            comment.comment=form.data['comment']
+            comment.comment = form.data['comment']
             db.session.commit()
             return comment.to_dict()
         else:
             return {'message': 'You are not the author of this comment'}
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+@comment_routes.route('/', methods=['GET'])
+def get_all_comments_no_id():
+    all_comments = Comment.query.all()
+    return {'comments': [comment.to_dict() for comment in all_comments]}

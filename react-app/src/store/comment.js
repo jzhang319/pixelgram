@@ -86,6 +86,16 @@ export const getTheComments = (photoId) => async (dispatch) => {
   }
 };
 
+export const getTheAllComments = () => async (dispatch) => {
+  const response = await fetch('/api/comments/');
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getComments(data));
+    return data;
+  }
+}
+
 let initialState = {};
 
 const commentReducer = (state = initialState, action) => {

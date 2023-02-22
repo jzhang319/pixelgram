@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
-// import * as commentActions from "../../store/comment";
+import * as commentActions from "../../store/comment";
 
 function Home() {
   const dispatch = useDispatch();
@@ -14,11 +14,12 @@ function Home() {
   );
   // console.log(allPhotos, " <--- allPhotos");
 
-  // const comments =
+  const allComments = useSelector((state) => Object.values(state.comment));
+  // console.log(allComments, " <--- allComments here");
 
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
-    // dispatch(commentActions.getTheComments());
+    dispatch(commentActions.getTheAllComments());
   }, [dispatch]);
 
   return (
@@ -34,7 +35,7 @@ function Home() {
               <div className="profile-pic-username-container">
                 {/* <div className="profile-picture"> */}
                 <img
-                  className="profile-img"
+                  className="profile-pic"
                   src={photo?.user?.profile_url}
                   alt=""
                 />
@@ -45,7 +46,11 @@ function Home() {
               </div>
               <NavLink className="photo-link" to={`/photos/${photo.id}`}>
                 <div className="photo-img-box">
-                  <img className="photo-itself" src={photo.url} alt={photo.caption} />
+                  <img
+                    className="photo-itself"
+                    src={photo.url}
+                    alt={photo.caption}
+                  />
                 </div>
               </NavLink>
               {/* <div className="photo-like-comment-section">
@@ -56,6 +61,23 @@ function Home() {
               <div className="photo-caption-container">
                 <div className="photo-caption">{photo.caption}</div>
                 <div>Latest comment:</div>
+                {allComments.map((comment) => {
+                  if (comment.photo_id === photo.id) {
+                    return (
+                      <div key={comment.id} className="each-comment">
+                        <div className="pic-and-username">
+                          <img
+                            className="profile-img"
+                            src={comment.user.profile_url}
+                            alt=""
+                          />
+                          {comment.user.username}
+                        </div>
+                        <div className="inside-comment">{comment.comment}</div>
+                      </div>
+                    );
+                  }
+                })}
               </div>
               {/* {photo.comment.map((comment) => {
                 return (

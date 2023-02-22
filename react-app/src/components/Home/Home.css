@@ -63,13 +63,13 @@ a.photo-link{
 
 .each-photo{
   width: 400px;
-  height: 500px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 5px;
-  border-bottom: 2px rgb(36, 36, 36) solid;
+  border-bottom: 2px rgb(70, 70, 70) solid;
   /* margin-top: 10px;
   margin-bottom: 10px; */
 }
@@ -141,6 +141,7 @@ div.photo-caption{
   width: 30px;
   height: 30px;
   border-radius: 55%;
+  padding-right: 5px;
 }
 
 .each-comment {
@@ -180,4 +181,16 @@ div.photo-caption{
 }
 input.input-comment-bar{
   width: 90%;
+}
+
+.inside-comment{
+  padding-left:10px;
+}
+.pic-and-username{
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+}
+div.photo-caption-container{
+  width: 100%;
 }
