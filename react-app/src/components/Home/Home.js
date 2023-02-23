@@ -54,7 +54,7 @@ function Home() {
                     src={photo.url}
                     alt={photo.caption}
                   />
-                  {user.id === photo.user_id && <button className="photo-btn">Edit Photo</button>}
+                  {user?.id === photo?.user_id && <button className="photo-btn">Edit Photo</button>}
                 </div>
               </NavLink>
               {/* <div className="photo-like-comment-section">
