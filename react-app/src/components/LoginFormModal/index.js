@@ -45,6 +45,7 @@ function LoginFormModal() {
             placeholder="john@doe.com"
             required
           />
+          <i className="fa-solid fa-envelope"></i>
         </label>
         <label>
           Password
@@ -55,6 +56,7 @@ function LoginFormModal() {
             placeholder="password"
             required
           />
+          <i className="fa-solid fa-lock"></i>
         </label>
         <div className="modal-button-container">
           <button className="signup-button" type="submit">

@@ -53,6 +53,7 @@ function SignupFormModal() {
             placeholder="john@doe.com"
             required
           />
+          <i className="fa-solid fa-envelope"></i>
         </label>
         <label>
           Username
@@ -63,6 +64,7 @@ function SignupFormModal() {
             placeholder="John Doe"
             required
           />
+          <i className="fa-solid fa-user"></i>
         </label>
         <label>
           Password
@@ -73,6 +75,7 @@ function SignupFormModal() {
             placeholder="password"
             required
           />
+          <i className="fa-solid fa-lock"></i>
         </label>
         <label>
           Confirm Password
@@ -83,6 +86,7 @@ function SignupFormModal() {
             placeholder="enter password again"
             required
           />
+          <i className="fa-solid fa-lock"></i>
         </label>
         <div className="modal-button-container">
           <button type="submit">Sign Up</button>

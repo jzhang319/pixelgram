@@ -115,7 +115,7 @@ function PhotoDetail() {
                   onItemClick={closeMenu}
                   modalComponent={<EditPhotoForm />}
                 />
-                <button onClick={handleDeletePhoto}>DELETE POST</button>
+                <div className="modal-divs" onClick={handleDeletePhoto}>Delete Post</div>
               </>
             )}
           </div>

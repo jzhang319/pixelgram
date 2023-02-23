@@ -52,11 +52,11 @@ function PostPhotoForm({ setShowModal }) {
   return (
     <form className="post-form-container" onSubmit={handleSubmit}>
       <div className="login_logo">
-          <h1 className="login_pixel">Pixel</h1>
-          <h1 className="login_gram">
-            <em>gram</em>
-          </h1>
-        </div>
+        <h1 className="login_pixel">Pixel</h1>
+        <h1 className="login_gram">
+          <em>gram</em>
+        </h1>
+      </div>
       <div className="post-form-elements">
         {/* <div className="login_logo">
           <h1 className="login_pixel">Pixel</h1>
@@ -80,6 +80,7 @@ function PostPhotoForm({ setShowModal }) {
             onChange={(e) => setUrl(e.target.value)}
             required
           />
+          <i className="fa-solid fa-image"></i>
         </label>
         <label className="post-form-label">
           Caption
@@ -89,6 +90,7 @@ function PostPhotoForm({ setShowModal }) {
             onChange={(e) => setCaption(e.target.value)}
             required
           />
+          <i class="fa-solid fa-message"></i>
         </label>
         <div className="post-button-section">
           <button className="post-button">POST PHOTO</button>
