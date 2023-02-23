@@ -36,6 +36,20 @@ form{
   align-items: flex-end;
   flex-direction: column;
 }
+.post-form-container{
+  display: flex;
+  /* width: 100%; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.err-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .modal-button-container{
   width: 100%;

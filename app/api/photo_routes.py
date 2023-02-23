@@ -64,7 +64,7 @@ def post_photo():
         db.session.add(new_photo)
         db.session.commit()
         return new_photo.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 @photo_routes.route('/<int:photoId>', methods=['DELETE'])

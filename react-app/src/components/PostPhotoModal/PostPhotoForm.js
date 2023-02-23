@@ -27,30 +27,36 @@ function PostPhotoForm({ setShowModal }) {
         caption: caption,
         user_id: user.id,
       })
-    ).then(() => history.push("/"));
-    // .then(() => setShowModal(false));
-    // .catch(async (res) => {
-    //   const data = await res.json();
-    //   if (data && data.errors) setErrors(data.errors);
-    // });
-    closeModal();
+    ).then(async (res) => {
+      const data = await res;
+      if (data && data.errors) {
+        const newErrors = res.errors.map((ele) => {
+          if (ele.includes("url")) {
+            return ele.slice(ele.indexOf(":") + 2);
+            // return ele
+          }
+          return (
+            ele.slice(0, ele.indexOf(":")) + ele.slice(ele.indexOf(":") + 7)
+          );
+        });
+        setErrors(newErrors);
+      }else{
+        history.push("/");
+        closeModal();
+      }
+    });
+    // history.push("/");
+    // closeModal();
   };
 
   return (
     <form className="post-form-container" onSubmit={handleSubmit}>
-      <div className="err-container">
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-      </div>
-      {/* <div className="login_logo">
+      <div className="login_logo">
           <h1 className="login_pixel">Pixel</h1>
           <h1 className="login_gram">
             <em>gram</em>
           </h1>
-        </div> */}
+        </div>
       <div className="post-form-elements">
         {/* <div className="login_logo">
           <h1 className="login_pixel">Pixel</h1>
@@ -59,6 +65,13 @@ function PostPhotoForm({ setShowModal }) {
           </h1>
         </div> */}
         <h2 className="post-form-h2">Post a Photo</h2>
+        <div className="err-container">
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+        </div>
         <label className="post-form-label">
           URL
           <input

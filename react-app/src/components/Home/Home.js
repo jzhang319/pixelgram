@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
+// import * as sessionActions from "../../store/session";
 
 function Home() {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ function Home() {
 
   const allComments = useSelector((state) => Object.values(state.comment));
   // console.log(allComments, " <--- allComments here");
+
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
@@ -51,6 +54,7 @@ function Home() {
                     src={photo.url}
                     alt={photo.caption}
                   />
+                  {user.id === photo.user_id && <button className="photo-btn">Edit Photo</button>}
                 </div>
               </NavLink>
               {/* <div className="photo-like-comment-section">

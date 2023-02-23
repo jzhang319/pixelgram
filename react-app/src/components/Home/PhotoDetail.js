@@ -40,6 +40,9 @@ function PhotoDetail() {
       photo_id: photoId,
       user_id: user.id,
     };
+    if (newComment === "") {
+      return alert("Please enter a comment");
+    }
     dispatch(commentActions.addTheComment(data)).then(() => async (res) => {
       const data = await res.json();
       if (data.errors) {
