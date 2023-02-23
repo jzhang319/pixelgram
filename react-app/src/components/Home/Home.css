@@ -21,12 +21,12 @@
 }
 
 .user-profile-container{
-  /* width: 400px; */
   height: 80px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;;
+  /* width: 400px; */
 }
 
 .photo-container{
@@ -49,37 +49,28 @@
   z-index: 0;
 }
 .photo-img-box img{
-  /* max-width: 400px;
-  max-height: 400px; */
   width: 100%;
   height: auto;
   z-index: 1;
+  /* max-width: 400px;
+  max-height: 400px; */
 }
 .photo-btn{
   position: absolute;
   top: 50%;
   left: 30%;
   background-color: transparent;
-  /* transform: translate(-50%, -50%); */
-  /* -ms-transform: translate(-50%, -50%); */
-  background-color:transparent;
-  /* border: none; */
   display: none;
   cursor: pointer;
   z-index: 2;
-
-  /* color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  display: none; */
+  /* transform: translate(-50%, -50%); */
+  /* -ms-transform: translate(-50%, -50%); */
 }
 .photo-img-box:hover .photo-btn{
   display: block;
   position: absolute;
-  top: 50%;
-  left: 35%;
+  top: 25%;
+  left: 25%;
   color: white;
   font-size: 20px;
   padding: 12px 24px;
@@ -87,10 +78,10 @@
 }
 
 a.photo-link{
+  border-radius: 5px;
   /* height: 500px; */
   /* padding-left: 20px;
   padding-right: 20px; */
-  border-radius: 5px;
   /* border: 1px rgb(36, 36, 36) solid; */
 }
 
@@ -147,21 +138,20 @@ div.photo-caption{
 }
 
 .photodetail-container{
-  /* box-sizing: border-box; */
   position: absolute;
   margin-top: 5%;
   margin-left: 30%;
   max-width: 500px;
   height: auto;
   color: white;
-  /* border: 1px rgb(36, 36, 36) solid; */
   border-radius: 5px;
+  /* border: 1px rgb(36, 36, 36) solid; */
 }
 
 .detailphoto-img-box{
-  /* margin-right: 0px; */
   width: 500px;
   height: auto;
+  /* margin-right: 0px; */
 }
 .img-itself{
   width: 500px;
