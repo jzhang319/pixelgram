@@ -78,15 +78,7 @@ function Navigation({ isLoaded }) {
         </div>
       </NavLink> */}
       {sessionUser && (
-        <div
-        // onClick={
-        //   <OpenModalButton
-        //     buttonText="Create Post"
-        //     onItemClick={closeMenu}
-        //     modalComponent={<PostPhotoForm />}
-        //   />
-        // }
-        >
+        <div className="create-post">
           <i className="fa-solid fa-plus"></i>
           <OpenModalButton
             buttonText="Create Post"
@@ -96,10 +88,10 @@ function Navigation({ isLoaded }) {
         </div>
       )}
       {!sessionUser && (
-        <button onClick={handleDemoLogin} className="demo-login-button">
+        <div onClick={handleDemoLogin} className="demo-login-button">
           <i class="fa-solid fa-user"></i>
           Demo Login
-        </button>
+        </div>
       )}
       {isLoaded && (
         <div className="profile-section-button">

@@ -51,9 +51,10 @@ function ProfileButton({ user }) {
           alt={currUser.username}
         />
       )) || (
-        <button className="profile-section-clicked" onClick={openMenu}>
-          <i className="fas fa-user-circle" />Profile
-        </button>
+        <div className="profile-section-clicked" onClick={openMenu}>
+          <i className="fas fa-user-circle" />
+          Profile
+        </div>
       )}
 
       <ul className={ulClassName} ref={ulRef}>

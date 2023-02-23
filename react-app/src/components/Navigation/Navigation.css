@@ -3,6 +3,7 @@
   display: block;
   flex-direction: column;
   top: 30%;
+  margin-top: 30px;
 }
 
 .hidden {
@@ -34,10 +35,13 @@
   top: 0;
   left: 0;
   border-right: 1px solid lightgray;
-  min-width: 15%;
-  max-width: 15%;
+  min-width: 200px;
+  /* max-width: 15%; */
   display: flex;
   flex-direction: column;
+}
+.modal-divs{
+  margin-left: 0px;
 }
 
 .navigation-side-panel div{
@@ -56,7 +60,8 @@
 .navigation-side-panel>div:hover{
   /* background-color: rgb(29, 28, 28); */
   /* border-radius: 25px; */
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
+  cursor: pointer;
 }
 
 span.profile-section-button{
