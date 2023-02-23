@@ -140,21 +140,22 @@ function PhotoDetail() {
                     <div className="each-comment-buttons">
                       {comment.user_id === user.id && (
                         <OpenModalButton
-                          buttonText="edit comment"
+                          buttonText="Edit comment"
                           onItemClick={closeMenu}
                           modalComponent={<EditCommentForm id={comment.id} />}
                         />
                       )}
                       {comment.user_id === user.id && (
-                        <button
+                        <div
+                          className="modal-divs"
                           onClick={() => {
                             dispatch(
                               commentActions.deleteTheComment(comment.id)
                             );
                           }}
                         >
-                          DELETE COMMENT
-                        </button>
+                          Delete Comment
+                        </div>
                       )}
                     </div>
                   </div>
