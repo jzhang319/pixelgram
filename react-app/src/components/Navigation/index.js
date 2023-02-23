@@ -54,7 +54,7 @@ function Navigation({ isLoaded }) {
         </h1>
       </NavLink>
       <NavLink to="/">
-        <div>
+        <div className="home-button">
           <i className="fa-solid fa-house"></i>
           Home
         </div>
