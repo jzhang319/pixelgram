@@ -209,8 +209,8 @@ function PhotoDetail() {
             />
           </div>
           <div className="photo-like-comment-section">
-            <i className="fa-solid fa-heart"></i>{" "}
-            <i className="fa-solid fa-comment"></i>
+            {/* <i className="fa-solid fa-heart"></i>{" "}
+            <i className="fa-solid fa-comment"></i> */}
           </div>
           {currPhoto?.user?.username}
           <div className="photo-caption">{currPhoto.caption}</div>
