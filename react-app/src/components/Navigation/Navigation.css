@@ -17,9 +17,18 @@
   color: white;
   text-decoration: none;
 }
+.logo-section{
+  display: flex;
+  align-items: center;
+}
 .pixel{
   color: white;
   min-width: min-content;
+}
+.pixel-logo{
+  width:30px;
+  height: 30px;
+  padding-right: 5px;
 }
 
 .navigation-side-panel{

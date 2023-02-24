@@ -22,10 +22,10 @@ button:hover {
 .modal-divs:hover{
   cursor: pointer;
 }
-/* .whole-page-container{
-  display: flex;
-  flex-direction: column
-} */
+.logo{
+  width: 650px;
+  height: 200px;
+}
 
 a{
   /* color:white; */

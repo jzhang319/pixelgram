@@ -49,9 +49,16 @@ function Navigation({ isLoaded }) {
   return (
     <div className="navigation-side-panel">
       <NavLink className="nav-home-button" to="/">
-        <h1 className="pixel">
-          Pixel<em>gram</em>
-        </h1>
+        <div className="logo-section">
+          <img
+            className="pixel-logo"
+            src="https://cdn.discordapp.com/attachments/885032629299212308/1078464578268172370/174855.png"
+            alt="logo"
+          />
+          <h1 className="pixel">
+            Pixel<em>gram</em>
+          </h1>
+        </div>
       </NavLink>
       <NavLink to="/">
         <div className="home-button">

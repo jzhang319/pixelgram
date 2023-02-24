@@ -13,7 +13,7 @@ div#modal-content{
         rgba(0, 0, 0, 0.99));
   border-radius: 25px;
   padding-bottom: 5%;
-  
+
 }
 
 div.login_logo{
@@ -64,4 +64,8 @@ label{
 
 input{
   margin: 10px;
+}
+.update-comment-section{
+  display: flex;
+  justify-content: center;
 }
