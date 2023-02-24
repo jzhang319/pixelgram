@@ -25,6 +25,7 @@ button:hover {
 .logo{
   width: 650px;
   height: 200px;
+  width: 100%;
 }
 
 a{
