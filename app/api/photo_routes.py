@@ -23,7 +23,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @photo_routes.route("/<int:id>", methods=['GET'])
 def get_photo(id):
-    print(id, '<--backend')
+    # print(id, '<--backend')
     my_photo = Photo.query.get(id)
     # return {'photo': my_photo.to_dict()}
     return my_photo.to_dict()

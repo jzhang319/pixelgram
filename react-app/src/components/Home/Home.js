@@ -91,6 +91,7 @@ function Home() {
               {/* {photo?.user?.username} */}
               <div className="photo-caption-container">
                 <div className="photo-caption">Caption: {photo.caption}</div>
+                
                 <div>Comment(s):</div>
                 {allComments.map((comment) => {
                   // console.log(comment, " <------ comment");
