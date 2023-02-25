@@ -109,6 +109,7 @@ function Home() {
                       </div>
                     );
                   }
+                  return null
                 })}
                 {user && (
                   <form
@@ -140,7 +141,7 @@ function Home() {
                       <input
                         className="input-comment-bar"
                         type="text"
-                        placeholder="Enter comment here"
+                        placeholder="Add a comment ..."
                         value={newComment}
                         onChange={(e) => {
                           setNewComment(e.target.value);

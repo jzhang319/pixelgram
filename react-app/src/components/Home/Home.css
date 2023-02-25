@@ -192,6 +192,9 @@ div.photo-caption{
   padding-left: 5px;
   padding-right: 10px;
 }
+.each-comment-comment{
+  color: darkgray;
+}
 .each-comment-button-container{
   display: flex;
   align-items: center;
@@ -218,15 +221,19 @@ input.input-comment-bar{
   margin-left: 0px;
   background-color: black;
   color: white;
+  border-radius: 5px;
 }
 
 .inside-comment{
   padding-left:10px;
+  font-weight: lighter;
+  color: darkgray;
 }
 .pic-and-username{
   padding-left: 5px;
   display: flex;
   align-items: center;
+  font-weight: bold;
 }
 div.photo-caption-container{
   width: 100%;
