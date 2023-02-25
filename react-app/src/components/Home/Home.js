@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
+import * as reactionActions from "../../store/reaction";
 // import * as sessionActions from "../../store/session";
 
 function Home() {
   const dispatch = useDispatch();
   const [newComment, setNewComment] = useState("");
-  let photoId;
 
   const allPhotos = useSelector((state) =>
     Object.values(state.photo).sort((a, b) => b.id - a.id)
@@ -20,33 +20,16 @@ function Home() {
   const allComments = useSelector((state) => Object.values(state.comment));
   // console.log(allComments, " <--- allComments here");
 
+  const allReactions = useSelector((state) => Object.values(state.reaction));
+  // console.log(allReactions, " <--- allReactions here");
+
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
     dispatch(commentActions.getTheAllComments());
+    dispatch(reactionActions.getTheReactions());
   }, [dispatch]);
-
-  const handleAddComment = (e) => {
-    e.preventDefault();
-
-    const data = {
-      comment: newComment,
-      photo_id: photoId,
-      user_id: user.id,
-    };
-    if (newComment === "") {
-      return alert("Please enter a comment");
-    }
-    dispatch(commentActions.addTheComment(data)).then(() => async (res) => {
-      const data = await res.json();
-      if (data.errors) {
-        return alert(data.errors);
-      }
-      // setErrors2()
-    });
-    setNewComment("");
-  };
 
   return (
     <div className="homepage-container">
@@ -89,9 +72,17 @@ function Home() {
                 <i className="fa-solid fa-comment"></i>
               </div> */}
               {/* {photo?.user?.username} */}
+              <div className="reaction-container">
+                {allReactions.map((reaction) => {
+                  if (reaction.photo_id === photo.id) {
+                    liked++;
+                  }
+                  return liked;
+                })}
+              </div>
               <div className="photo-caption-container">
                 <div className="photo-caption">Caption: {photo.caption}</div>
-                
+
                 <div>Comment(s):</div>
                 {allComments.map((comment) => {
                   // console.log(comment, " <------ comment");
@@ -110,7 +101,7 @@ function Home() {
                       </div>
                     );
                   }
-                  return null
+                  return null;
                 })}
                 {user && (
                   <form
