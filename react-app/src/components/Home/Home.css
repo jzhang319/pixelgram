@@ -65,6 +65,8 @@
   z-index: 2;
   /* transform: translate(-50%, -50%); */
   /* -ms-transform: translate(-50%, -50%); */
+  box-shadow: 3px 3px red, -.5em -.5em .4em aqua;
+  border-radius: 5px;
 }
 .photo-img-box:hover .photo-btn{
   display: block;
@@ -76,6 +78,10 @@
   padding: 12px 24px;
   cursor: pointer;
 }
+/* .photo-img-box:hover{
+  box-shadow: 3px 3px red, -.5em -.5em .4em aqua;
+  border-radius: 5px;
+} */
 
 a.photo-link{
   border-radius: 5px;
@@ -209,6 +215,9 @@ div.photo-caption{
 input.input-comment-bar{
   width: 90%;
   height: 40px;
+  margin-left: 0px;
+  background-color: black;
+  color: white;
 }
 
 .inside-comment{

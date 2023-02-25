@@ -164,7 +164,6 @@ function PhotoDetail() {
             })}
           </div>
           <form onSubmit={handleAddComment} className="add-comment-form">
-            {/* add comment form here */}
             <div className="input-comment-bar-container">
               <input
                 className="input-comment-bar"

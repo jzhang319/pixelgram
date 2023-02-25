@@ -113,3 +113,7 @@ input.profile-section-clicked{
   /* margin-top: 10px;
   margin-bottom: 10px; */
 }
+
+ul >li {
+  padding-bottom: 5px;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
@@ -9,6 +9,8 @@ import * as commentActions from "../../store/comment";
 
 function Home() {
   const dispatch = useDispatch();
+  const [newComment, setNewComment] = useState("");
+  let photoId;
 
   const allPhotos = useSelector((state) =>
     Object.values(state.photo).sort((a, b) => b.id - a.id)
@@ -24,6 +26,27 @@ function Home() {
     dispatch(photoActions.getThePhotos());
     dispatch(commentActions.getTheAllComments());
   }, [dispatch]);
+
+  const handleAddComment = (e) => {
+    e.preventDefault();
+
+    const data = {
+      comment: newComment,
+      photo_id: photoId,
+      user_id: user.id,
+    };
+    if (newComment === "") {
+      return alert("Please enter a comment");
+    }
+    dispatch(commentActions.addTheComment(data)).then(() => async (res) => {
+      const data = await res.json();
+      if (data.errors) {
+        return alert(data.errors);
+      }
+      // setErrors2()
+    });
+    setNewComment("");
+  };
 
   return (
     <div className="homepage-container">
@@ -54,7 +77,11 @@ function Home() {
                     src={photo.url}
                     alt={photo.caption}
                   />
-                  {user?.id === photo?.user_id ? (<button className="photo-btn">Edit Photo</button>):(<button className="photo-btn">Comment Photo</button>)}
+                  {user?.id === photo?.user_id ? (
+                    <button className="photo-btn">Edit Photo</button>
+                  ) : (
+                    <button className="photo-btn">Comment Photo</button>
+                  )}
                 </div>
               </NavLink>
               {/* <div className="photo-like-comment-section">
@@ -63,9 +90,10 @@ function Home() {
               </div> */}
               {/* {photo?.user?.username} */}
               <div className="photo-caption-container">
-                <div className="photo-caption">Caption:{' '}{photo.caption}</div>
+                <div className="photo-caption">Caption: {photo.caption}</div>
                 <div>Comment(s):</div>
                 {allComments.map((comment) => {
+                  // console.log(comment, " <------ comment");
                   if (comment.photo_id === photo.id) {
                     return (
                       <div key={comment.id} className="each-comment">
@@ -82,14 +110,49 @@ function Home() {
                     );
                   }
                 })}
+                {user && (
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const data = {
+                        comment: newComment,
+                        photo_id: photo.id,
+                        user_id: user.id,
+                      };
+                      if (newComment === "") {
+                        return alert("Please enter a comment");
+                      }
+                      dispatch(commentActions.addTheComment(data)).then(
+                        () => async (res) => {
+                          const data = await res.json();
+                          if (data.errors) {
+                            return alert(data.errors);
+                          }
+                          // setErrors2()
+                        }
+                      );
+                      setNewComment("");
+                    }}
+                    className="add-comment-form"
+                  >
+                    <div className="input-comment-bar-container">
+                      {/* {(photoId = photo.id)} */}
+                      <input
+                        className="input-comment-bar"
+                        type="text"
+                        placeholder="Enter comment here"
+                        value={newComment}
+                        onChange={(e) => {
+                          setNewComment(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <button type="submit">Add Comment</button>
+                    </div>
+                  </form>
+                )}
               </div>
-              {/* {photo.comment.map((comment) => {
-                return (
-                  <div key={comment.id} className="another-each">
-                    {comment.comment}
-                  </div>
-                );
-              })} */}
             </div>
           );
         })}
