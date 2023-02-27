@@ -7,6 +7,7 @@ import "./SignupForm.css";
 function SignupFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
+  const [profile_url, setProfile_url] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -70,6 +71,17 @@ function SignupFormModal() {
             required
           />
           <i className="fa-solid fa-user"></i>
+        </label>
+        <label>
+          Profile Picture
+          <input
+            type="text"
+            value={profile_url}
+            onChange={(e) => setProfile_url(e.target.value)}
+            placeholder="enter URL here ..."
+            required
+          />
+          <i className="fa-solid fa-image"></i>
         </label>
         <label>
           Password

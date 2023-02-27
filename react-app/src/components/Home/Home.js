@@ -73,19 +73,13 @@ function Home() {
                 <i className="fa-solid fa-comment"></i>
               </div> */}
               {/* {photo?.user?.username} */}
-              <div className="reaction-container">
-                {allReactions.map((reaction) => {
-                  let liked = 0
-                  if (reaction.photo_id === photo.id) {
-                    liked += 1
-                  }
-                  return liked
-                })}
-
-              </div>
+              {photo?.reaction_length > 0 && (
+                <div className="number-likes-section">
+                  {photo.reaction_length} likes
+                </div>
+              )}
               <div className="photo-caption-container">
                 <div className="photo-caption">Caption: {photo.caption}</div>
-
                 <div>Comment(s):</div>
                 {allComments.map((comment) => {
                   // console.log(comment, " <------ comment");
