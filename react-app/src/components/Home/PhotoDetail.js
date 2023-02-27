@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
+import * as reactionActions from "../../store/reaction";
 // import EditPhotoFormModal from "../EditPhotoFormModal";
 import OpenModalButton from "../OpenModalButton";
 import EditPhotoForm from "../EditPhotoFormModal/EditPhotoForm";
@@ -18,8 +19,9 @@ function PhotoDetail() {
   const comments = useSelector((state) => Object.values(state.comment));
   const currPhoto = useSelector((state) => state.photo);
   const user = useSelector((state) => state.session.user);
+  const reactionCount = useSelector((state) => state.reaction);
 
-  // console.log(user.id, " <--- user");
+  // console.log(reactionCount, " <--- here");
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -63,6 +65,7 @@ function PhotoDetail() {
   useEffect(() => {
     dispatch(photoActions.getThePhoto(photoId));
     dispatch(commentActions.getTheComments(photoId));
+    // dispatch(reactionActions.getTheReactionCount(photoId));
 
     if (!showMenu) return;
 
@@ -105,6 +108,15 @@ function PhotoDetail() {
             />
           </div>
           <div className="photo-like-comment-section">
+            <i
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(
+                  reactionActions.postTheReaction(currPhoto.id, user.id)
+                );
+              }}
+              className="fa-solid fa-heart"
+            ></i>
             {/* <i className="fa-solid fa-heart"></i>{" "}
             <i className="fa-solid fa-comment"></i> */}
 
@@ -115,7 +127,9 @@ function PhotoDetail() {
                   onItemClick={closeMenu}
                   modalComponent={<EditPhotoForm />}
                 />
-                <div className="modal-divs" onClick={handleDeletePhoto}>Delete Post</div>
+                <div className="modal-divs" onClick={handleDeletePhoto}>
+                  Delete Post
+                </div>
               </>
             )}
           </div>
@@ -163,6 +177,7 @@ function PhotoDetail() {
               );
             })}
           </div>
+          {reactionCount[0]} likes
           <form onSubmit={handleAddComment} className="add-comment-form">
             <div className="input-comment-bar-container">
               <input
@@ -208,11 +223,15 @@ function PhotoDetail() {
             />
           </div>
           <div className="photo-like-comment-section">
-            {/* <i className="fa-solid fa-heart"></i>{" "}
-            <i className="fa-solid fa-comment"></i> */}
+            {/* <i onClick={(e)=>{
+              e.preventDefault();
+              dispatch(reactionActions.postTheReaction(currPhoto.id))
+            }} className="fa-solid fa-heart"></i>{" "} */}
+            {/* <i className="fa-solid fa-comment"></i> */}
           </div>
           {currPhoto?.user?.username}
           <div className="photo-caption">{currPhoto.caption}</div>
+          <div className="reaction-count">{reactionCount[0]} likes</div>
           <div className="comments-section">
             {comments.map((comment) => {
               return (

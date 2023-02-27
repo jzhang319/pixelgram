@@ -29,6 +29,7 @@ function Home() {
     dispatch(photoActions.getThePhotos());
     dispatch(commentActions.getTheAllComments());
     dispatch(reactionActions.getTheReactions());
+    // dispatch(reactionActions.getTheReactionCount(1));
   }, [dispatch]);
 
   return (
@@ -74,11 +75,13 @@ function Home() {
               {/* {photo?.user?.username} */}
               <div className="reaction-container">
                 {allReactions.map((reaction) => {
+                  let liked = 0
                   if (reaction.photo_id === photo.id) {
-                    liked++;
+                    liked += 1
                   }
-                  return liked;
+                  return liked
                 })}
+
               </div>
               <div className="photo-caption-container">
                 <div className="photo-caption">Caption: {photo.caption}</div>

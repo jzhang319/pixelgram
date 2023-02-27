@@ -7,7 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import PhotoDetail from "./components/Home/PhotoDetail";
 import Home from "./components/Home/Home";
-import MessageSideBar from "./components/MessageSideBar/MessageSideBar";
+// import MessageSideBar from "./components/MessageSideBar/MessageSideBar";
 
 function App() {
   const dispatch = useDispatch();

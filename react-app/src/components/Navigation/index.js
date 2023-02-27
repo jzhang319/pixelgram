@@ -96,7 +96,7 @@ function Navigation({ isLoaded }) {
       )}
       {!sessionUser && (
         <div onClick={handleDemoLogin} className="demo-login-button">
-          <i class="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user"></i>
           Demo Login
         </div>
       )}

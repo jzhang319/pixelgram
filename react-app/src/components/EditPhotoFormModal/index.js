@@ -10,7 +10,7 @@ function EditPhotoFormModal() {
   const history = useHistory();
   const { photoId } = useParams();
 
-  console.log(photoId, " <---- id from index");
+  // console.log(photoId, " <---- id from index");
 
   const [showModal, setShowModal] = useState(false);
 
