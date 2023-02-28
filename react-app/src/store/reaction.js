@@ -6,11 +6,11 @@ const getReactions = (reactions) => {
   };
 };
 
-const GET_REACTION_COUNT = "GET_REACTION_COUNT";
-const getReactionCount = (reactionCount) => {
+const GET_REACTION = "GET_REACTION";
+const getReaction = (reaction) => {
   return {
-    type: GET_REACTION_COUNT,
-    reactionCount,
+    type: GET_REACTION,
+    reaction,
   };
 };
 
@@ -20,6 +20,17 @@ const postReaction = (reaction) => {
     type: POST_REACTION,
     reaction,
   };
+};
+export const getTheReaction = (photoId) => async (dispatch) => {
+  const response = await fetch(`/api/reactions/photos/${photoId}`);
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getReaction(data));
+    return data;
+  } else {
+    return { message: "reaction not found" };
+  }
 };
 
 export const postTheReaction = (id, userId) => async (dispatch) => {
@@ -39,15 +50,6 @@ export const postTheReaction = (id, userId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(postReaction(data));
-    return data;
-  }
-};
-
-export const getTheReactionCount = (photoId) => async (dispatch) => {
-  const response = await fetch(`/api/reactions/photos/${photoId}/count`);
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(getReactionCount(data));
     return data;
   }
 };
@@ -77,21 +79,21 @@ const reactionReducer = (state = initialState, action) => {
       });
       return { ...allReactions };
     }
-    case GET_REACTION_COUNT: {
-      // console.log(action.reactionCount.reaction.length, " <----- reaction reducer");
-      // const allReactions = [];
-      // action.reactionCount.reactions.forEach((reaction) => {
-      //   // console.log(reaction, " <--- reaction inside reducer forEach");
-      //   allReactions[reaction.id] = reaction;
-      // });
-      return [action.reactionCount.reaction.length];
-    }
     case POST_REACTION: {
-      console.log(action.reaction, " <----- reaction reducer");
+      // console.log(action.reaction, " <----- reaction reducer");
       return {
         ...state,
         [action.reaction.id]: action.reaction,
       };
+    }
+    case GET_REACTION: {
+      // console.log(action.reaction, " <----- reaction reducer");
+      const allReactions = [];
+      action.reaction.reaction.forEach((reaction) => {
+        // console.log(reaction, " <--- reaction inside reducer forEach");
+        allReactions[reaction.id] = reaction;
+      });
+      return { ...allReactions };
     }
     default:
       return state;

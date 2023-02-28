@@ -26,8 +26,8 @@ def get_reactions_all_photos():
     return {'reactions': [reaction.to_dict() for reaction in all_reactions]}
 
 
-@reaction_routes.route('/photos/<int:id>/count', methods=['GET'])
-def get_reaction_count_photo(id):
+@reaction_routes.route('/photos/<int:id>', methods=['GET'])
+def get_reaction_single_photo(id):
     reaction_check = Reaction.query.filter_by(photo_id=id)
     if reaction_check:
         return {'reaction': [reaction.to_dict() for reaction in reaction_check]}

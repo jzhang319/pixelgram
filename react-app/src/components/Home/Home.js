@@ -20,7 +20,7 @@ function Home() {
   const allComments = useSelector((state) => Object.values(state.comment));
   // console.log(allComments, " <--- allComments here");
 
-  const allReactions = useSelector((state) => Object.values(state.reaction));
+  // const allReactions = useSelector((state) => Object.values(state.reaction));
   // console.log(allReactions, " <--- allReactions here");
 
   const user = useSelector((state) => state.session.user);
@@ -28,7 +28,7 @@ function Home() {
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
     dispatch(commentActions.getTheAllComments());
-    dispatch(reactionActions.getTheReactions());
+    // dispatch(reactionActions.getTheReactions());
     // dispatch(reactionActions.getTheReactionCount(1));
   }, [dispatch]);
 
@@ -68,10 +68,23 @@ function Home() {
                   )}
                 </div>
               </NavLink>
-              {/* <div className="photo-like-comment-section">
-                <i className="fa-solid fa-heart"></i>{" "}
-                <i className="fa-solid fa-comment"></i>
-              </div> */}
+              <div className="photo-like-section">
+                <i
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(
+                      reactionActions.postTheReaction(photo.id, user.id)
+                    )
+                      .then(() => dispatch(photoActions.getThePhotos()))
+                      .then(() =>
+                        dispatch(reactionActions.getTheReaction(photo.id))
+                      );
+                  }}
+                  className="fa-solid fa-heart like-icon"
+                ></i>
+              </div>
+              {/* <i className="fa-solid fa-heart"></i>{" "}
+              <i className="fa-solid fa-comment"></i> */}
               {/* {photo?.user?.username} */}
               {photo?.reaction_length > 0 && (
                 <div className="number-likes-section">

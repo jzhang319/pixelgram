@@ -68,6 +68,7 @@ def sign_up():
             profile_url=form.data['profile_url'],
             password=form.data['password'],
         )
+        print(form.data['profile_url'], ' <----- from backend')
         db.session.add(user)
         db.session.commit()
         login_user(user)

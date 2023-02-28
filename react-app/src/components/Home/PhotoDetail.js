@@ -65,7 +65,7 @@ function PhotoDetail() {
   useEffect(() => {
     dispatch(photoActions.getThePhoto(photoId));
     dispatch(commentActions.getTheComments(photoId));
-    // dispatch(reactionActions.getTheReactionCount(photoId));
+    dispatch(reactionActions.getTheReaction(photoId));
 
     if (!showMenu) return;
 
@@ -111,12 +111,19 @@ function PhotoDetail() {
             <i
               onClick={(e) => {
                 e.preventDefault();
-                dispatch(
-                  reactionActions.postTheReaction(currPhoto.id, user.id)
-                );
+                dispatch(reactionActions.postTheReaction(currPhoto.id, user.id))
+                  .then(() => dispatch(photoActions.getThePhoto(photoId)))
+                  .then(() =>
+                    dispatch(reactionActions.getTheReaction(currPhoto.id))
+                  );
               }}
-              className="fa-solid fa-heart"
+              className="fa-solid fa-heart like-icon"
             ></i>
+            {currPhoto?.reaction_length > 0 && (
+              <div className="number-likes-section">
+                {currPhoto.reaction_length} likes
+              </div>
+            )}
             {/* <i className="fa-solid fa-heart"></i>{" "}
             <i className="fa-solid fa-comment"></i> */}
 
@@ -177,7 +184,6 @@ function PhotoDetail() {
               );
             })}
           </div>
-          {reactionCount[0]} likes
           <form onSubmit={handleAddComment} className="add-comment-form">
             <div className="input-comment-bar-container">
               <input

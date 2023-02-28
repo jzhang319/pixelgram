@@ -23,7 +23,7 @@ def username_exists(form, field):
 def valid_picture(form, field):
     # checks if the picture is in correct format
     picture_url = field.data
-    if picture_url:
+    if len(picture_url):
         if not picture_url.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tif', '.tiff')):
             raise ValidationError("Not a valid image.")
 
