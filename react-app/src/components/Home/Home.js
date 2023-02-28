@@ -72,9 +72,9 @@ function Home() {
                 </div>
               </NavLink>
               <div className="photo-like-section">
-                {allUserReactions.map((reaction) => {
+                {/* {allUserReactions.map((reaction) => {
                   if(reaction.user_id === user.id) setLiked("fa-solid fa-heart liked-icon")
-                })}
+                })} */}
                 <i
                   onClick={(e) => {
                     e.preventDefault();
