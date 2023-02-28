@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
+from flask_login import current_user
 
 
 class Photo(db.Model):
@@ -29,17 +30,23 @@ class Photo(db.Model):
     def find_reaction_length(self):
         return len(self.reactions)
 
+    def user_reacted(self):
+        user_liked = []
+        for reaction in self.reactions:
+            user_liked.append(reaction.user_id)
+        return user_liked
+
     def to_dict(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
             'url': self.url,
             'caption': self.caption,
-
             'date_created': self.created_at,
             'updated_at': self.updated_at,
             'comments': {comment.id: comment.to_dict() for comment in self.comments},
             'reactions': {reaction.id: reaction.to_dict() for reaction in self.reactions},
             'user': self.user.to_post_dict(),
-            'reaction_length': self.find_reaction_length()
+            'reaction_length': self.find_reaction_length(),
+            'user_reacted': self.user_reacted(),
         }

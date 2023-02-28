@@ -19,9 +19,14 @@ function PhotoDetail() {
   const comments = useSelector((state) => Object.values(state.comment));
   const currPhoto = useSelector((state) => state.photo);
   const user = useSelector((state) => state.session.user);
-  const reactionCount = useSelector((state) => state.reaction);
+  const userReacted = useSelector((state) => state.photo.user_reacted);
 
-  // console.log(reactionCount, " <--- here");
+  const [liked, setLiked] = useState("fa-solid fa-heart like-icon");
+
+  // if (userReacted?.includes(user.id)) {
+  //   setLiked("fa-solid fa-heart liked-icon");
+  // }
+
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -117,7 +122,7 @@ function PhotoDetail() {
                     dispatch(reactionActions.getTheReaction(currPhoto.id))
                   );
               }}
-              className="fa-solid fa-heart like-icon"
+              className={liked}
             ></i>
             {currPhoto?.reaction_length > 0 && (
               <div className="number-likes-section">
@@ -237,7 +242,9 @@ function PhotoDetail() {
           </div>
           {currPhoto?.user?.username}
           <div className="photo-caption">{currPhoto.caption}</div>
-          <div className="reaction-count">{reactionCount[0]} likes</div>
+          <div className="reaction-count">
+            {currPhoto.reaction_length} likes
+          </div>
           <div className="comments-section">
             {comments.map((comment) => {
               return (

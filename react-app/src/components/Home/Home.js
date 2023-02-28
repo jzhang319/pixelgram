@@ -13,6 +13,7 @@ function Home() {
 
   const [liked, setLiked] = useState("fa-solid fa-heart like-icon");
   const [newComment, setNewComment] = useState("");
+  const [photoId, setPhotoId] = useState("");
 
   const allPhotos = useSelector((state) =>
     Object.values(state.photo).sort((a, b) => b.id - a.id)
@@ -22,12 +23,19 @@ function Home() {
   const allComments = useSelector((state) => Object.values(state.comment));
   // console.log(allComments, " <--- allComments here");
 
+  const user = useSelector((state) => state.session.user);
+
   const allUserReactions = useSelector((state) =>
     Object.values(state.session.user.reactions)
   );
   // console.log(allUserReactions, " <--- allReactions here");
+  // const res = allUserReactions.filter((x) => x.reactions.some(y=>y.photo_id === photoId));
+  // console.log(res, " <--- results here");
 
-  const user = useSelector((state) => state.session.user);
+  // allUserReactions.map((reaction) => {
+  //   if (reaction.user_id === user.id && reaction.photo_id === photoId)
+  //     setLiked("fa-solid fa-heart liked-icon");
+  // });
 
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
@@ -43,10 +51,10 @@ function Home() {
       <div className="photo-container">
         {allPhotos.map((photo) => {
           // console.log(photo?.user?.profile_url, " <--- photo");
+          // setPhotoId(photo.id);
           return (
             <div key={photo.id} className="each-photo">
               <div className="profile-pic-username-container">
-                {/* <div className="profile-picture"> */}
                 <img
                   className="profile-pic"
                   src={photo?.user?.profile_url}
@@ -72,9 +80,6 @@ function Home() {
                 </div>
               </NavLink>
               <div className="photo-like-section">
-                {/* {allUserReactions.map((reaction) => {
-                  if(reaction.user_id === user.id) setLiked("fa-solid fa-heart liked-icon")
-                })} */}
                 <i
                   onClick={(e) => {
                     e.preventDefault();
