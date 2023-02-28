@@ -10,6 +10,8 @@ import * as reactionActions from "../../store/reaction";
 
 function Home() {
   const dispatch = useDispatch();
+
+  const [liked, setLiked] = useState("fa-solid fa-heart like-icon");
   const [newComment, setNewComment] = useState("");
 
   const allPhotos = useSelector((state) =>
@@ -20,22 +22,23 @@ function Home() {
   const allComments = useSelector((state) => Object.values(state.comment));
   // console.log(allComments, " <--- allComments here");
 
-  // const allReactions = useSelector((state) => Object.values(state.reaction));
-  // console.log(allReactions, " <--- allReactions here");
+  const allUserReactions = useSelector((state) =>
+    Object.values(state.session.user.reactions)
+  );
+  // console.log(allUserReactions, " <--- allReactions here");
 
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
     dispatch(commentActions.getTheAllComments());
-    // dispatch(reactionActions.getTheReactions());
-    // dispatch(reactionActions.getTheReactionCount(1));
+    dispatch(reactionActions.getTheReactions());
   }, [dispatch]);
 
   return (
     <div className="homepage-container">
       {/* <div className="user-profile-container">
-        ============= user-profiles container =============
+        =============following user-profiles container =============
       </div> */}
       <div className="photo-container">
         {allPhotos.map((photo) => {
@@ -69,18 +72,19 @@ function Home() {
                 </div>
               </NavLink>
               <div className="photo-like-section">
+                {allUserReactions.map((reaction) => {
+                  if(reaction.user_id === user.id) setLiked("fa-solid fa-heart liked-icon")
+                })}
                 <i
                   onClick={(e) => {
                     e.preventDefault();
-                    dispatch(
-                      reactionActions.postTheReaction(photo.id, user.id)
-                    )
+                    dispatch(reactionActions.postTheReaction(photo.id, user.id))
                       .then(() => dispatch(photoActions.getThePhotos()))
                       .then(() =>
                         dispatch(reactionActions.getTheReaction(photo.id))
                       );
                   }}
-                  className="fa-solid fa-heart like-icon"
+                  className={liked}
                 ></i>
               </div>
               {/* <i className="fa-solid fa-heart"></i>{" "}

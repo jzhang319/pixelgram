@@ -256,6 +256,11 @@ img.photo-itself{
 .like-icon{
   margin-bottom: 10px;
 }
+.liked-icon {
+  margin-bottom: 10px;
+  color: red;
+}
+
 .like-icon:hover{
   cursor: pointer;
 }
