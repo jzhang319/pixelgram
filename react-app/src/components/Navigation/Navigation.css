@@ -51,14 +51,22 @@
   flex-direction: column;
 }
 .home-log{
-  color: white;
-  text-decoration: none;
-
+  width: 80%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 100%
 }
-.home-button:hover{
+.home-log:hover{
   background-color: rgb(29, 28, 28);
   border: 1px solid lightgray;
   border-radius: 25px;
+  /* transform: scale(1.1); */
+  cursor: pointer;
 }
 .modal-divs{
   margin-top: 15px;
@@ -68,8 +76,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid lightgray; */
   border-radius: 3px;
+  /* border: 1px solid lightgray; */
 }
 .modal-divs:hover {
   background-color: rgb(48, 167, 207);

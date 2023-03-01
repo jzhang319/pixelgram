@@ -62,12 +62,12 @@ function Navigation({ isLoaded }) {
           </h1>
         </div>
       </NavLink>
-      <div className="home-button-section">
-        <NavLink className="home-log" to="/">
+      <NavLink className="home-log" to="/">
+        <div className="home-button-section">
           <i className="fa-solid fa-house"></i>
           Home
-        </NavLink>
-      </div>
+        </div>
+      </NavLink>
       {/* <NavLink to="/following">
         <div>
           <i className="fa-solid fa-star"></i>

@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
 import * as reactionActions from "../../store/reaction";
+import AddCommentForm from "../AddComment/AddCommentForm";
 
 function Home() {
   const dispatch = useDispatch();
@@ -127,46 +128,7 @@ function Home() {
                   return null;
                 })}
                 {user && (
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      const data = {
-                        comment: newComment,
-                        photo_id: photo.id,
-                        user_id: user.id,
-                      };
-                      if (newComment === "") {
-                        return alert("Please enter a comment");
-                      }
-                      dispatch(commentActions.addTheComment(data)).then(
-                        () => async (res) => {
-                          const data = await res.json();
-                          if (data.errors) {
-                            return alert(data.errors);
-                          }
-                          // setErrors2()
-                        }
-                      );
-                      setNewComment("");
-                    }}
-                    className="add-comment-form"
-                  >
-                    <div className="input-comment-bar-container">
-                      {/* {(photoId = photo.id)} */}
-                      <input
-                        className="input-comment-bar"
-                        type="text"
-                        placeholder="Add a comment ..."
-                        value={newComment}
-                        onChange={(e) => {
-                          setNewComment(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <button type="submit">Add Comment</button>
-                    </div>
-                  </form>
+                  <AddCommentForm photo={photo} user={user} />
                 )}
               </div>
             </div>
