@@ -25,6 +25,7 @@
 .pixel{
   color: white;
   min-width: min-content;
+  /* font-family: 'Roboto', sans-serif; */
 }
 .pixel-logo{
   width:30px;
@@ -130,14 +131,10 @@ input.profile-section-clicked{
   display: flex;
   width: 100%;
 }
-.profile-section-button{
-  /* left: 10px; */
-}
+
 .demo-login-button{
-  background-color: transparent;
   height: 60px;
-  /* margin-top: 10px;
-  margin-bottom: 10px; */
+  /* background-color: transparent; */
 }
 
 ul >li {
