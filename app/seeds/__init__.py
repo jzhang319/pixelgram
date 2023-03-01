@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .photos import seed_photos, undo_photos
 from .comments import seed_comments, undo_comments
 from .reactions import seed_reactions, undo_reactions
+from .followers import seed_followers, undo_followers
 
 from app.models.db import db, environment, SCHEMA
 
@@ -25,12 +26,14 @@ def seed():
         undo_photos()
         undo_comments()
         undo_reactions()
+        undo_followers()
         db.session.commit()
     seed_users()
     # Add other seed functions here
     seed_photos()
     seed_comments()
     seed_reactions()
+    seed_followers()
 
 
 # Creates the `flask seed undo` command
@@ -41,3 +44,4 @@ def undo():
     undo_photos()
     undo_comments()
     undo_reactions()
+    undo_followers()
