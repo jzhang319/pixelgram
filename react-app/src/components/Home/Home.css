@@ -111,10 +111,12 @@ a.photo-link{
 
 .number-likes-section{
   margin-top: 5px;
+  color: gray;
 }
 
 .photo-like-section{
   margin-top: 10px;
+  margin-left: 10px;
 }
 
 .profile-pic-username-container{

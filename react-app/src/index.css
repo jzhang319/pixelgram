@@ -1,7 +1,9 @@
 /* TODO Add site wide styles */
 div{
-  color:white
+  color:white;
+  font-family: 'Shantell Sans', cursive;
 }
+
 body{
   background-color: black;
   /* background-color: gray; */
@@ -9,15 +11,16 @@ body{
 
 button {
   background-color: rgb(48, 167, 207);
-  text-transform: capitalize;
   color: white;
   padding: 10px;
   border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
 button:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.05); */
   cursor: pointer;
+  box-shadow: 5px -5px 5px orange;
 }
 .modal-divs:hover{
   cursor: pointer;
@@ -27,7 +30,12 @@ button:hover {
   height: 200px;
   width: 100%;
 }
-
+.fa-heart{
+  transform: scale(1.5);
+}
+.fa-heart:hover{
+  transform: scale(2.0);
+}
 a{
   /* color:white; */
   text-decoration: none;
