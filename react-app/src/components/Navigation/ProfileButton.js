@@ -43,6 +43,7 @@ function ProfileButton({ user }) {
   return (
     <>
       {(currUser && (
+        // <div>
         <input
           className="profile-section-clicked"
           type="image"

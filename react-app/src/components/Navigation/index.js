@@ -87,12 +87,12 @@ function Navigation({ isLoaded }) {
         </div>
       </NavLink> */}
       {sessionUser && (
-          <OpenModalButton
-            buttonText="Create Post"
-            onItemClick={closeMenu}
-            modalComponent={<PostPhotoForm />}
-            icon={<i className="fa-solid fa-plus"></i>}
-          />
+        <OpenModalButton
+          buttonText="Create Post"
+          onItemClick={closeMenu}
+          modalComponent={<PostPhotoForm />}
+          icon={<i className="fa-solid fa-plus"></i>}
+        />
       )}
       {!sessionUser && (
         <div onClick={handleDemoLogin} className="demo-login-button">
@@ -113,14 +113,14 @@ function Navigation({ isLoaded }) {
             buttonText="Sign Up"
             onItemClick={closeMenu}
             modalComponent={<SignupFormModal />}
-            icon={<i className="fa-solid fa-text-slash"></i>}
+            icon={<i className="fa-solid fa-file"></i>}
           />
         </>
       )}
       {sessionUser && (
-        // <div className="profile-section-button">
-          <ProfileButton user={sessionUser} />
-        // </div>
+        // <span className="profile-section-button">
+        <ProfileButton user={sessionUser} />
+        // </span>
       )}
     </div>
   );
