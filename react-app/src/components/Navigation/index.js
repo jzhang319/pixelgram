@@ -6,6 +6,8 @@ import "./Navigation.css";
 import * as sessionActions from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import PostPhotoForm from "../PostPhotoModal/PostPhotoForm";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
@@ -60,12 +62,12 @@ function Navigation({ isLoaded }) {
           </h1>
         </div>
       </NavLink>
-      <NavLink to="/">
-        <div className="home-button">
+      <div className="home-button-section">
+        <NavLink className="home-log" to="/">
           <i className="fa-solid fa-house"></i>
           Home
-        </div>
-      </NavLink>
+        </NavLink>
+      </div>
       {/* <NavLink to="/following">
         <div>
           <i className="fa-solid fa-star"></i>
@@ -85,14 +87,12 @@ function Navigation({ isLoaded }) {
         </div>
       </NavLink> */}
       {sessionUser && (
-        <div className="create-post">
-          <i className="fa-solid fa-plus"></i>
           <OpenModalButton
             buttonText="Create Post"
             onItemClick={closeMenu}
             modalComponent={<PostPhotoForm />}
+            icon={<i className="fa-solid fa-plus"></i>}
           />
-        </div>
       )}
       {!sessionUser && (
         <div onClick={handleDemoLogin} className="demo-login-button">
@@ -100,10 +100,27 @@ function Navigation({ isLoaded }) {
           Demo Login
         </div>
       )}
-      {isLoaded && (
-        <div className="profile-section-button">
+      {!sessionUser && (
+        <>
+          <OpenModalButton
+            buttonText="Log In"
+            onItemClick={closeMenu}
+            modalComponent={<LoginFormModal />}
+            icon={<i className="fa-solid fa-right-to-bracket"></i>}
+          />
+
+          <OpenModalButton
+            buttonText="Sign Up"
+            onItemClick={closeMenu}
+            modalComponent={<SignupFormModal />}
+            icon={<i className="fa-solid fa-text-slash"></i>}
+          />
+        </>
+      )}
+      {sessionUser && (
+        // <div className="profile-section-button">
           <ProfileButton user={sessionUser} />
-        </div>
+        // </div>
       )}
     </div>
   );

@@ -6,14 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
 import * as reactionActions from "../../store/reaction";
-// import * as sessionActions from "../../store/session";
 
 function Home() {
   const dispatch = useDispatch();
 
-  const [liked, setLiked] = useState("fa-solid fa-heart like-icon");
   const [newComment, setNewComment] = useState("");
-  const [photoId, setPhotoId] = useState("");
 
   const allPhotos = useSelector((state) =>
     Object.values(state.photo).sort((a, b) => b.id - a.id)
@@ -25,17 +22,7 @@ function Home() {
 
   const user = useSelector((state) => state.session.user);
 
-  const allUserReactions = useSelector((state) =>
-    Object.values(state.session.user.reactions)
-  );
-  // console.log(allUserReactions, " <--- allReactions here");
-  // const res = allUserReactions.filter((x) => x.reactions.some(y=>y.photo_id === photoId));
-  // console.log(res, " <--- results here");
-
-  // allUserReactions.map((reaction) => {
-  //   if (reaction.user_id === user.id && reaction.photo_id === photoId)
-  //     setLiked("fa-solid fa-heart liked-icon");
-  // });
+  // const userReacted = useSelector((state) => state.photo.user_reacted);
 
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
@@ -50,8 +37,6 @@ function Home() {
       </div> */}
       <div className="photo-container">
         {allPhotos.map((photo) => {
-          // console.log(photo?.user?.profile_url, " <--- photo");
-          // setPhotoId(photo.id);
           return (
             <div key={photo.id} className="each-photo">
               <div className="profile-pic-username-container">
@@ -80,21 +65,40 @@ function Home() {
                 </div>
               </NavLink>
               <div className="photo-like-section">
-                <i
-                  onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(reactionActions.postTheReaction(photo.id, user.id))
-                      .then(() => dispatch(photoActions.getThePhotos()))
-                      .then(() =>
-                        dispatch(reactionActions.getTheReaction(photo.id))
-                      );
-                  }}
-                  className={liked}
-                ></i>
+                {user ? (
+                  photo.user_reacted?.includes(user.id) ? (
+                    <i
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(
+                          reactionActions.postTheReaction(photo.id, user.id)
+                        )
+                          .then(() => dispatch(photoActions.getThePhotos()))
+                          .then(() =>
+                            dispatch(reactionActions.getTheReaction(photo.id))
+                          );
+                      }}
+                      className="fa-solid fa-heart liked-icon"
+                    ></i>
+                  ) : (
+                    <i
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(
+                          reactionActions.postTheReaction(photo.id, user.id)
+                        )
+                          .then(() => dispatch(photoActions.getThePhotos()))
+                          .then(() =>
+                            dispatch(reactionActions.getTheReaction(photo.id))
+                          );
+                      }}
+                      className="fa-solid fa-heart like-icon"
+                    ></i>
+                  )
+                ) : (
+                  <></>
+                )}
               </div>
-              {/* <i className="fa-solid fa-heart"></i>{" "}
-              <i className="fa-solid fa-comment"></i> */}
-              {/* {photo?.user?.username} */}
               {photo?.reaction_length > 0 && (
                 <div className="number-likes-section">
                   {photo.reaction_length} likes

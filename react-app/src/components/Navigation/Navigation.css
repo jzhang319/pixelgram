@@ -45,30 +45,46 @@
   top: 0;
   left: 0;
   border-right: 1px solid lightgray;
-  min-width: 200px;
+  min-width: 210px;
   /* max-width: 15%; */
   display: flex;
   flex-direction: column;
 }
-.home-button{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 40px;
-  margin-left:20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+.home-log{
+  color: white;
+  text-decoration: none;
+
+}
+.home-button:hover{
+  background-color: rgb(29, 28, 28);
+  border: 1px solid lightgray;
+  border-radius: 25px;
 }
 .modal-divs{
   margin-top: 15px;
   margin-bottom: 15px;
-  margin-right: 20px;
+  margin-right: 10px;
+  /* margin-left: 10px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid lightgray; */
+  border-radius: 3px;
 }
-
+.modal-divs:hover {
+  background-color: rgb(48, 167, 207);
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  /* font-weight: 700; */
+}
+.edit-delete-container{
+  display: flex;
+  justify-content: center;
+}
 .navigation-side-panel>div{
   /* position: absolute; */
   /* min-width: 50%; */
-  width: 85%;
+  width: 80%;
   height: 40px;
   display:flex;
   align-items: center;
@@ -78,9 +94,11 @@
   margin-bottom: 10px;
   min-width: 100%;
 }
+
 .navigation-side-panel>div:hover{
-  /* background-color: rgb(29, 28, 28); */
-  /* border-radius: 25px; */
+  background-color: rgb(29, 28, 28);
+  border: 1px solid lightgray;
+  border-radius: 25px;
   /* transform: scale(1.1); */
   cursor: pointer;
 }

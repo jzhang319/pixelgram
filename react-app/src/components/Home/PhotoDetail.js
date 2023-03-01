@@ -21,23 +21,10 @@ function PhotoDetail() {
   const user = useSelector((state) => state.session.user);
   const userReacted = useSelector((state) => state.photo.user_reacted);
 
-  const [liked, setLiked] = useState("fa-solid fa-heart like-icon");
-
-  // if (userReacted?.includes(user.id)) {
-  //   setLiked("fa-solid fa-heart liked-icon");
-  // }
-
-
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
   const [newComment, setNewComment] = useState("");
-  // const [errors2, setErrors2] = useState([]);
-
-  // const openMenu = () => {
-  //   if (showMenu) return;
-  //   setShowMenu(true);
-  // };
 
   const handleAddComment = (e) => {
     e.preventDefault();
@@ -55,7 +42,6 @@ function PhotoDetail() {
       if (data.errors) {
         return alert(data.errors);
       }
-      // setErrors2()
     });
     setNewComment("");
   };
@@ -113,27 +99,42 @@ function PhotoDetail() {
             />
           </div>
           <div className="photo-like-comment-section">
-            <i
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(reactionActions.postTheReaction(currPhoto.id, user.id))
-                  .then(() => dispatch(photoActions.getThePhoto(photoId)))
-                  .then(() =>
-                    dispatch(reactionActions.getTheReaction(currPhoto.id))
-                  );
-              }}
-              className={liked}
-            ></i>
+            {userReacted?.includes(user.id) ? (
+              <i
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(
+                    reactionActions.postTheReaction(currPhoto.id, user.id)
+                  )
+                    .then(() => dispatch(photoActions.getThePhoto(photoId)))
+                    .then(() =>
+                      dispatch(reactionActions.getTheReaction(currPhoto.id))
+                    );
+                }}
+                className="fa-solid fa-heart liked-icon"
+              ></i>
+            ) : (
+              <i
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(
+                    reactionActions.postTheReaction(currPhoto.id, user.id)
+                  )
+                    .then(() => dispatch(photoActions.getThePhoto(photoId)))
+                    .then(() =>
+                      dispatch(reactionActions.getTheReaction(currPhoto.id))
+                    );
+                }}
+                className="fa-solid fa-heart like-icon"
+              ></i>
+            )}
             {currPhoto?.reaction_length > 0 && (
               <div className="number-likes-section">
                 {currPhoto.reaction_length} likes
               </div>
             )}
-            {/* <i className="fa-solid fa-heart"></i>{" "}
-            <i className="fa-solid fa-comment"></i> */}
-
             {user?.id === currPhoto.user_id && (
-              <>
+              <div className="edit-delete-container">
                 <OpenModalButton
                   buttonText="Edit Caption"
                   onItemClick={closeMenu}
@@ -142,10 +143,9 @@ function PhotoDetail() {
                 <div className="modal-divs" onClick={handleDeletePhoto}>
                   Delete Post
                 </div>
-              </>
+              </div>
             )}
           </div>
-          {/* {currPhoto?.user?.username} */}
           <div className="photo-caption">Caption: {currPhoto.caption}</div>
           <div className="comments-section">
             {comments.map((comment) => {
@@ -233,13 +233,7 @@ function PhotoDetail() {
               alt={currPhoto.caption}
             />
           </div>
-          <div className="photo-like-comment-section">
-            {/* <i onClick={(e)=>{
-              e.preventDefault();
-              dispatch(reactionActions.postTheReaction(currPhoto.id))
-            }} className="fa-solid fa-heart"></i>{" "} */}
-            {/* <i className="fa-solid fa-comment"></i> */}
-          </div>
+          <div className="photo-like-comment-section"></div>
           {currPhoto?.user?.username}
           <div className="photo-caption">{currPhoto.caption}</div>
           <div className="reaction-count">
