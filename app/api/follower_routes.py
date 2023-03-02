@@ -20,23 +20,31 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@follower_routes.route('/users/<int:id>', methods=['GET'])
-def get_user_followers(id):
-    my_followers = Follower.query.filter_by(user_id=id).all()
-    if my_followers:
-        return my_followers.to_dict()
+@follower_routes.route('/', methods=['GET'])
+@login_required
+def get_all_followings():
+    all_followers = Follower.query.all()
+    # print(list(all_followers), ' <-----------')
+    if all_followers:
+        return {'followers': [follower.to_dict() for follower in all_followers]}
     else:
         return {'message': 'No followers found'}
 
+
 @follower_routes.route('/users/<int:id>', methods=['POST'])
+@login_required
 def add_follower(id):
-    follower_check = Follower.query.filter_by(user_id=id).first()
+    follower_check = Follower.query.filter(
+        Follower.user_id == id,
+        Follower.follower_id == current_user.id
+    ).first()
+
     if follower_check:
-      db.session.delete(follower_check)
-      db.session.commit()
-      return {'message': 'Follower deleted successfully'}
+        db.session.delete(follower_check)
+        db.session.commit()
+        return {'message': 'Follower deleted successfully'}
     else:
-      new_follower = Follower(user_id=id, follower_id=current_user.id)
-      db.session.add(new_follower)
-      db.session.commit()
-      return new_follower.to_dict()
+        new_follower = Follower(user_id=id, follower_id=current_user.id)
+        db.session.add(new_follower)
+        db.session.commit()
+        return new_follower.to_dict()

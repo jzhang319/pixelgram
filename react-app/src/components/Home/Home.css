@@ -110,13 +110,31 @@ a.photo-link{
 }
 
 .number-likes-section{
-  margin-top: 5px;
+  /* margin-top: 5px; */
   color: gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.follow-btn{
+  display: flex;
+  margin-left: 10px;
+  padding: 3px;
+}
+.follow-btn:hover{
+  cursor: pointer;
+  background-color: rgb(48, 167, 207);
+  border: 1px solid lightgray;
+  border-radius: 3px;
 }
 
 .photo-like-section{
   margin-top: 10px;
   margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
 
 .profile-pic-username-container{

@@ -6,12 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
 import * as reactionActions from "../../store/reaction";
+import * as followerActions from "../../store/follower";
 import AddCommentForm from "../AddComment/AddCommentForm";
 
 function Home() {
   const dispatch = useDispatch();
-
-  const [newComment, setNewComment] = useState("");
 
   const allPhotos = useSelector((state) =>
     Object.values(state.photo).sort((a, b) => b.id - a.id)
@@ -29,6 +28,7 @@ function Home() {
     dispatch(photoActions.getThePhotos());
     dispatch(commentActions.getTheAllComments());
     dispatch(reactionActions.getTheReactions());
+    dispatch(followerActions.getTheAllFollowers());
   }, [dispatch]);
 
   return (
@@ -99,6 +99,24 @@ function Home() {
                 ) : (
                   <></>
                 )}
+                {user?.id !== photo?.user_id && user ? (
+                  <div
+                    className="follow-btn"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(
+                        followerActions.addTheFollower(photo.user_id, user.id)
+                      )
+                      .then(() =>
+                        dispatch(followerActions.getTheAllFollowers())
+                      );
+                    }}
+                  >
+                    Follow
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
               {photo?.reaction_length > 0 && (
                 <div className="number-likes-section">
@@ -127,9 +145,7 @@ function Home() {
                   }
                   return null;
                 })}
-                {user && (
-                  <AddCommentForm photo={photo} user={user} />
-                )}
+                {user && <AddCommentForm photo={photo} user={user} />}
               </div>
             </div>
           );

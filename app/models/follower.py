@@ -26,5 +26,4 @@ class Follower(db.Model):
             'follower_id': self.follower_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'followers': {follower.id: follower.to_dict() for follower in self.followers}
         }
