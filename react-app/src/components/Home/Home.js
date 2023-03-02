@@ -23,8 +23,8 @@ function Home() {
   const user = useSelector((state) => state.session.user);
 
   const followingUsers = useSelector((state) => Object.values(state.follower));
-  console.log(followingUsers, " <--- following users");
-  console.log(followingUsers.includes(user.id), ' <------')
+  // console.log(followingUsers, " <--- following users");
+  // console.log(followingUsers.includes(user.id), ' <------')
 
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
@@ -110,9 +110,10 @@ function Home() {
                       e.preventDefault();
                       dispatch(
                         followerActions.addTheFollower(photo.user_id, user.id)
-                      ).then(() =>
-                        dispatch(followerActions.getTheAllFollowers())
-                      );
+                      )
+                      // .then(() =>
+                      //   dispatch(followerActions.getTheAllFollowers())
+                      // );
                     }}
                   >
                     Follow

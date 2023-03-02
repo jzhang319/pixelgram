@@ -52,11 +52,11 @@ const followerReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_FOLLOWERS: {
       // console.log(action.followers, " <---- from follower reducer");
-      const allFollowers = [];
+      const allFollowings = [];
       action.followers.followers.forEach((follower) => {
-        allFollowers.push(follower);
+        allFollowings.push(follower);
       });
-      return { ...allFollowers };
+      return { ...allFollowings };
     }
     case ADD_FOLLOWER: {
       // console.log(action.follower.message, " <---- from follower reducer");
