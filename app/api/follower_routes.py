@@ -23,7 +23,8 @@ def validation_errors_to_error_messages(validation_errors):
 @follower_routes.route('/', methods=['GET'])
 @login_required
 def get_all_followings():
-    all_followers = Follower.query.all()
+    all_followers = Follower.query.filter(
+        Follower.follower_id == current_user.id).all()
     # print(list(all_followers), ' <-----------')
     if all_followers:
         return {'followers': [follower.to_dict() for follower in all_followers]}

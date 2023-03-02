@@ -22,13 +22,17 @@ function Home() {
 
   const user = useSelector((state) => state.session.user);
 
-  // const userReacted = useSelector((state) => state.photo.user_reacted);
+  const followingUsers = useSelector((state) => Object.values(state.follower));
+  console.log(followingUsers, " <--- following users");
+  console.log(followingUsers.includes(user.id), ' <------')
 
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
     dispatch(commentActions.getTheAllComments());
     dispatch(reactionActions.getTheReactions());
-    dispatch(followerActions.getTheAllFollowers());
+    if (user) {
+      dispatch(followerActions.getTheAllFollowers());
+    }
   }, [dispatch]);
 
   return (
@@ -106,8 +110,7 @@ function Home() {
                       e.preventDefault();
                       dispatch(
                         followerActions.addTheFollower(photo.user_id, user.id)
-                      )
-                      .then(() =>
+                      ).then(() =>
                         dispatch(followerActions.getTheAllFollowers())
                       );
                     }}
