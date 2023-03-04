@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9f770a6f9209
+Revision ID: 47cbb191540f
 Revises:
-Create Date: 2023-03-02 20:08:12.775349
+Create Date: 2023-03-04 13:41:49.411727
 
 """
 from alembic import op
@@ -12,8 +12,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = '9f770a6f9209'
+revision = '47cbb191540f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -41,11 +42,17 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE followers SET SCHEMA {SCHEMA};")
 
-    op.create_table('follows',
-                    sa.Column('follower_id', sa.Integer(), nullable=True),
-                    sa.Column('followed_id', sa.Integer(), nullable=True),
-                    sa.ForeignKeyConstraint(['followed_id'], ['users.id'], ),
-                    sa.ForeignKeyConstraint(['follower_id'], ['users.id'], )
+    op.create_table('followers',
+                    sa.Column('id', sa.Integer(), nullable=False),
+                    sa.Column('user_id', sa.Integer(), nullable=False),
+                    sa.Column('follower_id', sa.Integer(), nullable=False),
+                    sa.Column('created_at', sa.DateTime(timezone=True),
+                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+                    sa.Column('updated_at', sa.DateTime(timezone=True),
+                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+                    sa.ForeignKeyConstraint(['follower_id'], ['users.id'], ),
+                    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+                    sa.PrimaryKeyConstraint('id')
                     )
     if environment == "production":
         op.execute(f"ALTER TABLE followers SET SCHEMA {SCHEMA};")
@@ -100,7 +107,6 @@ def upgrade():
                     )
     if environment == "production":
         op.execute(f"ALTER TABLE followers SET SCHEMA {SCHEMA};")
-        
     # ### end Alembic commands ###
 
 
@@ -109,6 +115,6 @@ def downgrade():
     op.drop_table('reactions')
     op.drop_table('comments')
     op.drop_table('photos')
-    op.drop_table('follows')
+    op.drop_table('followers')
     op.drop_table('users')
     # ### end Alembic commands ###

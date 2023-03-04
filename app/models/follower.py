@@ -21,8 +21,10 @@ class Follower(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
 
-    user = db.relationship("User", back_populates="followers")
-    follower = db.relationship("User", back_populates="following")
+    user = db.relationship(
+        "User", back_populates="followers", foreign_keys=[user_id])
+    follower = db.relationship(
+        "User", back_populates="following", foreign_keys=[follower_id])
 
     def to_dict(self):
         return {
