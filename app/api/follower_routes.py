@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Photo, db, User, Comment, Reaction
+from app.models import Photo, db, User, Comment, Reaction, Follower
 from sqlalchemy import inspect
 from sqlalchemy.orm import joinedload
 from app.forms import EditPhotoForm, AddPhotoForm

@@ -40,6 +40,12 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def number_followers(self):
+        return len(self.followers)
+
+    def number_following(self):
+        return len(self.following)
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -52,7 +58,9 @@ class User(db.Model, UserMixin):
             'reactions': {reaction.id: reaction.to_dict() for reaction in self.reactions},
             'comments': {comment.id: comment.to_dict() for comment in self.comments},
             'followers': {follower.id: follower.to_dict() for follower in self.followers},
-            'following': {follower.id: follower.to_dict() for follower in self.following}
+            'following': {follower.id: follower.to_dict() for follower in self.following},
+            'number_followers': self.number_followers(),
+            'number_following': self.number_following()
         }
 
     def to_post_dict(self):

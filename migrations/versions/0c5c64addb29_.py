@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 47cbb191540f
+Revision ID: 0c5c64addb29
 Revises:
-Create Date: 2023-03-04 13:41:49.411727
+Create Date: 2023-03-04 14:37:39.369007
 
 """
 from alembic import op
@@ -12,9 +12,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = '47cbb191540f'
+revision = 'ffdc0a98111c'  # '0c5c64addb29'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -107,6 +106,7 @@ def upgrade():
                     )
     if environment == "production":
         op.execute(f"ALTER TABLE followers SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 
