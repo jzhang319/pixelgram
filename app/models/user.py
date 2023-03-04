@@ -23,7 +23,9 @@ class User(db.Model, UserMixin):
     photos = db.relationship('Photo', back_populates='user')
     reactions = db.relationship("Reaction", back_populates="user")
     comments = db.relationship("Comment", back_populates="user")
+
     followers = db.relationship('Follower', back_populates='user')
+    following = db.relationship('Follower', back_populates='follower')
 
     @property
     def password(self):
@@ -47,7 +49,8 @@ class User(db.Model, UserMixin):
             'photos': {photo.id: photo.to_dict() for photo in self.photos},
             'reactions': {reaction.id: reaction.to_dict() for reaction in self.reactions},
             'comments': {comment.id: comment.to_dict() for comment in self.comments},
-            'followers': {follower.id: follower.to_dict() for follower in self.followers}
+            'followers': {follower.id: follower.to_dict() for follower in self.followers},
+            'following': {follower.id: follower.to_dict() for follower in self.following},
         }
 
     def to_post_dict(self):
