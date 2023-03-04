@@ -291,6 +291,15 @@ img.photo-itself{
 }
 
 .following{
-  color: blue;
+  color: gray;
+}
+.following:hover {
+  color: white;
 }
 
+.not-follow{
+  color: rgb(50, 147, 242);
+}
+.not-follow:hover{
+  color: white
+}
