@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
@@ -23,10 +23,6 @@ function Home() {
 
   const user = useSelector((state) => state.session.user);
 
-  const followingUsers = useSelector((state) => Object.values(state.follower));
-  // console.log(followingUsers, " <--- following users");
-  // console.log(followingUsers.includes(user.id), ' <------')
-
   useEffect(() => {
     dispatch(photoActions.getThePhotos());
     dispatch(commentActions.getTheAllComments());
@@ -34,7 +30,7 @@ function Home() {
     if (user) {
       dispatch(followerActions.getTheAllFollowers());
     }
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   return (
     <div className="homepage-container">
