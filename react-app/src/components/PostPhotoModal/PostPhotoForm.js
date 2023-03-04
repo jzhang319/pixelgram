@@ -95,7 +95,7 @@ function PostPhotoForm({ setShowModal }) {
             onChange={(e) => setCaption(e.target.value)}
             required
           />
-          <i class="fa-solid fa-message"></i>
+          <i className="fa-solid fa-message"></i>
         </label>
         <div className="post-button-section">
           <button className="post-button">POST PHOTO</button>

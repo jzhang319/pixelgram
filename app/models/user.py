@@ -46,6 +46,9 @@ class User(db.Model, UserMixin):
     def number_following(self):
         return len(self.following)
 
+    def number_posts(self):
+        return len(self.photos)
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -60,7 +63,8 @@ class User(db.Model, UserMixin):
             'followers': {follower.id: follower.to_dict() for follower in self.followers},
             'following': {follower.id: follower.to_dict() for follower in self.following},
             'number_followers': self.number_followers(),
-            'number_following': self.number_following()
+            'number_following': self.number_following(),
+            'number_posts': self.number_posts(),
         }
 
     def to_post_dict(self):

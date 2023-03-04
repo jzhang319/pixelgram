@@ -111,9 +111,9 @@ function Home() {
                       dispatch(
                         followerActions.addTheFollower(photo.user_id, user.id)
                       )
-                      // .then(() =>
-                      //   dispatch(followerActions.getTheAllFollowers())
-                      // );
+                      .then(() =>
+                        dispatch(followerActions.getTheAllFollowers())
+                      );
                     }}
                   >
                     Follow

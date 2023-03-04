@@ -63,8 +63,9 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
-            <li>#followers</li>
-            <li>#followings</li>
+            <li>{user.number_posts} posts</li>
+            <li>{user.number_followers} followers</li>
+            <li>{user.number_following} following</li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
