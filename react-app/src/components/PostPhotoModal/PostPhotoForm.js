@@ -3,6 +3,7 @@ import "./PostPhotoModal.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as photoActions from "../../store/photo";
+import * as sessionActions from "../../store/session";
 import { useModal } from "../../context/Modal";
 
 function PostPhotoForm({ setShowModal }) {
@@ -27,24 +28,26 @@ function PostPhotoForm({ setShowModal }) {
         caption: caption,
         user_id: user.id,
       })
-    ).then(async (res) => {
-      const data = await res;
-      if (data && data.errors) {
-        const newErrors = res.errors.map((ele) => {
-          if (ele.includes("url")) {
-            return ele.slice(ele.indexOf(":") + 2);
-            // return ele
-          }
-          return (
-            ele.slice(0, ele.indexOf(":")) + ele.slice(ele.indexOf(":") + 7)
-          );
-        });
-        setErrors(newErrors);
-      } else {
-        history.push("/");
-        closeModal();
-      }
-    });
+    )
+      .then(() => dispatch(sessionActions.authenticate()))
+      .then(async (res) => {
+        const data = await res;
+        if (data && data.errors) {
+          const newErrors = res.errors.map((ele) => {
+            if (ele.includes("url")) {
+              return ele.slice(ele.indexOf(":") + 2);
+              // return ele
+            }
+            return (
+              ele.slice(0, ele.indexOf(":")) + ele.slice(ele.indexOf(":") + 7)
+            );
+          });
+          setErrors(newErrors);
+        } else {
+          history.push("/");
+          closeModal();
+        }
+      });
     // history.push("/");
     // closeModal();
   };

@@ -289,3 +289,8 @@ img.photo-itself{
 .liked-icon:hover {
   cursor: pointer;
 }
+
+.following{
+  color: blue;
+}
+

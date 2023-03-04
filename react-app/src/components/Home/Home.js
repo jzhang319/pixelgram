@@ -7,6 +7,7 @@ import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
 import * as reactionActions from "../../store/reaction";
 import * as followerActions from "../../store/follower";
+import * as sessionActions from "../../store/session";
 import AddCommentForm from "../AddComment/AddCommentForm";
 
 function Home() {
@@ -111,12 +112,17 @@ function Home() {
                       dispatch(
                         followerActions.addTheFollower(photo.user_id, user.id)
                       )
-                      .then(() =>
-                        dispatch(followerActions.getTheAllFollowers())
-                      );
+                        .then(() =>
+                          dispatch(followerActions.getTheAllFollowers())
+                        )
+                        .then(() => dispatch(sessionActions.authenticate()));
                     }}
                   >
-                    Follow
+                    {user.user_followings?.includes(photo.user_id) ? (
+                      <div className="following">Following</div>
+                    ) : (
+                      <div className="not-follow">Follow</div>
+                    )}
                   </div>
                 ) : (
                   <></>

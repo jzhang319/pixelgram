@@ -26,6 +26,7 @@ class Follower(db.Model):
     follower = db.relationship(
         "User", back_populates="following", foreign_keys=[follower_id])
 
+
     def to_dict(self):
         return {
             'id': self.id,
