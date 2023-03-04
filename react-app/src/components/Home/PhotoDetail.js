@@ -237,7 +237,11 @@ function PhotoDetail() {
           {currPhoto?.user?.username}
           <div className="photo-caption">{currPhoto.caption}</div>
           <div className="reaction-count">
-            {currPhoto.reaction_length} likes
+            {currPhoto?.reaction_length > 0 && (
+              <div className="number-likes-section">
+                {currPhoto.reaction_length} likes
+              </div>
+            )}
           </div>
           <div className="comments-section">
             {comments.map((comment) => {
