@@ -3,6 +3,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 
+follows = db.Table(
+    "follows",
+    db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("followed_id", db.Integer, db.ForeignKey("users.id")),
+)
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -49,8 +55,7 @@ class User(db.Model, UserMixin):
             'photos': {photo.id: photo.to_dict() for photo in self.photos},
             'reactions': {reaction.id: reaction.to_dict() for reaction in self.reactions},
             'comments': {comment.id: comment.to_dict() for comment in self.comments},
-            'followers': {follower.id: follower.to_dict() for follower in self.followers},
-            'following': {follower.id: follower.to_dict() for follower in self.following},
+            'followers': {follower.id: follower.to_dict() for follower in self.followers}
         }
 
     def to_post_dict(self):
