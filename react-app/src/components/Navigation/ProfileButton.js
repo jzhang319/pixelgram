@@ -64,8 +64,12 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>{user.number_posts} posts</li>
-            <li>{user.number_followers} followers</li>
-            <li>{user.number_following} following</li>
+            {user.number_followers > 0 && (
+              <li>{user.number_followers} followers</li>
+            )}
+            {user.number_following > 0 && (
+              <li>{user.number_following} following</li>
+            )}
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

@@ -48,8 +48,6 @@ function PostPhotoForm({ setShowModal }) {
           closeModal();
         }
       });
-    // history.push("/");
-    // closeModal();
   };
 
   return (
@@ -85,6 +83,7 @@ function PostPhotoForm({ setShowModal }) {
           <input
             type="text"
             value={url}
+            placeholder="enter URL here ..."
             onChange={(e) => setUrl(e.target.value)}
             required
           />
@@ -95,6 +94,7 @@ function PostPhotoForm({ setShowModal }) {
           <input
             type="text"
             value={caption}
+            placeholder="enter caption here..."
             onChange={(e) => setCaption(e.target.value)}
             required
           />

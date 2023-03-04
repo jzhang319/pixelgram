@@ -53,7 +53,7 @@ const followerReducer = (state = initialState, action) => {
     case GET_FOLLOWERS: {
       // console.log(action.followers, " <---- from follower reducer");
       const allFollowings = [];
-      action.followers.followers.forEach((follower) => {
+      action.followers?.followers?.forEach((follower) => {
         allFollowings.push(follower);
       });
       return { ...allFollowings };
