@@ -311,6 +311,7 @@ img.photo-itself{
 }
 .following:hover {
   color: white;
+  /* border: none; */
 }
 
 .not-follow{
