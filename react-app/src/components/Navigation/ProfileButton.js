@@ -43,14 +43,16 @@ function ProfileButton({ user }) {
   return (
     <>
       {(currUser && (
-        // <div>
-        <input
-          className="profile-section-clicked"
-          type="image"
-          src={currUser.profile_url}
-          onClick={openMenu}
-          alt={currUser.username}
-        />
+        <div className="profile-section-button" onClick={openMenu}>
+          <img
+            className="profile-section-clicked"
+            type="image"
+            src={currUser.profile_url}
+            onClick={openMenu}
+            alt={currUser.username}
+          />
+          Profile
+        </div>
       )) || (
         <div className="profile-section-clicked" onClick={openMenu}>
           <i className="fas fa-user-circle" />

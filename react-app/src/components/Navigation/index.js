@@ -119,11 +119,7 @@ function Navigation({ isLoaded }) {
           />
         </>
       )}
-      {sessionUser && (
-        // <span className="profile-section-button">
-        <ProfileButton user={sessionUser} />
-        // </span>
-      )}
+      {sessionUser && <ProfileButton user={sessionUser} />}
     </div>
   );
 }
