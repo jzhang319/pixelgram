@@ -80,7 +80,17 @@ def delete_photo(photoId):
 @photo_routes.route('/explore/', methods=['GET'])
 @login_required
 def explore_photos():
+    print(current_user.user_followings, ' <---- current user')
     all_photos_except_self = Photo.query.filter(
         ~Photo.user_id.in_([current_user.id]))
-    print(all_photos_except_self, ' <---- backend')
+    # print(all_photos_except_self, ' <---- backend')
     return {'photos': [photo.to_dict() for photo in all_photos_except_self]}
+
+
+@photo_routes.route('/followings/', methods=['GET'])
+@login_required
+def get_followings_self():
+    all_followings_self = Photo.query.filter(
+        Photo.user_id.in_([current_user.user_followings])
+    )
+    return {'photos': [photo.to_dict() for photo in all_followings_self]}
