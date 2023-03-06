@@ -93,7 +93,7 @@ function Navigation({ isLoaded }) {
           buttonText="Create Post"
           onItemClick={closeMenu}
           modalComponent={<PostPhotoForm />}
-          icon={<i className="fa-solid fa-plus"></i>}
+          icon={<i className="fa-solid fa-square-plus"></i>}
         />
       )}
       {!sessionUser && (

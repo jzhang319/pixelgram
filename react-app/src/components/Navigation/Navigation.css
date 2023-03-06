@@ -60,7 +60,7 @@
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  min-width: 100%
+  min-width: 90%
 }
 .home-log:hover{
   background-color: rgb(29, 28, 28);
@@ -78,7 +78,7 @@
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  min-width: 100%
+  min-width: 90%
 }
 .explore-page-tab:hover{
   background-color: rgb(29, 28, 28);
@@ -120,7 +120,7 @@
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  min-width: 100%;
+  min-width: 90%;
 }
 
 .navigation-side-panel>div:hover{
