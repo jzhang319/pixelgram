@@ -75,3 +75,8 @@ def delete_photo(photoId):
         return {'message': 'Photo deleted'}
     else:
         return {'message': 'You are not the author of this photo'}
+
+@photo_routes.route('/explore/', methods=['GET'])
+@login_required
+def explore_photos():
+    all_photos_except_self = Photo.query.filter_by
