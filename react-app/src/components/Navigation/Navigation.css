@@ -3,7 +3,7 @@
   display: block;
   flex-direction: column;
   margin: 0px;
-  left: 30px;
+  left: 20px;
 }
 
 .hidden {
@@ -149,8 +149,8 @@ input.profile-section-clicked{
   background-color: transparent;
   display: flex;
   width: 100%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin-right: 10px;
 }
