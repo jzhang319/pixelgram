@@ -2,7 +2,7 @@
   position: absolute;
   display: block;
   flex-direction: column;
-  top: 30%;
+  top: 36%;
   margin-top: 30px;
 }
 
@@ -69,6 +69,25 @@
   /* transform: scale(1.1); */
   cursor: pointer;
 }
+.explore-page-tab{
+  width: 80%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 100%
+}
+.explore-page-tab:hover{
+  background-color: rgb(29, 28, 28);
+  border: 1px solid lightgray;
+  border-radius: 25px;
+  /* transform: scale(1.1); */
+  cursor: pointer;
+}
+
 .modal-divs{
   margin-top: 15px;
   margin-bottom: 15px;

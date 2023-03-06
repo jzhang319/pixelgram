@@ -68,19 +68,21 @@ function Navigation({ isLoaded }) {
           Home
         </div>
       </NavLink>
-      {/* <NavLink to="/following">
-        <div>
-          <i className="fa-solid fa-star"></i>
-          Following
-        </div>
-      </NavLink>
-      <NavLink to="/most-liked">
+      {sessionUser && (
+        <NavLink to="/explore">
+          <div className="explore-page-tab">
+            <i className="fa-solid fa-compass"></i>
+            Explore
+          </div>
+        </NavLink>
+      )}
+      {/* <NavLink to="/most-liked">
         <div>
           <i className="fa-solid fa-heart"></i>
           Most Liked
         </div>
-      </NavLink>
-      <NavLink to="/most-hated">
+      </NavLink> */}
+      {/* <NavLink to="/most-hated">
         <div>
           <i className="fa-solid fa-heart-crack"></i>
           Most Hated

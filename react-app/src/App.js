@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import PhotoDetail from "./components/Home/PhotoDetail";
+import ExplorePage from "./components/ExplorePage"
 import Home from "./components/Home/Home";
 // import MessageSideBar from "./components/MessageSideBar/MessageSideBar";
 
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/explore">
+            <ExplorePage />
           </Route>
         </Switch>
       )}

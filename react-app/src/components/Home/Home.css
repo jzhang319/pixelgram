@@ -184,6 +184,22 @@ div.photo-caption{
   border-radius: 5px;
   /* border: 1px rgb(36, 36, 36) solid; */
 }
+.heart-follow-container{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
+}
+
+.explore-page-container{
+  position: absolute;
+  margin-top: 5%;
+  margin-left: 30%;
+  max-width: 500px;
+  height: auto;
+  color: white;
+  border-radius: 5px;
+}
 
 .detailphoto-img-box{
   width: 500px;

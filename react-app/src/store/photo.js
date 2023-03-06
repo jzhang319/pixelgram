@@ -43,6 +43,26 @@ const addPhoto = (photo) => {
   };
 };
 
+const EXPLORE_PHOTOS = "EXPLORE_PHOTOS";
+
+const explorePhoto = (photos) => {
+  return {
+    type: EXPLORE_PHOTOS,
+    photos,
+  };
+};
+
+export const exploreThePhotos = (photos) => async (dispatch) => {
+  const response = await fetch("/api/photos/explore/");
+
+  if (response.ok) {
+    const data = await response.json();
+    // console.log(data, " <--- from thunk");
+    dispatch(explorePhoto(data));
+    return data;
+  }
+};
+
 export const addThePhoto = (photo) => async (dispatch) => {
   const response = await fetch("/api/photos/", {
     method: "POST",
@@ -153,6 +173,15 @@ const photoReducer = (state = initialState, action) => {
         [action.photo.id]: { ...action.photo },
       };
       return newState;
+    }
+    case EXPLORE_PHOTOS: {
+      const allPhotos = [];
+      // console.log(action.type, " <--before forEach");
+      action.photos.photos.forEach((photo) => {
+        // console.log(photo, " <-- inside reducer");
+        allPhotos[photo.id] = photo;
+      });
+      return { ...allPhotos };
     }
     default:
       return state;

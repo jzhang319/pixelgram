@@ -5,7 +5,8 @@ import "./Home.css";
 import * as photoActions from "../../store/photo";
 import * as commentActions from "../../store/comment";
 import * as reactionActions from "../../store/reaction";
-// import EditPhotoFormModal from "../EditPhotoFormModal";
+import * as followerActions from "../../store/follower";
+import * as sessionActions from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import EditPhotoForm from "../EditPhotoFormModal/EditPhotoForm";
 import EditCommentForm from "../EditCommentFormModal";
@@ -99,35 +100,62 @@ function PhotoDetail() {
             />
           </div>
           <div className="photo-like-comment-section">
-            {userReacted?.includes(user.id) ? (
-              <i
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(
-                    reactionActions.postTheReaction(currPhoto.id, user.id)
-                  )
-                    .then(() => dispatch(photoActions.getThePhoto(photoId)))
-                    .then(() =>
-                      dispatch(reactionActions.getTheReaction(currPhoto.id))
-                    );
-                }}
-                className="fa-solid fa-heart liked-icon"
-              ></i>
-            ) : (
-              <i
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(
-                    reactionActions.postTheReaction(currPhoto.id, user.id)
-                  )
-                    .then(() => dispatch(photoActions.getThePhoto(photoId)))
-                    .then(() =>
-                      dispatch(reactionActions.getTheReaction(currPhoto.id))
-                    );
-                }}
-                className="fa-solid fa-heart like-icon"
-              ></i>
-            )}
+            <div className="heart-follow-container">
+              {userReacted?.includes(user.id) ? (
+                <i
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(
+                      reactionActions.postTheReaction(currPhoto.id, user.id)
+                    )
+                      .then(() => dispatch(photoActions.getThePhoto(photoId)))
+                      .then(() =>
+                        dispatch(reactionActions.getTheReaction(currPhoto.id))
+                      );
+                  }}
+                  className="fa-solid fa-heart liked-icon"
+                ></i>
+              ) : (
+                <i
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(
+                      reactionActions.postTheReaction(currPhoto.id, user.id)
+                    )
+                      .then(() => dispatch(photoActions.getThePhoto(photoId)))
+                      .then(() =>
+                        dispatch(reactionActions.getTheReaction(currPhoto.id))
+                      );
+                  }}
+                  className="fa-solid fa-heart like-icon"
+                ></i>
+              )}
+
+              {user?.id !== currPhoto?.user_id && user ? (
+                <div
+                  className="follow-btn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(
+                      followerActions.addTheFollower(currPhoto.user_id, user.id)
+                    )
+                      .then(() =>
+                        dispatch(followerActions.getTheAllFollowers())
+                      )
+                      .then(() => dispatch(sessionActions.authenticate()));
+                  }}
+                >
+                  {user.user_followings?.includes(currPhoto.user_id) ? (
+                    <div className="following">Following</div>
+                  ) : (
+                    <div className="not-follow">Follow</div>
+                  )}
+                </div>
+              ) : (
+                <></>
+              )}
+            </div>
+
             {currPhoto?.reaction_length > 0 && (
               <div className="number-likes-section">
                 {currPhoto.reaction_length} likes
