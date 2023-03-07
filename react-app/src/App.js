@@ -8,7 +8,7 @@ import Navigation from "./components/Navigation";
 import PhotoDetail from "./components/Home/PhotoDetail";
 import ExplorePage from "./components/ExplorePage"
 import Home from "./components/Home/Home";
-// import MessageSideBar from "./components/MessageSideBar/MessageSideBar";
+import MessageSideBar from "./components/MessageSideBar/MessageSideBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ function App() {
 
   return (
     <div className="whole-page-container">
+      <MessageSideBar />
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -39,9 +40,9 @@ function App() {
           </Route>
         </Switch>
       )}
-      {/* <div className="home-message-both">
-        <MessageSideBar />
-      </div> */}
+      {/* <div className="home-message-both"> */}
+
+      {/* </div> */}
     </div>
   );
 }
