@@ -61,7 +61,7 @@ function MessageSideBar() {
   return (
     user && (
       <div className="message-side-container">
-        <h2 className="message-title-bar">Generals Chat</h2>
+        <h3 className="message-title-bar">Generals Chat</h3>
 
         <form className="chat-container" onSubmit={sendChat}>
           <div className="chat-input-buttons-too">

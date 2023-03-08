@@ -57,9 +57,9 @@ function Navigation({ isLoaded }) {
             src="https://cdn.discordapp.com/attachments/885032629299212308/1078464578268172370/174855.png"
             alt="logo"
           />
-          <h1 className="pixel">
+          <h3 className="pixel">
             Pixel<em>gram</em>
-          </h1>
+          </h3>
         </div>
       </NavLink>
       <NavLink className="home-log" to="/">

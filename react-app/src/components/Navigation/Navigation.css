@@ -25,6 +25,7 @@
 .pixel{
   color: white;
   min-width: min-content;
+  /* font-size: larger; */
   /* font-family: 'Roboto', sans-serif; */
 }
 .pixel-logo{
