@@ -11,9 +11,11 @@ def valid_picture(form, field):
         if picture_url.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tif', '.tiff')):
             return {'message': 'image added successfully'}
         else:
-            raise ValidationError("Not a valid image.")
+            raise ValidationError(
+                "Not a valid image type")
     else:
         pass
+
 
 class AddPhotoForm(FlaskForm):
     user_id = HiddenField('User_Id')

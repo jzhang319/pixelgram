@@ -1,26 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { io } from "socket.io-client";
 import "./MessageSideBar.css";
 
-function MessageSideBar() {
-  return (
-    <div className="message-side-container">
-      <h1 className="message-title-bar">MessageSideBar</h1>
+let socket;
 
-      <div className="chat-container">
-        <div className="chat-input-buttons-too">
-          <input
-            className="chat-input-bar"
-            type="text"
-            placeholder="Chat here ..."
-          />
-          <div className="btn-container">
-            <button className="chat-btn">Send</button>
-            <button className="chat-btn">Leave</button>
+function MessageSideBar() {
+  const [chatInput, setChatInput] = useState("");
+  const [messages, setMessages] = useState([]);
+  const user = useSelector((state) => state.session.user);
+
+  useEffect(() => {
+    // create websocket/connect
+    socket = io();
+
+    // listen for chat events
+    socket.on("chat", (chat) => {
+      // when we receive a chat, add it into our messages array in state
+      setMessages((messages) => [...messages, chat]);
+    });
+
+    // when component unmounts, disconnect
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  const sendChat = (e) => {
+    e.preventDefault();
+    // emit a message
+    socket.emit("chat", { user: user.username, msg: chatInput });
+    // clear the input field after the message is sent
+    setChatInput("");
+  };
+
+  return (
+    user && (
+      <div className="message-side-container">
+        <h1 className="message-title-bar">Generals Chat</h1>
+
+        <form className="chat-container" onSubmit={sendChat}>
+          <div className="chat-input-buttons-too">
+            <input
+              className="chat-input-bar"
+              type="text"
+              placeholder="Chat here ..."
+              value={chatInput}
+              onChange={(e) => setChatInput(e.target.value)}
+            />
+            <div className="btn-container">
+              <button className="chat-btn" type="submit">
+                Send
+              </button>
+              {/* <button className="chat-btn">Leave</button> */}
+            </div>
           </div>
+        </form>
+        <div className="chat-box-container">
+          {messages.map((message, ind) => (
+            <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+          ))}
         </div>
       </div>
-      <div className="chat-box-container">user messages :</div>
-    </div>
+    )
   );
 }
 

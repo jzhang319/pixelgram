@@ -29,7 +29,7 @@ function PostPhotoForm({ setShowModal }) {
         user_id: user.id,
       })
     )
-      .then(() => dispatch(sessionActions.authenticate()))
+      // .then(() => dispatch(sessionActions.authenticate()))
       .then(async (res) => {
         const data = await res;
         if (data && data.errors) {
@@ -47,7 +47,8 @@ function PostPhotoForm({ setShowModal }) {
           history.push("/");
           closeModal();
         }
-      });
+      })
+      .then(() => dispatch(sessionActions.authenticate()));
   };
 
   return (
@@ -78,28 +79,30 @@ function PostPhotoForm({ setShowModal }) {
             ))}
           </ul>
         </div>
-        <label className="post-form-label">
-          URL
-          <input
-            type="text"
-            value={url}
-            placeholder="enter URL here ..."
-            onChange={(e) => setUrl(e.target.value)}
-            required
-          />
-          <i className="fa-solid fa-image"></i>
-        </label>
-        <label className="post-form-label">
-          Caption
-          <input
-            type="text"
-            value={caption}
-            placeholder="enter caption here..."
-            onChange={(e) => setCaption(e.target.value)}
-            required
-          />
-          <i className="fa-solid fa-message"></i>
-        </label>
+        <div className="login-inputs">
+          <label className="post-form-label">
+            URL
+            <input
+              type="text"
+              value={url}
+              placeholder="enter URL here ..."
+              onChange={(e) => setUrl(e.target.value)}
+              required
+            />
+            <i className="fa-solid fa-image"></i>
+          </label>
+          <label className="post-form-label">
+            Caption
+            <input
+              type="text"
+              value={caption}
+              placeholder="enter caption here..."
+              onChange={(e) => setCaption(e.target.value)}
+              required
+            />
+            <i className="fa-solid fa-message"></i>
+          </label>
+        </div>
         <div className="post-button-section">
           <button className="post-button">POST PHOTO</button>
         </div>

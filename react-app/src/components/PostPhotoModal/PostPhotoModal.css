@@ -1,17 +1,34 @@
 .post-form-elements{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center;
+  align-items: center */
 }
 
 .post-form-h2{
   display:flex;
   justify-content: center;
 }
-
+.err-container{
+  display:flex;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+}
+.login-inputs{
+  /* position: absolute; */
+  display:flex;
+  flex-direction: column;
+}
 .post-form-label{
   display:flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   justify-content: flex-end
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  width: 60%;
 }

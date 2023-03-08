@@ -35,7 +35,9 @@
   color: white;
   margin: 0px;
   width: 98%;
+  height: 30px;
   background-color: black;
+  margin-bottom: 10px;
 }
 .btn-container{
   display: flex;
@@ -52,4 +54,5 @@
 }
 .chat-box-container{
   height: 100%;
+  margin-top: 10px;
 }

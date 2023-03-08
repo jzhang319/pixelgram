@@ -30,16 +30,21 @@ div.login_logo{
   font-weight: bold;
 }
 
-form{
+form.login-form{
   display: flex;
   justify-content: center;
   align-content: space-between;
   align-items: flex-end;
   flex-direction: column;
 }
+.error-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .post-form-container{
   display: flex;
-  /* width: 100%; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
