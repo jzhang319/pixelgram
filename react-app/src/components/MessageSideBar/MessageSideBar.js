@@ -57,7 +57,7 @@ function MessageSideBar() {
           </div>
         </form>
         <div className="chat-box-container">
-          {messages.map((message, ind) => (
+          {messages.reverse().map((message, ind) => (
             <div key={ind}>{`${message.user}: ${message.msg}`}</div>
           ))}
         </div>
