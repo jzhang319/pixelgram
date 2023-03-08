@@ -1,6 +1,6 @@
 .homepage-container{
   margin-left: 25%;
-  width: 45%;
+  width: 50%;
   height: auto;
   color: white;
   margin-right: 0px;
@@ -93,7 +93,7 @@ a.photo-link{
 }
 
 .each-photo{
-  width: 400px;
+  width: 468px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -290,6 +290,7 @@ div.photo-caption-container{
 
 img.photo-itself{
   border-radius: 5px;
+  width: 468px;
 }
 
 .like-icon{
