@@ -38,7 +38,7 @@ function ExplorePage() {
       </div> */}
       <div className="photo-container">
         {allPhotos.map((photo) => {
-          if (!user.user_followings.includes(photo.user.id)) {
+          if (!user.user_followings.includes(photo?.user?.id)) {
             return (
               <div key={photo.id} className="each-photo">
                 <div className="profile-pic-username-container">

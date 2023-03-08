@@ -55,4 +55,5 @@
 .chat-box-container{
   height: 100%;
   margin-top: 10px;
+  overflow-y: scroll;
 }
