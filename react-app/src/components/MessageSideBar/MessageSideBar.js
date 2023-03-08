@@ -10,6 +10,30 @@ function MessageSideBar() {
   const [messages, setMessages] = useState([]);
   const user = useSelector((state) => state.session.user);
 
+  function getLocaleDateTimeString() {
+    // date and time
+    var timestamp = new Date();
+    const offset = timestamp.getTimezoneOffset() * 60000; // milliseconds
+    const local = new Date(timestamp.getTime() - offset);
+    return local.toISOString().slice(0, 19).replace("T", " ");
+  }
+
+  function getLocaleDateString() {
+    // date only
+    var timestamp = new Date();
+    const offset = timestamp.getTimezoneOffset() * 60000; // milliseconds
+    const local = new Date(timestamp.getTime() - offset);
+    return local.toISOString().slice(0, 10);
+  }
+
+  function getLocaleTimeString() {
+    // time only
+    var timestamp = new Date();
+    const offset = timestamp.getTimezoneOffset() * 60000; // milliseconds
+    const local = new Date(timestamp.getTime() - offset);
+    return local.toISOString().slice(11, 19);
+  }
+
   useEffect(() => {
     // create websocket/connect
     socket = io();
@@ -37,7 +61,7 @@ function MessageSideBar() {
   return (
     user && (
       <div className="message-side-container">
-        <h1 className="message-title-bar">Generals Chat</h1>
+        <h2 className="message-title-bar">Generals Chat</h2>
 
         <form className="chat-container" onSubmit={sendChat}>
           <div className="chat-input-buttons-too">
@@ -58,7 +82,9 @@ function MessageSideBar() {
         </form>
         <div className="chat-box-container">
           {messages.reverse().map((message, ind) => (
-            <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+            <div key={ind}>
+              {`${message.user}: ${message.msg}`}
+            </div>
           ))}
         </div>
       </div>
