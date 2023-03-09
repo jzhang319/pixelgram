@@ -61,4 +61,12 @@
   margin-bottom: 10px;
   overflow-y: scroll;
   color: gray;
+  justify-content: flex-start;
+  padding-left: 10px;
+
 }
+/* .each-message{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start
+} */

@@ -6,10 +6,6 @@ import "./MessageSideBar.css";
 let socket;
 
 function MessageSideBar() {
-  const [chatInput, setChatInput] = useState("");
-  const [messages, setMessages] = useState([]);
-  const user = useSelector((state) => state.session.user);
-
   function getLocaleDateTimeString() {
     // date and time
     var timestamp = new Date();
@@ -33,6 +29,11 @@ function MessageSideBar() {
     const local = new Date(timestamp.getTime() - offset);
     return local.toISOString().slice(11, 19);
   }
+
+  const [chatInput, setChatInput] = useState("");
+  const [messages, setMessages] = useState([]);
+  const user = useSelector((state) => state.session.user);
+
 
   useEffect(() => {
     // create websocket/connect
@@ -80,13 +81,13 @@ function MessageSideBar() {
             </div>
           </div>
         </form>
-        <div className="chat-box-container">
+        <ul className="chat-box-container">
           {messages.map((message, ind) => (
-            <div key={ind}>
+            <li className="each-message" key={ind}>
               {`${message.user}: ${message.msg}`}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     )
   );

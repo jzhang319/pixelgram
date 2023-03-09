@@ -42,7 +42,6 @@ form.login-form{
   align-content: space-between;
   align-items: flex-end;
   flex-direction: column;
-  margin-top: 5%;
   color: black;
   font-weight: 700;
 }
