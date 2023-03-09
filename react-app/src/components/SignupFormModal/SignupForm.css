@@ -1,7 +1,13 @@
 .signup-form{
   display: flex;
-    justify-content: center;
-    align-content: space-between;
-    align-items: flex-end;
-    flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
+  color: black;
+  font-weight: 700;
+}
+.signup{
+  margin-top: 30%;
+  color: black;
 }

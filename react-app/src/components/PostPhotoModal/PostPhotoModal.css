@@ -3,6 +3,8 @@
   flex-direction: column;
   /* justify-content: center;
   align-items: center */
+  margin-top: 80%;
+  color: black;
 }
 
 .post-form-h2{
@@ -22,9 +24,10 @@
 }
 .post-form-label{
   display:flex;
-  /* justify-content: space-between; */
   align-items: center;
-  justify-content: flex-end
+  justify-content: flex-end;
+  color: black;
+  font-weight: 700;
 }
 
 ul {

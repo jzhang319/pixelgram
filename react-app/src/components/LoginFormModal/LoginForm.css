@@ -3,17 +3,19 @@ div#modal-content{
   height: 50%;
   width: 50%;
   flex-direction: column;
-  display: grid;
+  display: flex;
   place-items: center;
   height: 70vh;
   color: var(--text2);
-  background: linear-gradient(to bottom,
+  /* background: linear-gradient(to bottom,
         rgb(148, 23, 197),
         rgba(253, 117, 71, 0.85),
-        rgba(0, 0, 0, 0.99));
+        rgba(0, 0, 0, 0.99)); */
   border-radius: 25px;
   padding-bottom: 5%;
-
+  background-image: url("image.png");
+  background-position: center;
+  background-size: cover;
 }
 
 div.login_logo{
@@ -29,6 +31,10 @@ div.login_logo{
   font-size: 5.5em;
   font-weight: bold;
 }
+.login{
+  margin-top: 50%;
+  color: black;
+}
 
 form.login-form{
   display: flex;
@@ -36,6 +42,9 @@ form.login-form{
   align-content: space-between;
   align-items: flex-end;
   flex-direction: column;
+  margin-top: 5%;
+  color: black;
+  font-weight: 700;
 }
 .error-section{
   display: flex;
