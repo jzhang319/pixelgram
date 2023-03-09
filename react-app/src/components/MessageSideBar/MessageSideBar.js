@@ -34,7 +34,6 @@ function MessageSideBar() {
   const [messages, setMessages] = useState([]);
   const user = useSelector((state) => state.session.user);
 
-
   useEffect(() => {
     // create websocket/connect
     socket = io();
@@ -54,7 +53,13 @@ function MessageSideBar() {
   const sendChat = (e) => {
     e.preventDefault();
     // emit a message
-    socket.emit("chat", { user: user.username, msg: chatInput });
+    if (!chatInput) {
+      alert("Please enter a message");
+    } else if (chatInput.length > 100) {
+      alert("Message is too long");
+    } else {
+      socket.emit("chat", { user: user.username, msg: chatInput });
+    }
     // clear the input field after the message is sent
     setChatInput("");
   };

@@ -56,14 +56,14 @@
 .chat-box-container{
   display: flex;
   flex-direction: column;
+  flex-grow: -1;
   height: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
   color: gray;
   justify-content: flex-start;
   padding-left: 10px;
-
 }
 /* .each-message{
   display: flex;

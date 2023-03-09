@@ -14,7 +14,7 @@ div#modal-content{
   border-radius: 25px;
   padding-bottom: 5%;
   background-image: url("image.png");
-  background-position: center;
+  background-position: top;
   background-size: cover;
 }
 
