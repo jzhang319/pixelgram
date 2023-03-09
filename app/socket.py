@@ -5,8 +5,8 @@ import os
 # configure cors_allowed_origins
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
-        'http://pixelgram.onrender.com/',
-        'https://pixelgram.onrender.com/'
+        'http://pixelgram.onrender.com',
+        'https://pixelgram.onrender.com'
     ]
 else:
     origins = "*"
