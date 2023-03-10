@@ -58,7 +58,7 @@ function MessageSideBar() {
     } else if (chatInput.length > 100) {
       alert("Message is too long");
     } else {
-      console.log(messages, " <---- messages");
+      // console.log(messages, " <---- messages");
       socket.emit("chat", {
         user: user.username,
         msg: chatInput,
@@ -92,16 +92,12 @@ function MessageSideBar() {
           </div>
         </form>
         <ul className="chat-box-container">
-          {messages.reverse().map(
-            (message, ind) => (
-              // console.log(message, " <---- message"),
-              (
-                <li className="each-message" key={ind}>
-                  {`${message.user}: ${message.msg} - ${message.time}`}
-                </li>
-              )
-            )
-          )}
+          {messages.map((message, ind) => (
+            // console.log(message, " <---- message"),
+            <li className="each-message" key={ind}>
+              {`${message.user}: ${message.msg} - ${message.time}`}
+            </li>
+          ))}
         </ul>
       </div>
     )
