@@ -59,7 +59,11 @@ function MessageSideBar() {
       alert("Message is too long");
     } else {
       console.log(messages, " <---- messages");
-      socket.emit("chat", { user: user.username, msg: chatInput });
+      socket.emit("chat", {
+        user: user.username,
+        msg: chatInput,
+        time: getLocaleTimeString(),
+      });
     }
     // clear the input field after the message is sent
     setChatInput("");
@@ -88,11 +92,16 @@ function MessageSideBar() {
           </div>
         </form>
         <ul className="chat-box-container">
-          {messages.reverse().map((message, ind) => (
-            <li className="each-message" key={ind}>
-              {`${message.user}: ${message.msg}`}
-            </li>
-          ))}
+          {messages.reverse().map(
+            (message, ind) => (
+              // console.log(message, " <---- message"),
+              (
+                <li className="each-message" key={ind}>
+                  {`${message.user}: ${message.msg} - ${message.time}`}
+                </li>
+              )
+            )
+          )}
         </ul>
       </div>
     )
