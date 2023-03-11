@@ -68,7 +68,7 @@ def post_photo():
         return new_photo.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
-@photo_routes.route("", methods=["POST"])
+@photo_routes.route("/", methods=["POST"])
 @login_required
 def upload_image():
     if "image" not in request.files:
@@ -91,7 +91,7 @@ def upload_image():
 
     url = upload["url"]
     # flask_login allows us to get the current user from the request
-    new_image = Image(user=current_user, url=url)
+    new_image = Photo(user=current_user, url=url)
     db.session.add(new_image)
     db.session.commit()
     return {"url": url}

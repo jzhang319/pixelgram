@@ -6,21 +6,21 @@ import "./MessageSideBar.css";
 let socket;
 
 function MessageSideBar() {
-  function getLocaleDateTimeString() {
-    // date and time
-    var timestamp = new Date();
-    const offset = timestamp.getTimezoneOffset() * 60000; // milliseconds
-    const local = new Date(timestamp.getTime() - offset);
-    return local.toISOString().slice(0, 19).replace("T", " ");
-  }
+  // function getLocaleDateTimeString() {
+  //   // date and time
+  //   var timestamp = new Date();
+  //   const offset = timestamp.getTimezoneOffset() * 60000; // milliseconds
+  //   const local = new Date(timestamp.getTime() - offset);
+  //   return local.toISOString().slice(0, 19).replace("T", " ");
+  // }
 
-  function getLocaleDateString() {
-    // date only
-    var timestamp = new Date();
-    const offset = timestamp.getTimezoneOffset() * 60000; // milliseconds
-    const local = new Date(timestamp.getTime() - offset);
-    return local.toISOString().slice(0, 10);
-  }
+  // function getLocaleDateString() {
+  //   // date only
+  //   var timestamp = new Date();
+  //   const offset = timestamp.getTimezoneOffset() * 60000; // milliseconds
+  //   const local = new Date(timestamp.getTime() - offset);
+  //   return local.toISOString().slice(0, 10);
+  // }
 
   function getLocaleTimeString() {
     // time only
@@ -58,7 +58,7 @@ function MessageSideBar() {
     } else if (chatInput.length > 100) {
       alert("Message is too long");
     } else {
-      // console.log(messages, " <---- messages");
+      console.log(messages, " <---- messages");
       socket.emit("chat", {
         user: user.username,
         msg: chatInput,
