@@ -9,7 +9,7 @@
 * React
 * Redux
 * FontAwesome
-* WebSocketIO
+* Flask-Socketio-client
 ### Backend
 * Python
 * Flask
@@ -17,7 +17,7 @@
 * Alembic
 * SQLite3 (development)
 * PostgreSQL (production)
-* Flask-Socketio-client
+* WebSocketIO
 
 # CRUD Features
 
