@@ -55,13 +55,9 @@ This page displays comments with associated photos, as well as a navigation bar 
   - `POST /reactions/:id`
 
 
-## Bonus
+## `/explore`
 
-## `/followers/:id`
+### - Explore Page
 
-### - Followers
-
-      - A logged in user 'follow' another users.
-      - All users can see who's following them.
-
-      - `GET /followers/:id`
+      - A logged in user can explore other users that they have not yet follow for new contents added to their homepage      
+      
