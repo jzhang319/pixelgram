@@ -1,6 +1,7 @@
 # Pixelgram
 
-<img width="1071" alt="image" src="https://user-images.githubusercontent.com/99565823/218790018-371db4c9-ca6c-4a38-9561-ec3836e4ff11.png">
+<img width="1071" alt="image" src="https://user-images.githubusercontent.com/99565823/224568472-541973e7-4102-4d26-acb1-422947ceaf2c.png">
+
 
 ## MVP List
 
