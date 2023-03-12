@@ -97,4 +97,20 @@
 
 - As a logged in user and the author of the reaction, I am able to delete the reaction by clicking on the "Delete" button associated with the Reaction.
 
-      
+
+## Followers
+
+### - Get Followers
+
+- As a logged in user, I can get all the users that I am following.
+
+### - Post Followers
+
+- As a logged in user, I can follow / unfollow other users.
+
+
+## Messages
+
+### - Send messages to other users
+
+- As a logged in user, I can chat with other logged in users using the "general chat".
