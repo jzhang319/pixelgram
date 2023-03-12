@@ -13,12 +13,14 @@
 ### Backend
 * Python
 * Flask
+* Flask-SocketIO
+* Flask-Cors
+* Flask-WTF
 * SQLAlchemy
 * Alembic
 * SQLite3 (development)
 * PostgreSQL (production)
 * WTForms
-* WebSocketIO
 
 # CRUD Features
 
