@@ -19,12 +19,15 @@
     - Logged in users can "Like" photos
     - Logged in users can remove their "Like" from photos they "Liked"
     - All users can see other users "Liked" photos
-
-## Bonus - Features
   
 4. Followers
     - Logged in users can follow another user
     - Logged in users can unfollow another user
+
+5. Messages
+    - Logged in users can use the general chat to chat with other logged in users
+
+## Bonus - Features
 
 5. AWS
     - Store pictures on AWS
