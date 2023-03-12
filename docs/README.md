@@ -17,6 +17,7 @@
 * Alembic
 * SQLite3 (development)
 * PostgreSQL (production)
+* WTForms
 * WebSocketIO
 
 # CRUD Features
