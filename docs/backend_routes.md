@@ -14,15 +14,15 @@ This web app uses the following API routes to dynamically update the page to cre
 
 ## Comments
 
-- A logged in user may delete, edit or create their own Comment to a Photo, however every user can view all comments of a specific photo, logged in or not.
+- A logged in user may create, delete or edit their own Comment to a Photo, however every user can view all comments of a specific photo, logged in or not.
 
   - `GET /api/comments/:id`
-  - `GET /api/comments/photos/:id`
-  - `POST /api/comments/:id`
+  - `GET /api/comments/:photo_id`
+  - `POST /api/comments/:photo_id`
   - `PUT /api/comments/:id`
   - `DELETE /api/comments/:id`
 
-## Reactions ('Like' an Answer)
+## Reactions ('Like' a Photo)
 
 - A logged in user may 'Like' switch between or completely undo their 'Like' from a photo using the icon which fetch data from an association attached to the photo_id and user_id.
 
@@ -30,12 +30,12 @@ This web app uses the following API routes to dynamically update the page to cre
 - `POST /api/reactions/:id/`
 
 
-<!-- ## Bonus - Followers
+## Followers
 
-- A logged in user can follow another user
+- A logged in user can follow/unfollow another user
 
-  - `GET /api/followers/:id`
-  - `POST /api/followers/:id`
+  - `GET /api/followers`
+  - `POST /api/followers/users/:id`
 
 <!-- ## Bonus - AWS
 
