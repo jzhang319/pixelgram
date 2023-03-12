@@ -1,6 +1,6 @@
 # Pixelgram
 
-<img width="1071" alt="image" src="image.png">
+![image](https://user-images.githubusercontent.com/99565823/224571125-28b60345-7aca-4f7c-b0f9-58f546673d92.png)
 
 ### This project uses the following technologies
 ### Frontend
