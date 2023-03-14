@@ -1,6 +1,6 @@
-# Flask React Project
+# Pixelgram
 
-This is the starter for the Flask React project.
+This web app inspired by Instagram built with Python, Flask, SQL-alchemy, Alembic, SQLite3 (development), PostgreSQL (production), Javascript, React, Redux and FontAwesome
 
 ## Getting started
 1. Clone this repository (only this branch)
