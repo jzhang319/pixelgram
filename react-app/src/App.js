@@ -40,9 +40,6 @@ function App() {
           </Route>
         </Switch>
       )}
-      {/* <div className="home-message-both"> */}
-
-      {/* </div> */}
     </div>
   );
 }
