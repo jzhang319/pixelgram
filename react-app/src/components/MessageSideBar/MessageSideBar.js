@@ -58,7 +58,7 @@ function MessageSideBar() {
     } else if (chatInput.length > 100) {
       alert("Message is too long");
     } else {
-      console.log(messages, " <---- messages");
+      // console.log(messages, " <---- messages");
       socket.emit("chat", {
         user: user.username,
         msg: chatInput,
