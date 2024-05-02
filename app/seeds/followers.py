@@ -1,5 +1,5 @@
 from app.models import db, User, Photo, Follower, environment, SCHEMA
-
+from sqlalchemy import text
 
 def seed_followers():
     demo = Follower(user_id=1, follower_id=2)
@@ -23,6 +23,6 @@ def undo_followers():
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM followers")
+        db.session.execute(text("DELETE FROM followers"))
 
     db.session.commit()

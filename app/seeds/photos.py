@@ -1,5 +1,5 @@
 from app.models import db, User, Photo, environment, SCHEMA
-
+from sqlalchemy import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_photos():
@@ -34,7 +34,7 @@ def seed_photos():
         url='https://cdn.discordapp.com/attachments/885032629299212308/1235669430361395261/9k.png?ex=66353655&is=6633e4d5&hm=d47e33d354447d8ecd4e9384780d1044b57699e71f697f92aeb56dd20dda908b&', caption='I live there', user_id=6
     )
     demo10 = Photo(
-        url='https://cdn.discordapp.com/attachments/885032629299212308/1235669532849213481/9k.png?ex=6635366e&is=6633e4ee&hm=f3b6cdaf14b4419e8da4f32734ca5b3d8a2451be4d023030a3a91d2b9e24db52&', user_id=7
+        url='https://cdn.discordapp.com/attachments/885032629299212308/1235669532849213481/9k.png?ex=6635366e&is=6633e4ee&hm=f3b6cdaf14b4419e8da4f32734ca5b3d8a2451be4d023030a3a91d2b9e24db52&', caption="I cannot wait" ,user_id=7
     )
     demo11 = Photo(
         url='https://cdn.discordapp.com/attachments/885032629299212308/1235669692161720401/9k.png?ex=66353694&is=6633e514&hm=55c5f411e27a4dc9a378bba14be5916253e16be432ec5dc7d550a0fe94430a3f&', caption="nice tree", user_id=8
@@ -94,6 +94,6 @@ def undo_photos():
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM photos")
+        db.session.execute(text("DELETE FROM photos"))
 
     db.session.commit()

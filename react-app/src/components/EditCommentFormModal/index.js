@@ -46,11 +46,12 @@ function EditCommentForm({ id }) {
         </div>
       )}
       <div className="update-form-elements">
-        <img
-          className="logo"
-          src="https://cdn.discordapp.com/attachments/885032629299212308/1078464745935482910/687474703a2f2f7265732e636c6f7564696e6172792e636f6d2f616e6e616f682f696d6167652f75706c6f61642f635f63726f702c685f3337352c775f3936352c785f34352f76313531323136373130302f4c6f676f6d616b725f3264746e65305f6668756574692e706e67.png"
+        {/* <img
+          className="edit-form-logo"
+          src="https://cdn.discordapp.com/attachments/885032629299212308/1235692494579306618/hzz6PR0vetwiRIlSpQoUaJEiRIlSpQoUaJEiRIF0f8B77LBY6DhZLoAAAAASUVORK5CYII.png?ex=66354bd0&is=6633fa50&hm=ad27efd653edee7939f1b5c56970313ce5414d595c54ffc65c7b57c46771652f&"
           alt="logo"
-        />
+        /> */}
+        <div className="edit-form-title">Edit Comment</div>
         <div className="update-comment-section">
           <label>Update Comment</label>
           <input

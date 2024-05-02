@@ -1,0 +1,13 @@
+.update-form-elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.edit-form-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10%;
+}

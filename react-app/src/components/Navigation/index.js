@@ -54,7 +54,7 @@ function Navigation({ isLoaded }) {
         <div className="logo-section">
           <img
             className="pixel-logo"
-            src="https://cdn.discordapp.com/attachments/885032629299212308/1078464578268172370/174855.png"
+            src="https://cdn.discordapp.com/attachments/885032629299212308/1235691756662685850/2Q.png?ex=66354b20&is=6633f9a0&hm=9c22dee8d1cc16b45fb7ba76e375b3b833440ffae73735d659b1088a6b3f3395&"
             alt="logo"
           />
           <h2 className="pixel">
