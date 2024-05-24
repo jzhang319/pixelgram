@@ -16,12 +16,13 @@ function EditPhotoForm() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
-  const err = [];
 
   useEffect(() => {
+    const errors = [];
     if (photo.caption.length < 1)
-      err.push("Caption must be at least 1 character long");
-  }, [caption, err, photo.caption.length]);
+      errors.push("Caption must be at least 1 character long");
+    setErrors(errors)
+  }, [caption, photo.caption.length]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
