@@ -5,37 +5,37 @@ from sqlalchemy import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', profile_url='/static/profile_images/profile_image-1.jpeg'
+        username='Demo', email='demo@aa.io', password='password', profile_url='/public/profile_images/profile_image-1.jpeg'
         )
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', profile_url='/static/profile_images/profile_image-2.png'
+        username='marnie', email='marnie@aa.io', password='password', profile_url='/public/profile_images/profile_image-2.png'
         )
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', profile_url='/static/profile_images/profile_image-3.jpeg'
+        username='bobbie', email='bobbie@aa.io', password='password', profile_url='/public/profile_images/profile_image-3.jpeg'
         )
     dave = User(
-        username='dave', email='dave@aa.io', password='password', profile_url='/static/profile_images/profile_image-4.png'
+        username='dave', email='dave@aa.io', password='password', profile_url='/public/profile_images/profile_image-4.png'
         )
     stan = User(
-        username='stan', email='stan@aa.io', password='password', profile_url='/static/profile_images/profile_image-5.png'
+        username='stan', email='stan@aa.io', password='password', profile_url='/public/profile_images/profile_image-5.png'
     )
     winston = User(
-        username='winston', email='winston@aa.io', password='password', profile_url='/static/profile_images/profile_image-6.png'
+        username='winston', email='winston@aa.io', password='password', profile_url='/public/profile_images/profile_image-6.png'
     )
     jess = User(
-        username='jess', email='jess@aa.io', password='password', profile_url='/static/profile_images/profile_image-7.png'
+        username='jess', email='jess@aa.io', password='password', profile_url='/public/profile_images/profile_image-7.png'
     )
     candie = User(
-        username='candie', email='candie@aa.io', password='password', profile_url='/static/profile_images/profile_image-8.png'
+        username='candie', email='candie@aa.io', password='password', profile_url='/public/profile_images/profile_image-8.png'
     )
     mario = User(
-        username='mario', email='mario@aa.io', password='password', profile_url='/static/profile_images/profile_image-9.png'
+        username='mario', email='mario@aa.io', password='password', profile_url='/public/profile_images/profile_image-9.png'
     )
     liugi = User(
-        username='liugi', email='liugi@aa.io', password='password', profile_url='/static/profile_images/profile_image-10.png'
+        username='liugi', email='liugi@aa.io', password='password', profile_url='/public/profile_images/profile_image-10.png'
     )
     bowser = User(
-        username='bowser', email='bowser@aa.io', password='password', profile_url='/static/profile_images/profile_image-4.png'
+        username='bowser', email='bowser@aa.io', password='password', profile_url='/public/profile_images/profile_image-4.png'
     )
 
     db.session.add(demo)

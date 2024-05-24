@@ -4,61 +4,61 @@ from sqlalchemy import text
 # Adds a demo user, you can add other users here if you want
 def seed_photos():
     demo = Photo(
-        url='/static/photos/photo1.png', caption='I cant believe I got this laptop!', user_id=1
+        url='/public/photos/photo1.png', caption='I cant believe I got this laptop!', user_id=1
     )
     demo1 = Photo(
-        url='/static/photos/photo2.png', caption='This is a nice view!', user_id=1
+        url='/public/photos/photo2.png', caption='This is a nice view!', user_id=1
     )
     demo2 = Photo(
-        url='/static/photos/photo3.png', caption='I would love to swim in this', user_id=2
+        url='/public/photos/photo3.png', caption='I would love to swim in this', user_id=2
     )
     demo3 = Photo(
-        url='/static/photos/photo4.png', caption='How can they actually built this?!', user_id=2
+        url='/public/photos/photo4.png', caption='How can they actually built this?!', user_id=2
     )
     demo4 = Photo(
-        url='/static/photos/photo5.png', caption='This is magnificent', user_id=3
+        url='/public/photos/photo5.png', caption='This is magnificent', user_id=3
     )
     demo5 = Photo(
-        url='/static/photos/photo6.png', caption='Would love to drive this one day', user_id=3
+        url='/public/photos/photo6.png', caption='Would love to drive this one day', user_id=3
     )
     demo6 = Photo(
-        url='/static/photos/photo7.png', caption='Nice car!!!', user_id=4
+        url='/public/photos/photo7.png', caption='Nice car!!!', user_id=4
     )
     demo7 = Photo(
-        url='/photos/photo8.png', caption=f"Everyone's dream", user_id=5
+        url='/public/photos/photo8.png', caption=f"Everyone's dream", user_id=5
     )
     demo8 = Photo(
-        url='/static/photos/photo9.png', caption='A flying car', user_id=5
+        url='/public/photos/photo9.png', caption='A flying car', user_id=5
     )
     demo9 = Photo(
-        url='/static/photos/photo10.png', caption='I live there', user_id=6
+        url='/public/photos/photo10.png', caption='I live there', user_id=6
     )
     demo10 = Photo(
-        url='/static/photos/photo11.png', caption="I cannot wait" ,user_id=7
+        url='/public/photos/photo11.png', caption="I cannot wait" ,user_id=7
     )
     demo11 = Photo(
-        url='/static/photos/photo12.png', caption="nice tree", user_id=8
+        url='/public/photos/photo12.png', caption="nice tree", user_id=8
     )
     demo12 = Photo(
-        url='/static/photos/photo13.png', caption='Sky view', user_id=8
+        url='/public/photos/photo13.png', caption='Sky view', user_id=8
     )
     demo13 = Photo(
-        url='/static/photos/photo14.png', caption='Working here would be nice', user_id=9
+        url='/public/photos/photo14.png', caption='Working here would be nice', user_id=9
     )
     demo14 = Photo(
-        url='/static/photos/photo15.png', caption='nice plane', user_id=9
+        url='/public/photos/photo15.png', caption='nice plane', user_id=9
     )
     demo15 = Photo(
-        url='/static/photos/photo16.png', caption='love vacations', user_id=10
+        url='/public/photos/photo16.png', caption='love vacations', user_id=10
     )
     demo16 = Photo(
-        url='/static/photos/photo17.png', caption='my new toy', user_id=10
+        url='/public/photos/photo17.png', caption='my new toy', user_id=10
     )
     demo17 = Photo(
-        url='/static/photos/photo18.png', caption='dream cruises', user_id=11
+        url='/public/photos/photo18.png', caption='dream cruises', user_id=11
     )
     demo18 = Photo(
-        url='/static/photos/photo19.png', caption='best time ever', user_id=11
+        url='/public/photos/photo19.png', caption='best time ever', user_id=11
     )
 
     db.session.add(demo)
