@@ -2,7 +2,7 @@ from app.models import db, Photo, environment, SCHEMA
 from sqlalchemy import text
 
 def seed_photos():
-    static_url_prefix = '/static/photos/'
+    static_url_prefix = '/photos/'
 
     demo = Photo(
         url=f'{static_url_prefix}photo1.png', caption='I cant believe I got this laptop!', user_id=1

@@ -2,7 +2,7 @@ from app.models import db, User, environment, SCHEMA
 from sqlalchemy import text
 
 def seed_users():
-    static_url_prefix = '/static/profile_images/'
+    static_url_prefix = '/profile_images/'
 
     demo = User(
         username='Demo', email='demo@aa.io', password='password', profile_url=f'{static_url_prefix}profile_image-1.jpeg'
