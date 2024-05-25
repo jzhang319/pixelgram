@@ -52,7 +52,7 @@ function Navigation({ isLoaded }) {
     <div className="navigation-side-panel">
       <NavLink className="nav-home-button" to="/">
         <div className="logo-section">
-          <img className="pixel-logo" src="/images/logo.png" alt="logo" />
+          <img className="pixel-logo" src="/static/images/logo.png" alt="logo" />
           <h2 className="pixel">
             Pixel<em>gram</em>
           </h2>

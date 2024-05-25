@@ -29,12 +29,12 @@ function App() {
           <Route exact path="/photos/:photoId">
             <PhotoDetail />
           </Route>
-          <Route exact path="/login">
+          {/* <Route exact path="/login">
             <LoginFormPage />
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
-          </Route>
+          </Route> */}
           <Route exact path="/explore">
             <ExplorePage />
           </Route>
