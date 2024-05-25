@@ -15,7 +15,7 @@ from .seeds import seed_commands
 from .config import Config
 from .socket import socketio
 
-app = Flask(__name__, static_folder="../react-app/public", static_url_path='/static')
+app = Flask(__name__, static_folder="../react-app/build", static_url_path='/static')
 
 # Setup login manager
 login = LoginManager(app)
