@@ -4,7 +4,7 @@ This web app inspired by Instagram built with Python, Flask, SQL-alchemy, Alembi
 
 
 ## SCHEMA for this project
-<img width="1071" alt="image" src="[(https://github.com/user-attachments/assets/3a3e5ee2-0ac6-4367-ba47-5fcfe555a94c)]">
+![Screenshot 2024-09-18 at 5 14 28 PM](https://github.com/user-attachments/assets/82af1667-c55b-486a-adce-7aa47a1d77c0)
 
 
 ## Getting started
