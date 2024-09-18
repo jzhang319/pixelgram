@@ -2,6 +2,9 @@
 
 This web app inspired by Instagram built with Python, Flask, SQL-alchemy, Alembic, SQLite3 (development), PostgreSQL (production), Javascript, React, Redux and FontAwesome
 
+## SCHEMA for this project
+<img width="1071" alt="image" src="https://user-images.githubusercontent.com/99565823/214959004-71a68a46-6dd0-400d-941c-6bde433dc86a.png">
+
 ## Getting started
 1. Clone this repository (only this branch)
 
