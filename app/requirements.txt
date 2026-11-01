@@ -1,12 +1,8 @@
-# Generated from Pipfile.lock via 'uvx --python 3.12 pipenv requirements'.
-# Do not hand-edit package versions here -- edit the Pipfile and run
-# 'uvx --python 3.12 pipenv lock' then regenerate this file instead,
-# so this always matches what Vercel actually installs (it builds from
-# Pipfile.lock, not this file).
-alembic==1.9.2; python_version >= '3.7'
+-i https://pypi.org/simple
+alembic==1.19.2; python_version >= '3.10'
 boto3==1.43.123; python_version >= '3.10'
 botocore==1.43.123; python_version >= '3.10'
-click==8.1.3; python_version >= '3.7'
+click==8.5.0; python_version >= '3.10'
 flask==2.2.2; python_version >= '3.7'
 flask-cors==3.0.10
 flask-login==0.6.2; python_version >= '3.7'
@@ -14,19 +10,20 @@ flask-migrate==4.0.2; python_version >= '3.6'
 flask-sqlalchemy==3.0.2; python_version >= '3.7'
 flask-wtf==1.1.1; python_version >= '3.7'
 gunicorn==23.0.0; python_version >= '3.7'
-itsdangerous==2.1.2; python_version >= '3.7'
+itsdangerous==2.2.0; python_version >= '3.8'
 jinja2==3.1.2; python_version >= '3.7'
 jmespath==1.1.0; python_version >= '3.9'
 mako==1.2.4; python_version >= '3.7'
 markupsafe==2.1.2; python_version >= '3.7'
 packaging==26.3; python_version >= '3.9'
 psycopg2-binary==2.9.13; python_version >= '3.10'
-python-dateutil==2.8.2; python_version >= '2.7' and python_version != '3.0' and python_version != '3.1' and python_version != '3.2'
-python-dotenv==0.21.0; python_version >= '3.7'
+python-dateutil==2.9.0.post0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'
+python-dotenv==0.21.1; python_version >= '3.7'
 python-editor==1.0.4
 s3transfer==0.19.3; python_version >= '3.10'
-six==1.16.0; python_version >= '2.7' and python_version != '3.0' and python_version != '3.1' and python_version != '3.2'
-sqlalchemy==1.4.46; python_version >= '2.7' and python_version != '3.0' and python_version != '3.1' and python_version != '3.2' and python_version != '3.3' and python_version != '3.4' and python_version != '3.5'
+six==1.17.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'
+sqlalchemy==1.4.46; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'
+typing-extensions==4.16.0; python_version >= '3.9'
 urllib3==2.8.0; python_version >= '3.10'
 werkzeug==2.2.2; python_version >= '3.7'
 wtforms==3.0.1; python_version >= '3.7'
