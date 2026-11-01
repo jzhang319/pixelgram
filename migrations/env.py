@@ -5,6 +5,7 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+from sqlalchemy import text
 
 from flask import current_app
 
@@ -100,13 +101,17 @@ def run_migrations_online():
         )
 
         # Create a schema (only in production), skipping the CREATE SCHEMA
-        # statement when it already exists since some roles (e.g. a
-        # least-privilege app role that owns but didn't create the schema)
-        # lack the database-level CREATE privilege needed to run it at all.
+        # statement when it already exists. The app role is expected to
+        # already own a pre-created schema and has no database-level
+        # CREATE privilege, so this statement would fail outright (not
+        # just no-op) if it ever actually ran against an existing schema.
+        # pg_namespace is checked directly (rather than information_schema,
+        # which only lists schemas the connected role can see/use) so this
+        # works regardless of who owns the schema.
         if environment == "production":
             schema_exists = connection.execute(
-                "SELECT 1 FROM information_schema.schemata WHERE schema_name = %s",
-                (SCHEMA,),
+                text("SELECT 1 FROM pg_namespace WHERE nspname = :schema"),
+                {"schema": SCHEMA},
             ).scalar()
             if not schema_exists:
                 connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
