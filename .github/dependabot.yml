@@ -8,11 +8,12 @@ updates:
       interval: "monthly"
     open-pull-requests-limit: 5
     groups:
-      minor-and-patch:
-        update-types: ["minor", "patch"]
+      patch:
+        update-types: ["patch"]
     ignore:
+      # Old Flask 2.x stack: a minor bump (itsdangerous 2.2) took question-overflow down. Patch only.
       - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
   - package-ecosystem: "npm"
     directory: "/react-app"
     schedule:
