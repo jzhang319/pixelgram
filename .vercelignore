@@ -1,0 +1,11 @@
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+.vercel
+.venv
+**/node_modules
+supabase/
+CLAUDE.md
+instance/
