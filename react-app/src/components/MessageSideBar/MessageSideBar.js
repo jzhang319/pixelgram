@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { io } from "socket.io-client";
+import { supabase } from "../../supabaseClient";
 import "./MessageSideBar.css";
 
-let socket;
+let channel;
 
 function MessageSideBar() {
 
@@ -20,34 +20,42 @@ function MessageSideBar() {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    // create websocket/connect
-    socket = io();
-
-    // listen for chat events
-    socket.on("chat", (chat) => {
-      // when we receive a chat, add it into our messages array in state
-      setMessages((messages) => [...messages, chat]);
+    // subscribe to the shared broadcast channel
+    channel = supabase.channel("pixelgram-chat", {
+      config: { broadcast: { self: true } },
     });
 
-    // when component unmounts, disconnect
+    // listen for chat events
+    channel
+      .on("broadcast", { event: "chat" }, ({ payload }) => {
+        // when we receive a chat, add it into our messages array in state
+        setMessages((messages) => [...messages, payload]);
+      })
+      .subscribe();
+
+    // when component unmounts, unsubscribe
     return () => {
-      socket.disconnect();
+      supabase.removeChannel(channel);
     };
   }, []);
 
   const sendChat = (e) => {
     e.preventDefault();
-    // emit a message
+    // broadcast a message
     if (!chatInput) {
       alert("Please enter a message");
     } else if (chatInput.length > 100) {
       alert("Message is too long");
     } else {
       // console.log(messages, " <---- messages");
-      socket.emit("chat", {
-        user: user.username,
-        msg: chatInput,
-        time: getLocaleTimeString(),
+      channel.send({
+        type: "broadcast",
+        event: "chat",
+        payload: {
+          user: user.username,
+          msg: chatInput,
+          time: getLocaleTimeString(),
+        },
       });
     }
     // clear the input field after the message is sent
