@@ -1,23 +1,14 @@
 import eventlet
 eventlet.monkey_patch()
 
-import boto3
-from boto3.s3.transfer import TransferConfig
-import botocore
+import requests
 import os
 import uuid
 
-BUCKET_NAME = os.environ.get("S3_BUCKET")
-S3_LOCATION = f"https://{BUCKET_NAME}.s3.amazonaws.com/"
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_ANON_KEY = os.environ.get("SUPABASE_ANON_KEY")
+BUCKET_NAME = "pixelgram"
 ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif", "svg"}
-CONFIG = TransferConfig(use_threads=False)
-
-# s3 = boto3.client("s3")
-s3 = boto3.client(
-   "s3",
-   aws_access_key_id=os.environ.get("S3_KEY"),
-   aws_secret_access_key=os.environ.get("S3_SECRET"),
-)
 
 
 def allowed_file(filename):
@@ -32,18 +23,19 @@ def get_unique_filename(filename):
 
 def upload_file_to_s3(file, acl="public-read"):
 
-    print("IN FILE UPLOAD", file)
-    print("s3 key", os.environ.get("S3_KEY"))
     try:
-        s3.upload_fileobj(
-            file,
-            BUCKET_NAME,
-            file.filename,
-            ExtraArgs={"ACL": acl, "ContentType": file.content_type},
-            Config=CONFIG,
+        response = requests.post(
+            f"{SUPABASE_URL}/storage/v1/object/{BUCKET_NAME}/{file.filename}",
+            headers={
+                "Authorization": f"Bearer {SUPABASE_ANON_KEY}",
+                "apikey": SUPABASE_ANON_KEY,
+                "Content-Type": file.content_type,
+            },
+            data=file.read(),
         )
+        response.raise_for_status()
     except Exception as e:
-        # in case that our s3 upload fails
+        # in case that our Supabase Storage upload fails
         return {"errors": str(e)}
 
-    return {"url": f"{S3_LOCATION}{file.filename}"}
+    return {"url": f"{SUPABASE_URL}/storage/v1/object/public/{BUCKET_NAME}/{file.filename}"}

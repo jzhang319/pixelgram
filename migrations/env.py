@@ -99,9 +99,17 @@ def run_migrations_online():
             **current_app.extensions['migrate'].configure_args
         )
 
-        # Create a schema (only in production)
+        # Create a schema (only in production), skipping the CREATE SCHEMA
+        # statement when it already exists since some roles (e.g. a
+        # least-privilege app role that owns but didn't create the schema)
+        # lack the database-level CREATE privilege needed to run it at all.
         if environment == "production":
-            connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
+            schema_exists = connection.execute(
+                "SELECT 1 FROM information_schema.schemata WHERE schema_name = %s",
+                (SCHEMA,),
+            ).scalar()
+            if not schema_exists:
+                connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
 
         # Set search path to your schema (only in production)
         with context.begin_transaction():
