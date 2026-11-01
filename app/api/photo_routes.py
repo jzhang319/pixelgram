@@ -26,6 +26,8 @@ def validation_errors_to_error_messages(validation_errors):
 @photo_routes.route("/<int:id>", methods=['GET'])
 def get_photo(id):
     my_photo = Photo.query.get(id)
+    if my_photo is None:
+        return {'errors': 'Photo not found'}, 404
     return my_photo.to_dict()
 
 
