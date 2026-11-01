@@ -1,4 +1,5 @@
 from flask.cli import AppGroup
+from sqlalchemy import text
 from .users import seed_users, undo_users
 from .photos import seed_photos, undo_photos
 from .comments import seed_comments, undo_comments
@@ -17,7 +18,7 @@ seed_commands = AppGroup('seed')
 def seed():
     if environment == 'production':
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            text(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;"))
         # Before seeding in production, you want to run the seed undo
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).

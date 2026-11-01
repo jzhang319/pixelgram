@@ -25,7 +25,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @photo_routes.route("/<int:id>", methods=['GET'])
 def get_photo(id):
-    my_photo = Photo.query.get(id)
+    my_photo = db.session.get(Photo, id)
     if my_photo is None:
         return {'errors': 'Photo not found'}, 404
     return my_photo.to_dict()
@@ -37,7 +37,7 @@ def edit_photo(photoId):
     form = EditPhotoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        edit_photo = Photo.query.get(photoId)
+        edit_photo = db.session.get(Photo, photoId)
         if edit_photo.user_id == current_user.id:
             edit_photo.caption = form.data['caption']
             db.session.commit()
@@ -121,7 +121,7 @@ def post_photo():
 @photo_routes.route('/<int:photoId>', methods=['DELETE'])
 @login_required
 def delete_photo(photoId):
-    del_photo = Photo.query.get(photoId)
+    del_photo = db.session.get(Photo, photoId)
     if del_photo.user_id == current_user.id:
         db.session.delete(del_photo)
         db.session.commit()

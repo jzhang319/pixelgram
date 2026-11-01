@@ -47,7 +47,7 @@ def add_comment(photoId):
 @ comment_routes.route('/<int:commentId>', methods=['DELETE'])
 @ login_required
 def delete_comment(commentId):
-    del_comment = Comment.query.get(commentId)
+    del_comment = db.session.get(Comment, commentId)
     if del_comment.user_id == current_user.id:
         db.session.delete(del_comment)
         db.session.commit()
@@ -62,7 +62,7 @@ def update_comment(commentId):
     form = EditCommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        comment = Comment.query.get(commentId)
+        comment = db.session.get(Comment, commentId)
         if comment.user_id == current_user.id:
             comment.comment = form.data['comment']
             db.session.commit()

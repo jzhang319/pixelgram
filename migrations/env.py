@@ -39,7 +39,7 @@ def get_engine():
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 config.set_main_option(
-    'sqlalchemy.url', str(get_engine().url).replace('%', '%%'))
+    'sqlalchemy.url', get_engine().url.render_as_string(hide_password=False).replace('%', '%%'))
 target_db = current_app.extensions['migrate'].db
 
 target_metadata = current_app.extensions['migrate'].db.metadata
@@ -114,7 +114,7 @@ def run_migrations_online():
                 {"schema": SCHEMA},
             ).scalar()
             if not schema_exists:
-                connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
+                connection.execute(text(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}"))
 
         # Set search path to your schema (only in production)
         with context.begin_transaction():
