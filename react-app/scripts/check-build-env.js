@@ -27,8 +27,14 @@ function loadEnvFile(file) {
   }
 }
 
-loadEnvFile(path.join(REACT_APP_DIR, ".env"));
+// CRA's real build-time precedence (.env.test is skipped -- that's test
+// only): the FIRST file loaded here wins, since loadEnvFile only fills in
+// keys not already set. So load in highest-to-lowest priority order:
+// .env.production.local > .env.production > .env.local > .env.
+loadEnvFile(path.join(REACT_APP_DIR, ".env.production.local"));
+loadEnvFile(path.join(REACT_APP_DIR, ".env.production"));
 loadEnvFile(path.join(REACT_APP_DIR, ".env.local"));
+loadEnvFile(path.join(REACT_APP_DIR, ".env"));
 
 const REQUIRED = ["REACT_APP_SUPABASE_URL", "REACT_APP_SUPABASE_ANON_KEY"];
 const missing = REQUIRED.filter((name) => !process.env[name]);

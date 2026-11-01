@@ -40,9 +40,7 @@ function MessageSideBar() {
         // when we receive a chat, add it into our messages array in state
         setMessages((messages) => [...messages, payload]);
       })
-      .subscribe((status) => {
-        if (status === "SUBSCRIBED") setIsSubscribed(true);
-      });
+      .subscribe((status) => setIsSubscribed(status === "SUBSCRIBED"));
 
     // when component unmounts, unsubscribe
     return () => {

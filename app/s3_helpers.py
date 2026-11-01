@@ -49,13 +49,16 @@ def upload_file_to_s3(file, acl="public-read"):
     if len(body) > MAX_BYTES:
         return {"errors": "file too large"}
 
-    ext = file.filename.rsplit(".", 1)[1].lower()
+    content_type = CONTENT_TYPES.get(file.filename.rsplit(".", 1)[-1].lower())
+    if not content_type:
+        return {"errors": "file type not permitted"}
+
     try:
         s3.put_object(
             Bucket=BUCKET_NAME,
             Key=file.filename,
             Body=body,
-            ContentType=CONTENT_TYPES[ext],
+            ContentType=content_type,
             CacheControl="max-age=3600",
         )
     except Exception as e:
