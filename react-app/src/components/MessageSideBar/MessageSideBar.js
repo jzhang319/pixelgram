@@ -17,12 +17,21 @@ function MessageSideBar() {
 
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState([]);
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    // subscribe to the shared broadcast channel
+    // no Supabase env vars at build time -- skip the effect entirely so a
+    // misconfigured build just loses chat instead of crashing (see
+    // supabaseClient.js)
+    if (!supabase) return;
+
+    // subscribe to the shared broadcast channel. self:false because we
+    // append our own messages locally in sendChat below -- waiting for our
+    // own broadcast to echo back raced with slow subscribes and could drop
+    // the sender's own message.
     channel = supabase.channel("pixelgram-chat", {
-      config: { broadcast: { self: true } },
+      config: { broadcast: { self: false } },
     });
 
     // listen for chat events
@@ -31,7 +40,9 @@ function MessageSideBar() {
         // when we receive a chat, add it into our messages array in state
         setMessages((messages) => [...messages, payload]);
       })
-      .subscribe();
+      .subscribe((status) => {
+        if (status === "SUBSCRIBED") setIsSubscribed(true);
+      });
 
     // when component unmounts, unsubscribe
     return () => {
@@ -46,24 +57,31 @@ function MessageSideBar() {
       alert("Please enter a message");
     } else if (chatInput.length > 100) {
       alert("Message is too long");
+    } else if (!isSubscribed) {
+      alert("Chat is still connecting, please wait a moment");
     } else {
-      // console.log(messages, " <---- messages");
+      const payload = {
+        user: user.username,
+        msg: chatInput,
+        time: getLocaleTimeString(),
+      };
       channel.send({
         type: "broadcast",
         event: "chat",
-        payload: {
-          user: user.username,
-          msg: chatInput,
-          time: getLocaleTimeString(),
-        },
+        payload,
       });
+      // broadcast.self is false above, so the sender has to add its own
+      // message locally -- this also means it shows up instantly instead
+      // of waiting on a round trip through Supabase.
+      setMessages((messages) => [...messages, payload]);
     }
     // clear the input field after the message is sent
     setChatInput("");
   };
 
   return (
-    user && (
+    user &&
+    supabase && (
       <div className="message-side-container">
         <h3 className="message-title-bar">Generals Chat</h3>
 
@@ -75,9 +93,10 @@ function MessageSideBar() {
               placeholder="Chat here ..."
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
+              disabled={!isSubscribed}
             />
             <div className="btn-container">
-              <button className="chat-btn" type="submit">
+              <button className="chat-btn" type="submit" disabled={!isSubscribed}>
                 Send
               </button>
               {/* <button className="chat-btn">Leave</button> */}

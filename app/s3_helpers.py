@@ -12,6 +12,15 @@ BUCKET_NAME = "pixelgram"
 # shared Supabase origin. pdf excluded: can never pass the bucket's
 # image/* allowed_mime_types, so it would always fail at upload anyway.
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
+# ContentType is derived from this, never from the client-supplied
+# file.content_type, so a mislabeled upload is still stored/served as
+# whatever its validated extension actually says it is.
+CONTENT_TYPES = {
+    "png": "image/png",
+    "jpg": "image/jpeg",
+    "jpeg": "image/jpeg",
+    "gif": "image/gif",
+}
 MAX_BYTES = 10 * 1024 * 1024
 
 s3 = boto3.client(
@@ -20,7 +29,7 @@ s3 = boto3.client(
     region_name="us-west-1",
     aws_access_key_id=SUPABASE_S3_ACCESS_KEY_ID,
     aws_secret_access_key=SUPABASE_S3_SECRET_ACCESS_KEY,
-    config=Config(connect_timeout=5, read_timeout=30),
+    config=Config(connect_timeout=5, read_timeout=30, retries={"max_attempts": 2}),
 )
 
 
@@ -40,12 +49,14 @@ def upload_file_to_s3(file, acl="public-read"):
     if len(body) > MAX_BYTES:
         return {"errors": "file too large"}
 
+    ext = file.filename.rsplit(".", 1)[1].lower()
     try:
         s3.put_object(
             Bucket=BUCKET_NAME,
             Key=file.filename,
             Body=body,
-            ContentType=file.content_type,
+            ContentType=CONTENT_TYPES[ext],
+            CacheControl="max-age=3600",
         )
     except Exception as e:
         # in case that our Supabase Storage upload fails
