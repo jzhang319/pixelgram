@@ -1,5 +1,5 @@
 -i https://pypi.org/simple
-alembic==1.19.2; python_version >= '3.10'
+alembic==1.20.1; python_version >= '3.10'
 blinker==1.9.0; python_version >= '3.9'
 boto3==1.43.123; python_version >= '3.10'
 botocore==1.43.123; python_version >= '3.10'
@@ -19,7 +19,7 @@ markupsafe==3.0.4; python_version >= '3.9'
 packaging==26.3; python_version >= '3.9'
 psycopg2-binary==2.9.13; python_version >= '3.10'
 python-dateutil==2.9.0.post0; python_version >= '2.7' and python_version != '3.0' and python_version != '3.1' and python_version != '3.2'
-python-dotenv==1.2.2; python_version >= '3.10'
+python-dotenv==1.2.4; python_version >= '3.10'
 python-editor==1.0.4
 s3transfer==0.19.3; python_version >= '3.10'
 six==1.17.0; python_version >= '2.7' and python_version != '3.0' and python_version != '3.1' and python_version != '3.2'
