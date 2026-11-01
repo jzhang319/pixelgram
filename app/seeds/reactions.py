@@ -52,7 +52,7 @@ def seed_reactions():
 def undo_reactions():
     if environment == "production":
         db.session.execute(
-            text(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;"))
+            text(f"TRUNCATE table {SCHEMA}.reactions RESTART IDENTITY CASCADE;"))
     else:
         db.session.execute(text("DELETE FROM reactions"))
 
