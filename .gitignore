@@ -7,3 +7,5 @@ __pycache__/
 # local Supabase CLI link/session state (supabase/.temp/) -- no other
 # content lives under supabase/ in this repo
 supabase/
+.vercel
+.env*
