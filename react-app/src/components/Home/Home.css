@@ -345,7 +345,7 @@ img.photo-itself{
   .photo-detail {
     width: 100%;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     box-sizing: border-box;
     padding: 0 12px;
   }

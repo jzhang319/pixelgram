@@ -83,12 +83,15 @@ input{
   justify-content: center;
 }
 
-/* Mobile: match Modal.css's full-screen sheet; this selector is more
-   specific than #modal-content so it needs its own override. */
+/* Mobile: match Modal.css's full-screen sheet; this selector (specificity
+   1,0,1) beats Modal.css's #modal-content, so the iOS-safe-area height and
+   padding have to be set here too or they're dead code. */
 @media (max-width: 907px) {
   div#modal-content {
     width: 100%;
     height: 100%;
+    height: 100dvh;
     border-radius: 0;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
