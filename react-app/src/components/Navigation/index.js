@@ -16,6 +16,9 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   const [showMenu, setShowMenu] = useState(false);
+  // Mobile only: the sidebar is a slide-in drawer toggled by the ☰ button.
+  const [navOpen, setNavOpen] = useState(false);
+  const closeNav = () => setNavOpen(false);
   const ulRef = useRef();
 
   // const openMenu = () => {
@@ -49,8 +52,19 @@ function Navigation({ isLoaded }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <div className="navigation-side-panel">
-      <NavLink className="nav-home-button" to="/">
+    <>
+    <button
+      type="button"
+      className="nav-toggle"
+      aria-label={navOpen ? "Close menu" : "Open menu"}
+      aria-expanded={navOpen}
+      onClick={() => setNavOpen(!navOpen)}
+    >
+      <i className={navOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
+    </button>
+    {navOpen && <div className="nav-backdrop" onClick={closeNav} />}
+    <div className={"navigation-side-panel" + (navOpen ? " open" : "")}>
+      <NavLink className="nav-home-button" to="/" onClick={closeNav}>
         <div className="logo-section">
           <img className="pixel-logo" src="/images/logo.png" alt="logo" />
           <h2 className="pixel">
@@ -58,14 +72,14 @@ function Navigation({ isLoaded }) {
           </h2>
         </div>
       </NavLink>
-      <NavLink className="home-log" to="/">
+      <NavLink className="home-log" to="/" onClick={closeNav}>
         <div className="home-button-section">
           <i className="fa-solid fa-house"></i>
           Home
         </div>
       </NavLink>
       {sessionUser && (
-        <NavLink to="/explore">
+        <NavLink to="/explore" onClick={closeNav}>
           <div className="explore-page-tab">
             <i className="fa-solid fa-compass"></i>
             Explore
@@ -88,12 +102,19 @@ function Navigation({ isLoaded }) {
         <OpenModalButton
           buttonText="Create Post"
           onItemClick={closeMenu}
+          onButtonClick={closeNav}
           modalComponent={<PostPhotoForm />}
           icon={<i className="fa-solid fa-square-plus"></i>}
         />
       )}
       {!sessionUser && (
-        <div onClick={handleDemoLogin} className="demo-login-button">
+        <div
+          onClick={(e) => {
+            closeNav();
+            handleDemoLogin(e);
+          }}
+          className="demo-login-button"
+        >
           <i className="fa-solid fa-user"></i>
           Demo Login
         </div>
@@ -103,6 +124,7 @@ function Navigation({ isLoaded }) {
           <OpenModalButton
             buttonText="Log In"
             onItemClick={closeMenu}
+            onButtonClick={closeNav}
             modalComponent={<LoginFormModal />}
             icon={<i className="fa-solid fa-right-to-bracket"></i>}
           />
@@ -110,6 +132,7 @@ function Navigation({ isLoaded }) {
           <OpenModalButton
             buttonText="Sign Up"
             onItemClick={closeMenu}
+            onButtonClick={closeNav}
             modalComponent={<SignupFormModal />}
             icon={<i className="fa-solid fa-file"></i>}
           />
@@ -117,6 +140,7 @@ function Navigation({ isLoaded }) {
       )}
       {sessionUser && <ProfileButton user={sessionUser} />}
     </div>
+    </>
   );
 }
 
