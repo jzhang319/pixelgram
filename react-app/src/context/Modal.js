@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
@@ -19,6 +19,26 @@ export function ModalProvider({ children }) {
       onModalClose();
     }
   };
+
+  // While a modal is open: close it on Escape, and lock background scroll
+  // (the mobile full-screen sheet otherwise lets the feed behind it scroll).
+  useEffect(() => {
+    if (!modalContent) return undefined;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalContent]);
 
   const contextValue = {
     modalRef, // reference to modal div
@@ -49,6 +69,7 @@ export function Modal() {
     <div id="modal">
       <div id="modal-background" onClick={closeModal} />
       <div id="modal-content">
+        <button id="modal-close" type="button" aria-label="Close" onClick={closeModal}>&times;</button>
         {modalContent}
       </div>
     </div>,

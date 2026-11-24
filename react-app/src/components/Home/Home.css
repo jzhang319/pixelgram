@@ -328,7 +328,7 @@ img.photo-itself{
    which caused horizontal overflow and content shifted under the nav.
    Switch to a full-width single column and clear the top nav bar height
    (see Navigation.css). */
-@media (max-width: 768px) {
+@media (max-width: 907px) {
   .homepage-container {
     margin-left: 0;
     width: 100%;
@@ -344,7 +344,8 @@ img.photo-itself{
   .each-photo,
   .photo-detail {
     width: 100%;
-    max-width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
     box-sizing: border-box;
     padding: 0 12px;
   }

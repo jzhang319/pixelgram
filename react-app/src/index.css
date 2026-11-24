@@ -60,7 +60,7 @@ button.profile-button-container{
 /* Mobile: form fields were bare inputs sized to their default browser
    width (~20 characters), and buttons were a few px short of a 44px tap
    target. */
-@media (max-width: 768px) {
+@media (max-width: 907px) {
   label {
     display: flex;
     flex-direction: column;

@@ -71,7 +71,7 @@
 /* Mobile: this fixed 20%-wide panel has no room on a phone screen and was
    drawing a vertical border line down the page plus clipping comment text
    underneath it. Hide it on narrow viewports rather than squeeze it. */
-@media (max-width: 768px) {
+@media (max-width: 907px) {
   .message-side-container {
     display: none;
   }

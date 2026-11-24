@@ -23,19 +23,47 @@
   background-color:white;
 }
 
+/* Hidden on desktop; the centered card is small enough that clicking the
+   dark #modal-background (which sits behind #modal-content) closes it. */
+#modal-close {
+  display: none;
+}
+
 /* Mobile: full-screen sheet instead of a small centered card. */
-@media (max-width: 768px) {
+@media (max-width: 907px) {
   #modal {
     align-items: stretch;
     justify-content: stretch;
+    /* .navigation-side-panel uses z-index:100 (see Navigation.css); without
+       this the fixed nav painted on top of the full-screen modal and stayed
+       clickable through it. */
+    z-index: 200;
   }
   #modal-content {
     width: 100%;
+    /* iOS Safari's dvh unit accounts for the address bar/toolbar height;
+       keep the 100% first as a fallback for browsers without dvh support. */
     height: 100%;
+    height: 100dvh;
     max-width: 100%;
     max-height: 100%;
     border-radius: 0;
     overflow-y: auto;
     box-sizing: border-box;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  /* On mobile the full-screen sheet covers #modal-background, the only
+     other way to dismiss a modal, so an explicit close button is required. */
+  #modal-close {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    width: 44px;
+    min-height: 44px;
+    padding: 0;
+    font-size: 24px;
+    line-height: 1;
   }
 }

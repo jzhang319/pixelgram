@@ -170,7 +170,7 @@ ul >li {
 /* Mobile: collapse the fixed left sidebar into a compact top bar so it
    stops overlapping page content (the sidebar's border-right was also
    drawing a vertical line down the middle of every mobile screen). */
-@media (max-width: 768px) {
+@media (max-width: 907px) {
   .navigation-side-panel {
     position: fixed;
     top: 0;
