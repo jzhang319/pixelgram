@@ -22,3 +22,20 @@
   position: absolute;
   background-color:white;
 }
+
+/* Mobile: full-screen sheet instead of a small centered card. */
+@media (max-width: 768px) {
+  #modal {
+    align-items: stretch;
+    justify-content: stretch;
+  }
+  #modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+}
