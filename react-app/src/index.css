@@ -56,3 +56,26 @@ button.profile-button-container{
   height: 40px;
   border-radius: 50%;
 }
+
+/* Mobile: form fields were bare inputs sized to their default browser
+   width (~20 characters), and buttons were a few px short of a 44px tap
+   target. */
+@media (max-width: 907px) {
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  button {
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+}
