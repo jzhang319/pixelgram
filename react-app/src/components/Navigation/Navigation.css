@@ -193,6 +193,8 @@ ul >li {
     justify-content: space-between;
     border-right: none;
     border-bottom: 1px solid lightgray;
+    /* Opaque so the feed doesn't show through the fixed bar on scroll. */
+    background-color: black;
   }
 
   .logo-section {
